@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>James Moyosore — Full-Stack Software Developer</title>
+    <meta
+      name="description"
+      content="James Moyosore — Full-Stack Software Developer specializing in AI-integrated engineering, backend, DevOps, and CMS. 5+ years shipping products end to end."
+    />
+    <meta property="og:title" content="James Moyosore — Full-Stack Software Developer" />
+    <meta
+      property="og:description"
+      content="Full-stack developer building AI-integrated products end to end. React, Next.js, Node.js, Laravel, DevOps."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://moyosorejames.com" />
+    <script>
+      // Set theme before paint to avoid flash of incorrect theme
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'dark' || (!stored && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
