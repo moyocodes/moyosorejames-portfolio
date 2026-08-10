@@ -77,26 +77,18 @@ export default function SkillsPanel() {
         description="Frontend, backend, AI integration, and DevOps — the whole pipeline, owned end to end."
       />
 
-      <div className="relative min-h-[420px] w-full sm:min-h-[480px]">
+      <div className="flex flex-wrap items-start justify-center gap-x-5 gap-y-7 py-6 sm:gap-x-7">
         {flat.map((item) => {
-          const top = 8 + rand(item.seed) * 82
-          const left = 4 + rand(item.seed + 0.5) * 90
-          const size = 40 + Math.round(rand(item.seed + 0.25) * 18)
           const duration = 4 + rand(item.seed + 0.75) * 3
           const delay = rand(item.seed + 0.9) * 3
+          const drift = rand(item.seed + 0.4) > 0.5 ? 'float' : 'float-slow'
 
           return (
-            <div
-              key={item.key}
-              className="group absolute flex flex-col items-center gap-1.5"
-              style={{ top: `${top}%`, left: `${left}%` }}
-            >
+            <div key={item.key} className="group flex flex-col items-center gap-1.5">
               <div
-                className="flex items-center justify-center rounded-2xl border border-border bg-card/80 text-foreground/70 shadow-md backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:text-primary hover:shadow-lg"
+                className="flex h-12 w-12 items-center justify-center rounded-2xl border border-border bg-card/80 text-foreground/70 shadow-md backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:text-primary hover:shadow-lg sm:h-14 sm:w-14"
                 style={{
-                  width: size,
-                  height: size,
-                  animation: `float ${duration}s ease-in-out infinite`,
+                  animation: `${drift} ${duration}s ease-in-out infinite`,
                   animationDelay: `${delay}s`,
                 }}
                 title={item.name}
