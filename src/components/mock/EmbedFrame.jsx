@@ -13,9 +13,19 @@ import { UIScene } from '@/components/mock/UIScene'
  *      fall back to an auto screenshot via WordPress mShots (free, no key).
  *   3. If the screenshot also fails to load, fall back to the code mockup.
  *
- * When there's no real URL yet, we skip straight to the code mockup.
+ * When there's no real URL yet, we skip straight to the code mockup. Pass
+ * screenshotOnly to skip the live iframe entirely (e.g. small previews where
+ * a full interactive page would be illegible and loading N live sites at
+ * once is wasteful) — goes straight to the mShots screenshot tier.
  */
-export default function EmbedFrame({ url, accent = '#3b82f6', fallbackScene = 'dashboard', fill = false }) {
+export default function EmbedFrame({
+  url,
+  accent = '#3b82f6',
+  fallbackScene = 'dashboard',
+  fill = false,
+  viewportClassName,
+  screenshotOnly = false,
+}) {
   // 'iframe' → 'shot' → 'mock'
   const [mode, setMode] = useState('iframe')
   const [iframeLoaded, setIframeLoaded] = useState(false)
@@ -29,9 +39,9 @@ export default function EmbedFrame({ url, accent = '#3b82f6', fallbackScene = 'd
 
   // Reset when the URL changes.
   useEffect(() => {
-    setMode(hasRealUrl ? 'iframe' : 'mock')
+    setMode(hasRealUrl ? (screenshotOnly ? 'shot' : 'iframe') : 'mock')
     setIframeLoaded(false)
-  }, [url, hasRealUrl])
+  }, [url, hasRealUrl, screenshotOnly])
 
   // If the iframe hasn't loaded shortly, assume framing is blocked → screenshot.
   useEffect(() => {
@@ -46,7 +56,9 @@ export default function EmbedFrame({ url, accent = '#3b82f6', fallbackScene = 'd
     <BrowserMock
       url={hasRealUrl ? host : `${host}.com`}
       className={fill ? 'flex h-full w-full flex-col' : 'w-full'}
-      viewportClassName={fill ? 'min-h-0 flex-1' : 'h-[62vh] max-h-[720px] min-h-[420px]'}
+      viewportClassName={
+        viewportClassName || (fill ? 'min-h-0 flex-1' : 'h-[62vh] max-h-[720px] min-h-[420px]')
+      }
       glow={hasRealUrl ? `radial-gradient(circle, ${accent}55, transparent 70%)` : undefined}
     >
       <div className="relative h-full w-full bg-background">
@@ -93,6 +105,7 @@ export default function EmbedFrame({ url, accent = '#3b82f6', fallbackScene = 'd
             href={url}
             target="_blank"
             rel="noreferrer"
+            onClick={(e) => e.stopPropagation()}
             className="absolute bottom-2 right-2 z-20 inline-flex items-center gap-1 rounded-full bg-background/90 px-2.5 py-1 text-[10px] font-medium text-foreground shadow ring-1 ring-border backdrop-blur transition-colors hover:bg-background"
           >
             Open live <ExternalLink className="h-3 w-3" />

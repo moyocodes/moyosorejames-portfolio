@@ -12,7 +12,12 @@ import { useDeck } from '@/components/deck/Deck'
  *
  * Returns { index, setIndex, go, pauseHandlers, paused }.
  */
-export function useAutoRotate(count, { interval = 6000, enabled = true, captureDeckNav = false } = {}) {
+export function useAutoRotate(count, {
+  interval = 6000,
+  enabled = true,
+  captureDeckNav = false,
+  getInitialIndex,
+} = {}) {
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
   const timerRef = useRef(null)
@@ -24,9 +29,15 @@ export function useAutoRotate(count, { interval = 6000, enabled = true, captureD
 
   // On activation, enter at the first item when arriving by scrolling down, or
   // the last item when arriving by scrolling up — keeps the vertical flow going
-  // top→bottom through the carousel before releasing to the next panel.
+  // top→bottom through the carousel before releasing to the next panel. A
+  // pending explicit request (getInitialIndex) takes priority over that.
   useEffect(() => {
     if (!captureDeckNav || !enabled) return
+    const requestedIndex = getInitialIndex?.()
+    if (requestedIndex != null && requestedIndex >= 0) {
+      setIndex(requestedIndex)
+      return
+    }
     const dir = deck?.getEntryDirection?.() ?? 1
     setIndex(dir < 0 ? count - 1 : 0)
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,19 +1,26 @@
 import { ArrowRight, Github, Linkedin, Mail, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { BrowserMock, PhoneMock } from '@/components/mock/DeviceMock'
-import { UIScene } from '@/components/mock/UIScene'
+import EmbedFrame from '@/components/mock/EmbedFrame'
 import { useDeck } from '@/components/deck/Deck'
-import { profile, projects, templates } from '@/data/content'
+import { requestProject } from '@/hooks/useRequestedProject'
+import { profile, projects } from '@/data/content'
 
 const fantasyShowdown = projects.find((p) => p.name === 'Fantasy Showdown')
 const abanitunrase = projects.find((p) => p.name === 'Abánítúnráse')
+const fileFlowHQ = projects.find((p) => p.name === 'FileFlowHQ')
 
 export default function HeroPanel({ active }) {
   const deck = useDeck()
   const go = (id) => {
     const i = deck.panels.findIndex((p) => p.id === id)
     if (i >= 0) deck.goTo(i)
+  }
+
+  const openInSlideshow = (project) => {
+    if (!project) return go('projects')
+    requestProject(project.name)
+    go('projects')
   }
 
   return (
@@ -77,48 +84,58 @@ export default function HeroPanel({ active }) {
         </div>
       </div>
 
-      {/* Floating device showcase */}
+      {/* Floating device showcase — real live-site previews */}
       <div className="relative hidden h-[440px] lg:block" style={{ perspective: '1200px' }}>
-        <div className="absolute right-0 top-2 w-[420px] animate-float-slow">
-          <a
-            href={fantasyShowdown?.liveUrl}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Visit ${fantasyShowdown?.name}`}
-            style={{ transform: 'rotateY(-14deg) rotateX(6deg)' }}
-            className="block transition-transform hover:scale-[1.02]"
-          >
-            <BrowserMock url="fantasyshowdown.com" glow="radial-gradient(circle, rgba(59,130,246,.5), transparent 70%)">
-              <UIScene variant="dashboard" accent="#3b82f6" />
-            </BrowserMock>
-          </a>
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={() => openInSlideshow(fantasyShowdown)}
+          onKeyDown={(e) => e.key === 'Enter' && openInSlideshow(fantasyShowdown)}
+          aria-label={`View ${fantasyShowdown?.name} in the project slideshow`}
+          className="absolute right-0 top-2 w-[420px] animate-float-slow cursor-pointer transition-transform hover:scale-[1.015]"
+          style={{ transform: 'rotateY(-14deg) rotateX(6deg)' }}
+        >
+          <EmbedFrame
+            url={fantasyShowdown?.liveUrl}
+            accent={fantasyShowdown?.accent || '#3b82f6'}
+            fallbackScene={fantasyShowdown?.scene}
+            viewportClassName="aspect-[16/10]"
+            screenshotOnly
+          />
         </div>
-        <div className="absolute -left-2 bottom-0 w-[140px] animate-float" style={{ animationDelay: '1s' }}>
-          <a
-            href={abanitunrase?.liveUrl}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Visit ${abanitunrase?.name}`}
-            className="block transition-transform hover:scale-[1.02]"
-          >
-            <PhoneMock>
-              <UIScene variant="shop" accent="#db2777" />
-            </PhoneMock>
-          </a>
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={() => openInSlideshow(abanitunrase)}
+          onKeyDown={(e) => e.key === 'Enter' && openInSlideshow(abanitunrase)}
+          aria-label={`View ${abanitunrase?.name} in the project slideshow`}
+          className="absolute -left-2 bottom-0 w-[220px] animate-float cursor-pointer transition-transform hover:scale-[1.015]"
+          style={{ animationDelay: '1s' }}
+        >
+          <EmbedFrame
+            url={abanitunrase?.liveUrl}
+            accent={abanitunrase?.accent || '#db2777'}
+            fallbackScene={abanitunrase?.scene}
+            viewportClassName="aspect-[9/14]"
+            screenshotOnly
+          />
         </div>
-        <div className="absolute bottom-10 right-2 w-[250px] animate-float" style={{ animationDelay: '0.5s' }}>
-          <a
-            href={templates[0]?.previewUrl}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Preview ${templates[0]?.name}`}
-            style={{ transform: 'rotateY(10deg) rotateX(-4deg)' }}
-            className="block transition-transform hover:scale-[1.02]"
-          >
-            <BrowserMock url="lumen.studio" glow="radial-gradient(circle, rgba(217,119,6,.45), transparent 70%)">
-              <UIScene variant="gallery" accent="#d97706" />
-            </BrowserMock>
-          </a>
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={() => openInSlideshow(fileFlowHQ)}
+          onKeyDown={(e) => e.key === 'Enter' && openInSlideshow(fileFlowHQ)}
+          aria-label={`View ${fileFlowHQ?.name} in the project slideshow`}
+          className="absolute bottom-10 right-2 w-[250px] animate-float cursor-pointer transition-transform hover:scale-[1.015]"
+          style={{ animationDelay: '0.5s', transform: 'rotateY(10deg) rotateX(-4deg)' }}
+        >
+          <EmbedFrame
+            url={fileFlowHQ?.liveUrl}
+            accent={fileFlowHQ?.accent || '#0d9488'}
+            fallbackScene={fileFlowHQ?.scene}
+            viewportClassName="aspect-[16/10]"
+            screenshotOnly
+          />
         </div>
       </div>
     </div>

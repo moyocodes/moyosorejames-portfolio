@@ -2,6 +2,7 @@ import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import PreviewSwitcher from '@/components/mock/PreviewSwitcher'
 import { useAutoRotate } from '@/hooks/useAutoRotate'
+import { consumeRequestedProject } from '@/hooks/useRequestedProject'
 import { projects } from '@/data/content'
 import { cn } from '@/lib/utils'
 
@@ -15,6 +16,12 @@ export default function ProjectsPanel({ active }) {
     interval: 7000,
     enabled: active,
     captureDeckNav: true,
+    getInitialIndex: () => {
+      const name = consumeRequestedProject()
+      if (!name) return null
+      const idx = projects.findIndex((p) => p.name === name)
+      return idx >= 0 ? idx : null
+    },
   })
   const p = projects[i]
 
