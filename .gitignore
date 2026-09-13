@@ -30,3 +30,6 @@ dist-ssr
 
 # Vercel
 .vercel
+
+# Suspended assets — pulled out of public/ but kept locally, never published
+.suspended-assets
