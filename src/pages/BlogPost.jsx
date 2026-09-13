@@ -1,21 +1,53 @@
+import { useEffect, useState } from 'react'
 import { CalendarDays, Clock } from 'lucide-react'
 import PageShell, { BackLink } from '@/components/PageShell'
 import { Badge } from '@/components/ui/badge'
 import Markdown from '@/components/Markdown'
-import { posts } from '@/data/posts'
+import { fetchPostBySlug } from '@/data/posts'
 import { formatDate } from '@/pages/Blog'
 
 export default function BlogPost({ slug }) {
-  const post = posts.find((p) => p.slug === slug)
+  const [post, setPost] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
 
-  if (!post) {
+  useEffect(() => {
+    let cancelled = false
+    setLoading(true)
+    fetchPostBySlug(slug)
+      .then((data) => {
+        if (!cancelled) setPost(data)
+      })
+      .catch((err) => {
+        if (!cancelled) setError(err.message ?? 'Failed to load post.')
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [slug])
+
+  if (loading) {
+    return (
+      <PageShell title="Blog">
+        <div className="mx-auto max-w-2xl">
+          <BackLink to="blog" label="Back to blog" />
+          <p className="text-muted-foreground">Loading post…</p>
+        </div>
+      </PageShell>
+    )
+  }
+
+  if (error || !post) {
     return (
       <PageShell title="Blog">
         <div className="mx-auto max-w-2xl">
           <BackLink to="blog" label="Back to blog" />
           <h1 className="text-2xl font-bold">Post not found</h1>
           <p className="mt-2 text-muted-foreground">
-            That post doesn't exist. It may have been moved or not published yet.
+            {error || "That post doesn't exist. It may have been moved or not published yet."}
           </p>
         </div>
       </PageShell>

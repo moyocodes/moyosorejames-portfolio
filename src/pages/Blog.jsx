@@ -1,11 +1,33 @@
+import { useEffect, useState } from 'react'
 import { CalendarDays, Clock, PenLine } from 'lucide-react'
 import PageShell from '@/components/PageShell'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { navigate } from '@/hooks/useHashRoute'
-import { posts } from '@/data/posts'
+import { fetchPosts } from '@/data/posts'
 
 export default function Blog() {
+  const [posts, setPosts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    let cancelled = false
+    fetchPosts()
+      .then((data) => {
+        if (!cancelled) setPosts(data)
+      })
+      .catch((err) => {
+        if (!cancelled) setError(err.message ?? 'Failed to load posts.')
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   const sorted = [...posts].sort((a, b) => (a.date < b.date ? 1 : -1))
 
   return (
@@ -23,7 +45,11 @@ export default function Blog() {
           </Button>
         </div>
 
-        {sorted.length === 0 ? (
+        {loading ? (
+          <p className="text-muted-foreground">Loading posts…</p>
+        ) : error ? (
+          <p className="text-red-500">{error}</p>
+        ) : sorted.length === 0 ? (
           <p className="text-muted-foreground">No posts yet — check back soon.</p>
         ) : (
           <div className="flex flex-col gap-4">

@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
  *   ''            → home (single-page sections)
  *   'blog'        → blog index
  *   'blog/:slug'  → single post
- *   'admin'       → admin editor (password-gated)
+ *   'admin'       → admin editor (Supabase Auth-gated)
  */
 export function useHashRoute() {
   const [route, setRoute] = useState(() => getRoute())

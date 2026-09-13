@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react'
+import { FileDown, Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react'
 import { PanelHeading } from '@/components/deck/Panel'
 import { Button } from '@/components/ui/button'
 import { profile } from '@/data/content'
@@ -65,6 +65,12 @@ export default function ContactPanel() {
               </a>
             </Button>
           </div>
+
+          <Button variant="outline" asChild>
+            <a href="/three-products-deck.pptx" download>
+              <FileDown className="h-4 w-4" /> Download product deck (.pptx)
+            </a>
+          </Button>
         </div>
 
         <form

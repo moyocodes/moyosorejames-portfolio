@@ -1,63 +1,95 @@
-// ============================================================================
-//  BLOG POSTS — real content, committed to the repo (so it's live for everyone).
-//
-//  To publish a new post:
-//    1. Write it in the admin editor at #/admin (password-gated) and click
-//       "Export post" — or just add an object to the array below by hand.
-//    2. Paste the exported object into this array.
-//    3. Commit & push. Vercel redeploys and the post goes live.
-//
-//  `body` is Markdown-ish: blank lines separate paragraphs, lines starting
-//  with "## " become subheadings, and "- " lines become bullet points.
-// ============================================================================
+import { supabase } from '@/lib/supabase'
 
-export const posts = [
-  {
-    slug: 'building-ai-into-production',
-    title: 'Building AI Features Into Production Systems',
-    excerpt:
-      'How I approach integrating LLMs into real products without giving up ownership of architecture and code quality.',
-    date: '2026-07-15',
-    tags: ['AI', 'Engineering', 'LLMs'],
-    readingMinutes: 5,
-    body: `Integrating AI into a product is less about the model and more about the seams around it.
+// Blog posts now live in Supabase (table: public.posts — see supabase/schema.sql).
+// These helpers map DB rows to the shape the UI uses and back.
 
-## Start with the workflow, not the model
+function fromRow(row) {
+  return {
+    slug: row.slug,
+    title: row.title,
+    excerpt: row.excerpt,
+    date: row.date,
+    tags: row.tags ?? [],
+    readingMinutes: row.reading_minutes,
+    body: row.body,
+    published: row.published,
+  }
+}
 
-The best AI features I've shipped began as a boring question: where is a human doing repetitive judgment work? That's where an LLM earns its place — drafting content, structuring messy input, summarizing long threads for an admin.
+export async function fetchPosts() {
+  const { data, error } = await supabase
+    .from('posts')
+    .select('*')
+    .eq('published', true)
+    .order('date', { ascending: false })
 
-## Keep ownership of the system
+  if (error) throw error
+  return (data ?? []).map(fromRow)
+}
 
-Tools like Claude and Copilot make me faster, but the architecture is still mine. I use AI to scaffold endpoints and work through infra decisions, then review every line like I would a teammate's PR.
+export async function fetchAllPosts() {
+  const { data, error } = await supabase
+    .from('posts')
+    .select('*')
+    .order('date', { ascending: false })
 
-- Design the API contract first
-- Let the model draft the implementation
-- Verify, test, and own the result
+  if (error) throw error
+  return (data ?? []).map(fromRow)
+}
 
-## Ship, measure, iterate
+export async function fetchPostBySlug(slug) {
+  const { data, error } = await supabase
+    .from('posts')
+    .select('*')
+    .eq('slug', slug)
+    .eq('published', true)
+    .maybeSingle()
 
-AI features are probabilistic. Log inputs and outputs, watch the edges, and tighten prompts against real usage. That feedback loop is where a demo becomes a product.`,
-  },
-  {
-    slug: 'shipping-full-stack-end-to-end',
-    title: 'Shipping Full-Stack Products End to End',
-    excerpt:
-      'Notes from owning delivery across frontend, backend, and DevOps — and keeping the contracts consistent.',
-    date: '2026-06-28',
-    tags: ['Full-Stack', 'DevOps', 'Architecture'],
-    readingMinutes: 4,
-    body: `Owning a product end to end means the frontend and backend can never drift apart.
+  if (error) throw error
+  return data ? fromRow(data) : null
+}
 
-## One contract, both sides
+export async function createPost(post) {
+  const { data, error } = await supabase
+    .from('posts')
+    .insert({
+      slug: post.slug,
+      title: post.title,
+      excerpt: post.excerpt,
+      body: post.body,
+      tags: post.tags,
+      reading_minutes: post.readingMinutes,
+      date: post.date,
+      published: post.published ?? true,
+    })
+    .select('*')
+    .single()
 
-When I build a feature, I design the API contract before writing either side. The frontend and backend then implement against the same shape, which kills a whole category of integration bugs.
+  if (error) throw error
+  return fromRow(data)
+}
 
-## DevOps is part of the feature
+export async function updatePost(slug, patch) {
+  const { data, error } = await supabase
+    .from('posts')
+    .update({
+      title: patch.title,
+      excerpt: patch.excerpt,
+      body: patch.body,
+      tags: patch.tags,
+      reading_minutes: patch.readingMinutes,
+      date: patch.date,
+      published: patch.published,
+    })
+    .eq('slug', slug)
+    .select('*')
+    .single()
 
-A feature isn't done when it works on my machine — it's done when it deploys cleanly through CI/CD to AWS, Vercel, or Render. Treating deployment as part of the work, not an afterthought, is what makes shipping fast and boring in the best way.
+  if (error) throw error
+  return fromRow(data)
+}
 
-## Reuse compounds
-
-Modular components and reusable hooks aren't just tidy — they cut load times and issue rates. Small, well-factored pieces are what let a small team move like a big one.`,
-  },
-]
+export async function deletePost(slug) {
+  const { error } = await supabase.from('posts').delete().eq('slug', slug)
+  if (error) throw error
+}

@@ -5,6 +5,7 @@ import HeroPanel from '@/components/panels/HeroPanel'
 import AboutPanel from '@/components/panels/AboutPanel'
 import SkillsPanel from '@/components/panels/SkillsPanel'
 import ExperiencePanel from '@/components/panels/ExperiencePanel'
+import AiWorkflowPanel from '@/components/panels/AiWorkflowPanel'
 import ProjectsPanel from '@/components/panels/ProjectsPanel'
 import TemplatesPanel from '@/components/panels/TemplatesPanel'
 import ContactPanel from '@/components/panels/ContactPanel'
@@ -19,6 +20,7 @@ const panels = [
   { id: 'about', label: 'About', render: ({ isActive }) => wrap('about', isActive, AboutPanel) },
   { id: 'skills', label: 'Skills', render: ({ isActive }) => wrap('skills', isActive, SkillsPanel) },
   { id: 'experience', label: 'Experience', render: ({ isActive }) => wrap('experience', isActive, ExperiencePanel) },
+  { id: 'ai-workflow', label: 'AI Workflow', render: ({ isActive }) => wrap('ai-workflow', isActive, AiWorkflowPanel) },
   { id: 'projects', label: 'Work', chromeless: true, render: ({ isActive }) => rawFull('projects', isActive, ProjectsPanel) },
   { id: 'templates', label: 'Templates', chromeless: true, render: ({ isActive }) => rawFull('templates', isActive, TemplatesPanel) },
   { id: 'contact', label: 'Contact', render: ({ isActive }) => wrap('contact', isActive, ContactPanel) },

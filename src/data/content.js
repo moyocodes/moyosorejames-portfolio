@@ -198,6 +198,22 @@ export const experience = [
 //   screens → the switchable views a visitor can flip through in the mockup
 export const projects = [
   {
+    name: 'TourFinderApp',
+    subtitle: 'AI Travel Guide',
+    blurb: 'A conversational travel guide for any destination worldwide, backed by real place data.',
+    description:
+      'A chatbot that answers real tourism questions — food, landmarks, transport, safety, accommodation — for anywhere in the world, in plain language with named venues and sources. Uses hybrid AI routing: a free self-hosted model handles everyday questions and a frontier model is reserved for the hard ones, so cost-per-conversation stays low enough to scale. Every conversation is logged as training data, so the free tier gets smarter and cheaper over time.',
+    skills: ['React.js', 'FastAPI (Python)', 'LLM Integration', 'Hybrid AI Routing', 'Open Mapping Data', 'CI/CD'],
+    liveUrl: 'https://tourfinderapp.com',
+    scene: 'content',
+    accent: '#2563eb',
+    featured: true,
+    screens: [
+      { key: 'chat', label: 'Chat', variant: 'content' },
+      { key: 'places', label: 'Places', variant: 'dashboard' },
+    ],
+  },
+  {
     name: 'Fantasy Showdown',
     subtitle: 'Real-Money Fantasy Football Platform',
     blurb: 'A wallet-backed fantasy platform on top of official FPL, with automated payouts.',
@@ -360,14 +376,55 @@ export const templates = [
   },
 ]
 
+// Admin access to the blog editor (#/admin) is handled by Supabase Auth —
+// see src/pages/Admin.jsx and supabase/schema.sql.
+
 // ============================================================================
-//  ADMIN — the password below GATES the local blog editor UI only. It is NOT
-//  security: this is a static site, so the value ships to the browser. Anyone
-//  can read/bypass it. It only keeps casual visitors out of the writing view.
-//  Blog posts are real files in src/data/posts.js (committed to the repo).
+//  AI WORKFLOW — how I actually work with AI coding agents on production code.
+//  Each entry: a real task, what the agent got wrong, and how I caught it.
 // ============================================================================
-export const adminConfig = {
-  password: 'Moyosore',
+export const aiWorkflow = {
+  intro:
+    'I use AI coding agents daily on production systems — but as a force multiplier, not an authority. The pattern is always the same: give it a documented spec, verify its output against reality, and push back when the "done" report does not match live testing.',
+  splitNote:
+    'Copilot for research and direction (competitor analysis, UI/UX — colours, layout, flow). Claude for build-out from documented specs. Recurring friction: agents default to a stack (e.g. TypeScript) without asking — so I verify the codebase itself rather than trusting the summary.',
+  cases: [
+    {
+      competency: 'Hands-on use of AI coding agents',
+      title: 'Tizeti Hotspot — slow Nigeria-tab load',
+      icon: 'Gauge',
+      body:
+        'Diagnosed via the network tab that the API was fast but rendering was slow. Asked Claude to investigate; it found a hardcoded records-per-page limit (1000) but fixed only one of two occurrences. Live testing showed the fix had not worked — pushed back, it found the second hardcoded instance. Fixed and verified in under 30 minutes.',
+    },
+    {
+      competency: 'Large-codebase navigation, debugging & refactoring',
+      title: 'Fantasy Showdown — SSL on the live server',
+      icon: 'ShieldCheck',
+      body:
+        'Domain pointed to DNS with no SSL cert. Had Claude review the previous developer’s README, ran locally to confirm a baseline, then worked through step-by-step SSH/Nginx commands for DigitalOcean. Declined when it asked for live database access; corrected a wrong file path it had assumed. Verified via the live URL and a screenshot. Fixed in under 2 minutes once given the right path.',
+    },
+    {
+      competency: 'Technical writing, documentation & walkthroughs',
+      title: 'Fantasy Showdown — analytics implementation plan',
+      icon: 'FileText',
+      body:
+        'Fed Claude the existing AnalyticsController plus the desired analytics list. It returned a structured breakdown: buildable-now vs. needs-new-schema. Caught it falsely reporting "build complete" when only phase 1 was done and the migrations were skipped. Pushed back, it finished the rest. Verified via endpoint checks and migration queries. Now fully live in production.',
+    },
+    {
+      competency: 'Remote, async collaboration',
+      title: 'Architecture handoff — monolith vs. decoupled',
+      icon: 'Users',
+      body:
+        'Client wanted a decoupled architecture; a Laravel teammate leaned monolith for convenience. Built the frontend UX flow first, then had Claude generate a DB schema from it — including business-logic constraints (a "next" step can’t proceed without a save). Its first schema missed foreign-key relationships across the full flow; corrected it by giving explicit step order. Verified against real user scenarios, then handed the schema to the teammate, who built the backend from it with no back-and-forth calls.',
+    },
+    {
+      competency: 'Workflow & tooling literacy + critique',
+      title: 'Copilot vs. Claude — division of labour',
+      icon: 'GitCompare',
+      body:
+        'Copilot for research and direction; Claude for build-out from specs. Recurring frustration: Claude defaults to TypeScript without asking, though I work in plain JS/JSX — so I correct it explicitly each time and verify by grepping for leftover .tsx files rather than trusting its "done" report. The critique: tools should ask about stack preferences upfront instead of assuming.',
+    },
+  ],
 }
 
 export const education = {

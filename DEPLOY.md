@@ -20,9 +20,14 @@ git push -u origin main
    - **Framework Preset:** Vite
    - **Build Command:** `npm run build`
    - **Output Directory:** `dist`
-4. Click **Deploy**. You'll get a `*.vercel.app` URL in ~1 minute.
+4. Under **Environment Variables**, add:
+   - `VITE_SUPABASE_URL` — from Supabase → Project Settings → API
+   - `VITE_SUPABASE_ANON_KEY` — the `anon`/`public` key from the same page
+5. Click **Deploy**. You'll get a `*.vercel.app` URL in ~1 minute.
 
 The included `vercel.json` rewrites all routes to `/` so the single-page app works on refresh/deep links.
+
+See [supabase/README.md](supabase/README.md) for setting up the blog database.
 
 ## 3. Connect the custom domain
 
