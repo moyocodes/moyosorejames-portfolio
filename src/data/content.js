@@ -198,22 +198,6 @@ export const experience = [
 //   screens → the switchable views a visitor can flip through in the mockup
 export const projects = [
   {
-    name: 'TourFinderApp',
-    subtitle: 'AI Travel Guide',
-    blurb: 'A conversational travel guide for any destination worldwide, backed by real place data.',
-    description:
-      'A chatbot that answers real tourism questions — food, landmarks, transport, safety, accommodation — for anywhere in the world, in plain language with named venues and sources. Uses hybrid AI routing: a free self-hosted model handles everyday questions and a frontier model is reserved for the hard ones, so cost-per-conversation stays low enough to scale. Every conversation is logged as training data, so the free tier gets smarter and cheaper over time.',
-    skills: ['React.js', 'FastAPI (Python)', 'LLM Integration', 'Hybrid AI Routing', 'Open Mapping Data', 'CI/CD'],
-    liveUrl: 'https://tourfinderapp.com',
-    scene: 'content',
-    accent: '#2563eb',
-    featured: true,
-    screens: [
-      { key: 'chat', label: 'Chat', variant: 'content' },
-      { key: 'places', label: 'Places', variant: 'dashboard' },
-    ],
-  },
-  {
     name: 'Fantasy Showdown',
     subtitle: 'Real-Money Fantasy Football Platform',
     blurb: 'A wallet-backed fantasy platform on top of official FPL, with automated payouts.',
@@ -320,6 +304,37 @@ export const projects = [
     screens: [
       { key: 'shop', label: 'Shop', variant: 'shop' },
       { key: 'book', label: 'Booking', variant: 'booking' },
+    ],
+  },
+  {
+    name: 'TourFinderApp',
+    subtitle: 'AI Travel Guide',
+    blurb: 'A conversational travel guide for any destination worldwide, backed by real place data.',
+    description:
+      'A chatbot that answers real tourism questions — food, landmarks, transport, safety, accommodation — for anywhere in the world, in plain language with named venues and sources. Uses hybrid AI routing: a self-hosted model handles everyday questions and a frontier model is reserved for the hard ones, so cost-per-conversation stays low enough to scale. Every conversation is logged as training data, so the model gets smarter and cheaper to run over time.',
+    skills: ['React.js', 'FastAPI (Python)', 'LLM Integration', 'Hybrid AI Routing', 'Open Mapping Data', 'CI/CD'],
+    liveUrl: 'https://tourfinderapp.com',
+    scene: 'content',
+    accent: '#2563eb',
+    featured: true,
+    screens: [
+      { key: 'chat', label: 'Chat', variant: 'content' },
+      { key: 'places', label: 'Places', variant: 'dashboard' },
+    ],
+  },
+  {
+    name: 'Neuro-app',
+    subtitle: 'Proof-of-Completion Habit Tracker',
+    blurb: 'A habit and task app where completion requires proof, not just a checkbox.',
+    description:
+      'A personal habit and task app that goes beyond a simple checklist — tasks require proof of completion (photo, GPS, or checklist) rather than a self-reported checkbox. Includes AI-assisted goal suggestions and an optional manager/team mode for assigning and verifying tasks across a team. Scheduled push reminders run on a low-overhead serverless architecture.',
+    skills: ['React.js', 'Vite PWA', 'Tailwind CSS', 'Supabase', 'Framer Motion', 'Push Notifications'],
+    liveUrl: '', // TODO
+    scene: 'dashboard',
+    accent: '#f59e0b',
+    screens: [
+      { key: 'today', label: 'Today', variant: 'dashboard' },
+      { key: 'task', label: 'Proof', variant: 'content' },
     ],
   },
 ]
