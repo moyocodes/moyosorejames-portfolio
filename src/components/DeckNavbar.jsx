@@ -1,14 +1,15 @@
 import { useState } from 'react'
-import { Menu, X, PenLine } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import ThemeToggle from '@/components/ThemeToggle'
 import { useDeck } from '@/components/deck/Deck'
-import { navigate } from '@/hooks/useHashRoute'
 import { cn } from '@/lib/utils'
 
 /**
- * DeckNavbar — top bar for the full-screen deck. Section links call the deck's
- * goTo(); the Blog link switches app routes via the hash router.
+ * DeckNavbar — top bar for the full-screen deck. Section links call the
+ * deck's goTo(). The Blog link is hidden from nav until there's real
+ * content and Supabase is configured — the route (#blog) still works
+ * directly, it's just not advertised yet.
  */
 export default function DeckNavbar() {
   const deck = useDeck()
@@ -49,9 +50,6 @@ export default function DeckNavbar() {
         </div>
 
         <div className="flex items-center gap-1">
-          <Button variant="ghost" size="sm" className="hidden sm:inline-flex" onClick={() => navigate('blog')}>
-            <PenLine className="h-4 w-4" /> Blog
-          </Button>
           <ThemeToggle />
           <Button
             variant="ghost"
@@ -76,15 +74,6 @@ export default function DeckNavbar() {
               {l.label}
             </button>
           ))}
-          <button
-            onClick={() => {
-              navigate('blog')
-              setOpen(false)
-            }}
-            className="rounded-lg px-3 py-2.5 text-left text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground"
-          >
-            Blog
-          </button>
         </div>
       )}
     </header>

@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import { CalendarDays, Clock, PenLine } from 'lucide-react'
+import { CalendarDays, Clock } from 'lucide-react'
 import PageShell from '@/components/PageShell'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import { navigate } from '@/hooks/useHashRoute'
 import { fetchPosts } from '@/data/posts'
 
@@ -33,16 +32,11 @@ export default function Blog() {
   return (
     <PageShell title="Blog">
       <div className="mx-auto max-w-3xl">
-        <div className="mb-10 flex items-end justify-between gap-4">
-          <div>
-            <h1 className="text-4xl font-extrabold tracking-tight">Writing</h1>
-            <p className="mt-2 text-muted-foreground">
-              Notes on full-stack engineering, AI integration, and shipping products.
-            </p>
-          </div>
-          <Button variant="outline" size="sm" onClick={() => navigate('admin')}>
-            <PenLine className="h-4 w-4" /> Write
-          </Button>
+        <div className="mb-10">
+          <h1 className="text-4xl font-extrabold tracking-tight">Writing</h1>
+          <p className="mt-2 text-muted-foreground">
+            Notes on full-stack engineering, AI integration, and shipping products.
+          </p>
         </div>
 
         {loading ? (
