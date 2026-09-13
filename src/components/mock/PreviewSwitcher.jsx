@@ -1,41 +1,17 @@
-import { useState } from 'react'
-import { MonitorPlay, MousePointerClick } from 'lucide-react'
 import EmbedFrame from '@/components/mock/EmbedFrame'
 import InteractiveMock from '@/components/mock/InteractiveMock'
 import { cn } from '@/lib/utils'
 
 /**
- * PreviewSwitcher — offers two ways to preview a system:
- *   • "Live"        → EmbedFrame (real site via iframe → screenshot → mockup)
- *   • "Interactive" → InteractiveMock (code scenes you can click through)
- *
- * Defaults to Live when a real URL exists, otherwise Interactive.
+ * PreviewSwitcher — shows the real live site (EmbedFrame: iframe → screenshot
+ * → mockup fallback) when a URL exists, otherwise the clickable code mockup.
  */
 export default function PreviewSwitcher({ url, accent, screens, fallbackScene, fill = false }) {
   const hasRealUrl = url && /^https?:\/\//i.test(url)
-  const [mode, setMode] = useState(hasRealUrl ? 'live' : 'interactive')
 
   return (
     <div className={cn('w-full', fill && 'flex h-full flex-col')}>
-      <div className="mb-4 flex shrink-0 justify-center">
-        <div className="flex gap-1 rounded-full border border-border bg-card/70 p-1 backdrop-blur">
-          {hasRealUrl && (
-            <Tab active={mode === 'live'} onClick={() => setMode('live')} accent={accent} icon={MonitorPlay}>
-              Live
-            </Tab>
-          )}
-          <Tab
-            active={mode === 'interactive'}
-            onClick={() => setMode('interactive')}
-            accent={accent}
-            icon={MousePointerClick}
-          >
-            Interactive
-          </Tab>
-        </div>
-      </div>
-
-      {mode === 'live' && hasRealUrl ? (
+      {hasRealUrl ? (
         <div
           className={cn(
             'flex justify-center animate-fade-in',
@@ -55,21 +31,6 @@ export default function PreviewSwitcher({ url, accent, screens, fallbackScene, f
         />
       )}
     </div>
-  )
-}
-
-function Tab({ active, onClick, accent, icon: Icon, children }) {
-  return (
-    <button
-      onClick={onClick}
-      className={cn(
-        'flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all',
-        active ? 'text-white shadow' : 'text-muted-foreground hover:text-foreground'
-      )}
-      style={active ? { background: accent } : {}}
-    >
-      <Icon className="h-3.5 w-3.5" /> {children}
-    </button>
   )
 }
 

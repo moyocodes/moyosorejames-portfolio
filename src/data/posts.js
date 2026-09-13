@@ -3,6 +3,13 @@ import { supabase } from '@/lib/supabase'
 // Blog posts now live in Supabase (table: public.posts — see supabase/schema.sql).
 // These helpers map DB rows to the shape the UI uses and back.
 
+function requireSupabase() {
+  if (!supabase) {
+    throw new Error('Blog is not configured — Supabase env vars are missing.')
+  }
+  return supabase
+}
+
 function fromRow(row) {
   return {
     slug: row.slug,
@@ -17,7 +24,7 @@ function fromRow(row) {
 }
 
 export async function fetchPosts() {
-  const { data, error } = await supabase
+  const { data, error } = await requireSupabase()
     .from('posts')
     .select('*')
     .eq('published', true)
@@ -28,7 +35,7 @@ export async function fetchPosts() {
 }
 
 export async function fetchAllPosts() {
-  const { data, error } = await supabase
+  const { data, error } = await requireSupabase()
     .from('posts')
     .select('*')
     .order('date', { ascending: false })
@@ -38,7 +45,7 @@ export async function fetchAllPosts() {
 }
 
 export async function fetchPostBySlug(slug) {
-  const { data, error } = await supabase
+  const { data, error } = await requireSupabase()
     .from('posts')
     .select('*')
     .eq('slug', slug)
@@ -50,7 +57,7 @@ export async function fetchPostBySlug(slug) {
 }
 
 export async function createPost(post) {
-  const { data, error } = await supabase
+  const { data, error } = await requireSupabase()
     .from('posts')
     .insert({
       slug: post.slug,
@@ -70,7 +77,7 @@ export async function createPost(post) {
 }
 
 export async function updatePost(slug, patch) {
-  const { data, error } = await supabase
+  const { data, error } = await requireSupabase()
     .from('posts')
     .update({
       title: patch.title,
@@ -90,6 +97,6 @@ export async function updatePost(slug, patch) {
 }
 
 export async function deletePost(slug) {
-  const { error } = await supabase.from('posts').delete().eq('slug', slug)
+  const { error } = await requireSupabase().from('posts').delete().eq('slug', slug)
   if (error) throw error
 }

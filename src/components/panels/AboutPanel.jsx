@@ -11,11 +11,6 @@ const teamsLed = experience.reduce((max, e) => {
   return n && n > max ? n : max
 }, 0)
 
-const initials = profile.name
-  .split(' ')
-  .map((n) => n[0])
-  .join('')
-
 export default function AboutPanel({ active }) {
   return (
     <div className="grid gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-center">
@@ -49,13 +44,11 @@ export default function AboutPanel({ active }) {
               active ? 'scale-100 opacity-100' : 'scale-90 opacity-0'
             )}
           >
-            {/* TODO: replace with a real photo — drop the file at /public/profile.jpg
-                and swap this block for <img src="/profile.jpg" ... /> */}
-            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary via-blue-500 to-indigo-500">
-              <span className="text-5xl font-extrabold tracking-tight text-primary-foreground">
-                {initials}
-              </span>
-            </div>
+            <img
+              src="/moy.jpeg"
+              alt={profile.name}
+              className="h-full w-full object-cover"
+            />
           </div>
 
           {/* Orbiting role badge */}

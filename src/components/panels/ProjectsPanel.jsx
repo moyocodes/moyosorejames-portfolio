@@ -1,5 +1,4 @@
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import PreviewSwitcher from '@/components/mock/PreviewSwitcher'
 import { useAutoRotate } from '@/hooks/useAutoRotate'
 import { consumeRequestedProject } from '@/hooks/useRequestedProject'
@@ -53,11 +52,15 @@ export default function ProjectsPanel({ active }) {
         <p className="max-w-xl text-sm text-muted-foreground line-clamp-1">{p.blurb || p.description}</p>
 
         {p.liveUrl && (
-          <Button size="sm" asChild style={{ background: p.accent }} className="text-white">
-            <a href={p.liveUrl} target="_blank" rel="noreferrer">
-              Visit Live Site <ExternalLink className="h-4 w-4" />
-            </a>
-          </Button>
+          <a
+            href={p.liveUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 hover:underline"
+            style={{ color: p.accent }}
+          >
+            Visit live site <ExternalLink className="h-3.5 w-3.5" />
+          </a>
         )}
 
         {/* Progress dots */}

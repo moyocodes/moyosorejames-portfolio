@@ -17,12 +17,23 @@ export default function Admin() {
   const [session, setSession] = useState(undefined) // undefined = loading
 
   useEffect(() => {
+    if (!supabase) return
     supabase.auth.getSession().then(({ data }) => setSession(data.session))
     const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
     })
     return () => sub.subscription.unsubscribe()
   }, [])
+
+  if (!supabase) {
+    return (
+      <PageShell title="Admin">
+        <p className="text-muted-foreground">
+          Admin is not configured — Supabase env vars are missing.
+        </p>
+      </PageShell>
+    )
+  }
 
   if (session === undefined) {
     return (

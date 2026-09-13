@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { ExternalLink, Loader2 } from 'lucide-react'
+import { ExternalLink, Loader2, MousePointerClick } from 'lucide-react'
 import { BrowserMock } from '@/components/mock/DeviceMock'
 import { UIScene } from '@/components/mock/UIScene'
+import { cn } from '@/lib/utils'
 
 /**
  * EmbedFrame — shows the REAL live site inside the browser mockup, with a
@@ -29,6 +30,12 @@ export default function EmbedFrame({
   // 'iframe' → 'shot' → 'mock'
   const [mode, setMode] = useState('iframe')
   const [iframeLoaded, setIframeLoaded] = useState(false)
+  // The embedded page swallows touch/scroll gestures that start inside it
+  // (iframes are separate documents — their touch events never bubble to
+  // the outer deck), which reads as the whole page "hanging" on mobile when
+  // someone tries to scroll over a project preview. Default to a purely
+  // visual, non-interactive preview; a tap opts in to the real embedded page.
+  const [interactive, setInteractive] = useState(false)
   const timeoutRef = useRef(null)
 
   const hasRealUrl = url && /^https?:\/\//i.test(url)
@@ -41,6 +48,7 @@ export default function EmbedFrame({
   useEffect(() => {
     setMode(hasRealUrl ? (screenshotOnly ? 'shot' : 'iframe') : 'mock')
     setIframeLoaded(false)
+    setInteractive(false)
   }, [url, hasRealUrl, screenshotOnly])
 
   // If the iframe hasn't loaded shortly, assume framing is blocked → screenshot.
@@ -78,10 +86,29 @@ export default function EmbedFrame({
                 onLoad={() => setIframeLoaded(true)}
                 sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
                 referrerPolicy="no-referrer"
-                className="absolute left-0 top-0 origin-top-left border-0"
+                className={cn(
+                  'absolute left-0 top-0 origin-top-left border-0',
+                  !interactive && 'pointer-events-none'
+                )}
                 style={{ width: '142.857%', height: '142.857%', transform: 'scale(0.7)' }}
               />
             </div>
+
+            {iframeLoaded && !interactive && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setInteractive(true)
+                }}
+                className="absolute inset-0 z-10 flex items-end justify-center bg-transparent pb-4"
+                aria-label="Enable interacting with the embedded site"
+              >
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-background/90 px-3 py-1.5 text-xs font-medium text-foreground shadow ring-1 ring-border backdrop-blur">
+                  <MousePointerClick className="h-3.5 w-3.5" /> Tap to interact
+                </span>
+              </button>
+            )}
           </>
         )}
 

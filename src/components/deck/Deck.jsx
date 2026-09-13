@@ -97,8 +97,15 @@ export default function Deck({ panels, initialId, navbar }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [next, prev, goTo, panels.length])
 
-  // Touch swipe (vertical or horizontal).
+  // Touch swipe (vertical or horizontal). Ignored inside inner scroll areas
+  // (marked data-scrollable) so dragging content there scrolls it normally
+  // instead of flipping the whole deck panel — same opt-out the wheel
+  // handler above uses.
   const onTouchStart = (e) => {
+    if (e.target.closest('[data-scrollable]')) {
+      touchStart.current = null
+      return
+    }
     touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
   }
   const onTouchEnd = (e) => {
