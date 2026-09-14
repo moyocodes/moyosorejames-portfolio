@@ -16,11 +16,10 @@ export const profile = {
   summaryLong:
     'Comfortable with React.js, Next.js, TypeScript, and Tailwind CSS on the frontend, and Node.js and Laravel/PHP on the backend. Hands-on experience integrating LLMs (Claude, OpenAI/ChatGPT) into application workflows — including prompt design and AI-assisted code generation — while keeping full ownership of architecture, code quality, and system design.',
   links: {
-    // TODO: confirm these URLs
     portfolio: 'https://moyosorejames.com',
-    designPortfolio: '', // TODO: add design portfolio URL
-    github: 'https://github.com/', // TODO: add GitHub username
-    linkedin: 'https://www.linkedin.com/', // TODO: add LinkedIn URL
+    designPortfolio: 'https://www.canva.com/design/DAGgYoX5Hm0/bPtKpGVvsUrAqcGDQZK81A/view',
+    github: 'https://github.com/moyocodes',
+    linkedin: 'https://www.linkedin.com/in/james-moyosore-1aa550196',
   },
 }
 

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FileDown, Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react'
+import { FileDown, Github, Linkedin, Mail, MapPin, Palette, Phone, Send } from 'lucide-react'
 import { PanelHeading } from '@/components/deck/Panel'
 import { Button } from '@/components/ui/button'
 import { profile } from '@/data/content'
@@ -65,6 +65,14 @@ export default function ContactPanel() {
               </a>
             </Button>
           </div>
+
+          {profile.links.designPortfolio && (
+            <Button variant="outline" asChild>
+              <a href={profile.links.designPortfolio} target="_blank" rel="noreferrer">
+                <Palette className="h-4 w-4" /> Design Portfolio
+              </a>
+            </Button>
+          )}
 
           <Button variant="outline" asChild>
             <a href="/three-products-deck.pptx" download>
