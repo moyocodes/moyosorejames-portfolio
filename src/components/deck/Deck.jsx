@@ -161,9 +161,9 @@ export default function Deck({ panels, initialId, navbar }) {
             <div
               key={panel.id}
               className={cn(
-                'absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]',
+                'absolute inset-0 transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]',
                 isActive
-                  ? 'z-10 scale-100 opacity-100'
+                  ? 'z-10 opacity-100'
                   : 'pointer-events-none z-0 scale-[1.04] opacity-0'
               )}
             >

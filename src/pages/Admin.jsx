@@ -213,7 +213,7 @@ function Editor({ onSignOut }) {
 
       {error && <p className="mb-4 text-sm text-red-500">{error}</p>}
 
-      <div className="grid gap-6 lg:grid-cols-[280px_1fr_1fr]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[280px_1fr_1fr]">
         {/* Post list */}
         <div className="flex flex-col gap-2">
           <div className="mb-1 flex items-center justify-between">

@@ -46,8 +46,8 @@ function rawFull(id, isActive, Component) {
       <div className="dotgrid pointer-events-none absolute inset-0 -z-10 opacity-40" />
       <div
         className={
-          'relative z-10 h-full w-full transition-all duration-700 ' +
-          (isActive ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0')
+          'relative z-10 h-full w-full transition-[transform,opacity] duration-700 ' +
+          (isActive ? 'opacity-100' : 'translate-y-6 opacity-0')
         }
       >
         <Component active={isActive} />

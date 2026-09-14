@@ -18,7 +18,7 @@ export default function AiWorkflowPanel() {
         description={aiWorkflow.intro}
       />
 
-      <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         {/* Case list */}
         <div className="flex flex-col gap-2">
           {aiWorkflow.cases.map((c, i) => {

@@ -13,7 +13,7 @@ const teamsLed = experience.reduce((max, e) => {
 
 export default function AboutPanel({ active }) {
   return (
-    <div className="grid gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-center">
+    <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-center">
       {/* Portrait */}
       <div className="mx-auto w-full max-w-[260px] lg:mx-0">
         <div className="relative aspect-square w-full">

@@ -24,9 +24,9 @@ export default function Panel({ id, active, children, className, bg = true, tint
       )}
       <div
         className={cn(
-          'relative z-10 mx-auto w-full transition-all duration-700',
+          'relative z-10 mx-auto w-full transition-[transform,opacity] duration-700',
           wide ? 'max-w-[1400px]' : 'max-w-6xl',
-          active ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+          active ? 'opacity-100' : 'translate-y-6 opacity-0'
         )}
       >
         {children}

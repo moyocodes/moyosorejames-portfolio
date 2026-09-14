@@ -24,7 +24,7 @@ export default function HeroPanel({ active }) {
   }
 
   return (
-    <div className="grid w-full items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
+    <div className="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
       {/* Copy */}
       <div className="text-center lg:text-left">
         <Badge

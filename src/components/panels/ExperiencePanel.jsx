@@ -24,7 +24,7 @@ export default function ExperiencePanel() {
       />
 
       {/* Compact role cards — click opens the side drawer */}
-      <div className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-2">
+      <div className="mx-auto grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-2">
         {experience.map((job, i) => (
           <button
             key={i}
