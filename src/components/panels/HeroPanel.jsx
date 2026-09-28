@@ -1,4 +1,4 @@
-import { ArrowRight, Github, Linkedin, Mail, Sparkles } from 'lucide-react'
+import { ArrowRight, FileDown, Github, Linkedin, Mail, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import EmbedFrame from '@/components/mock/EmbedFrame'
@@ -55,6 +55,11 @@ export default function HeroPanel({ active }) {
           </Button>
           <Button size="lg" variant="outline" onClick={() => go('templates')}>
             <Sparkles className="h-4 w-4" /> Templates for sale
+          </Button>
+          <Button size="lg" variant="outline" asChild>
+            <a href={profile.links.cv} download>
+              <FileDown className="h-4 w-4" /> Download CV
+            </a>
           </Button>
         </div>
 

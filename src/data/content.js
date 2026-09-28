@@ -20,6 +20,7 @@ export const profile = {
     designPortfolio: 'https://www.canva.com/design/DAGgYoX5Hm0/bPtKpGVvsUrAqcGDQZK81A/view',
     github: 'https://github.com/moyocodes',
     linkedin: 'https://www.linkedin.com/in/james-moyosore-1aa550196',
+    cv: '/James_Moyosore_CV.pdf',
   },
 }
 

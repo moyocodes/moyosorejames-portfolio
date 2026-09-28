@@ -74,6 +74,12 @@ export default function ContactPanel() {
             </Button>
           )}
 
+          <Button asChild>
+            <a href={profile.links.cv} download>
+              <FileDown className="h-4 w-4" /> Download CV (PDF)
+            </a>
+          </Button>
+
           <Button variant="outline" asChild>
             <a href="/three-products-deck.pptx" download>
               <FileDown className="h-4 w-4" /> Download product deck (.pptx)
