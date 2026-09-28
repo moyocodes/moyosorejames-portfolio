@@ -33,3 +33,6 @@ dist-ssr
 
 # Suspended assets — pulled out of public/ but kept locally, never published
 .suspended-assets
+
+# Claude Code local settings
+.claude/
