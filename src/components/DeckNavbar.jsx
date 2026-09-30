@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import ThemeToggle from '@/components/ThemeToggle'
 import { useDeck } from '@/components/deck/Deck'
+import { openTemplates } from '@/hooks/useTemplatesDrawer'
 import { cn } from '@/lib/utils'
 
 /**
@@ -16,6 +17,10 @@ export default function DeckNavbar() {
   const [open, setOpen] = useState(false)
 
   const go = (id) => {
+    if (id === 'templates') {
+      setOpen(false)
+      return openTemplates()
+    }
     const i = deck.panels.findIndex((p) => p.id === id)
     if (i >= 0) deck.goTo(i)
     setOpen(false)
@@ -24,6 +29,8 @@ export default function DeckNavbar() {
   const links = deck.panels
     .filter((p) => p.id !== 'hero')
     .map((p) => ({ id: p.id, label: p.label }))
+  // Templates live in a side drawer, not a deck panel — slot it before Contact.
+  links.splice(Math.max(links.length - 1, 0), 0, { id: 'templates', label: 'Templates' })
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">

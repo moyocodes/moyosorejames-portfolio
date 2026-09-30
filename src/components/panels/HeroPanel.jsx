@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import Ticker from '@/components/Ticker'
 import EmbedFrame from '@/components/mock/EmbedFrame'
 import { useDeck } from '@/components/deck/Deck'
+import { openTemplates } from '@/hooks/useTemplatesDrawer'
 import { requestProject } from '@/hooks/useRequestedProject'
 import { heroStats, profile, projects } from '@/data/content'
 
@@ -63,7 +64,7 @@ export default function HeroPanel({ active }) {
           <Button onClick={() => go('projects')}>
             Explore my work <ArrowRight className="h-4 w-4" />
           </Button>
-          <Button variant="outline" onClick={() => go('templates')}>
+          <Button variant="outline" onClick={openTemplates}>
             <Sparkles className="h-4 w-4" /> Templates for sale
           </Button>
           <Button variant="outline" asChild>

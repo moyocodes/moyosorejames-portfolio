@@ -123,7 +123,7 @@ export default function ContactPanel() {
       </div>
 
       <p className="mt-8 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} {profile.name}. Built with React, Vite & Tailwind CSS.
+        © {new Date().getFullYear()} {profile.name}. All Rights Reserved.
       </p>
     </div>
   )

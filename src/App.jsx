@@ -9,7 +9,7 @@ import SkillsPanel from '@/components/panels/SkillsPanel'
 import ExperiencePanel from '@/components/panels/ExperiencePanel'
 import AiWorkflowPanel from '@/components/panels/AiWorkflowPanel'
 import ProjectsPanel from '@/components/panels/ProjectsPanel'
-import TemplatesPanel from '@/components/panels/TemplatesPanel'
+import TemplatesDrawer from '@/components/TemplatesDrawer'
 import ContactPanel from '@/components/panels/ContactPanel'
 import Panel from '@/components/deck/Panel'
 import Blog from '@/pages/Blog'
@@ -24,7 +24,6 @@ const panels = [
   { id: 'experience', label: 'Experience', render: ({ isActive }) => wrap('experience', isActive, ExperiencePanel) },
   { id: 'ai-workflow', label: 'AI Workflow', render: ({ isActive }) => wrap('ai-workflow', isActive, AiWorkflowPanel) },
   { id: 'projects', label: 'Work', chromeless: true, render: ({ isActive }) => rawFull('projects', isActive, ProjectsPanel) },
-  { id: 'templates', label: 'Templates', chromeless: true, render: ({ isActive }) => rawFull('templates', isActive, TemplatesPanel) },
   { id: 'contact', label: 'Contact', render: ({ isActive }) => wrap('contact', isActive, ContactPanel) },
 ]
 
@@ -71,6 +70,7 @@ export default function App() {
   return (
     <PreviewProvider>
       <Cursor />
+      <TemplatesDrawer />
       <Deck panels={panels} initialId={initialId} navbar={<DeckNavbar />} />
     </PreviewProvider>
   )

@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
-import { projects, templates } from '@/data/content'
+import { projects } from '@/data/content'
 
 /** Bundled screenshot for a live URL: /previews/<host>.jpg (see scripts note in README). */
 export function previewSrc(url) {
@@ -10,7 +10,7 @@ export function previewSrc(url) {
 const PreviewContext = createContext({ isReady: () => false })
 export const usePreviews = () => useContext(PreviewContext)
 
-const urls = [...projects.map((p) => p.liveUrl), ...templates.map((t) => t.previewUrl)].filter(
+const urls = projects.map((p) => p.liveUrl).filter(
   (u) => u && /^https?:\/\//i.test(u)
 )
 
