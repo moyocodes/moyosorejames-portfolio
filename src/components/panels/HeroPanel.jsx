@@ -4,9 +4,9 @@ import { Badge } from '@/components/ui/badge'
 import EmbedFrame from '@/components/mock/EmbedFrame'
 import { useDeck } from '@/components/deck/Deck'
 import { requestProject } from '@/hooks/useRequestedProject'
-import { profile, projects } from '@/data/content'
+import { heroStats, profile, projects } from '@/data/content'
 
-const fantasyShowdown = projects.find((p) => p.name === 'Fantasy Showdown')
+const mad = projects.find((p) => p.name === 'Mindfully Articulated')
 const abanitunrase = projects.find((p) => p.name === 'Abánítúnráse')
 const fileFlowHQ = projects.find((p) => p.name === 'FileFlowHQ')
 
@@ -81,12 +81,16 @@ export default function HeroPanel({ active }) {
               </a>
             </Button>
           </div>
-          <div className="h-8 w-px bg-border" />
-          <div className="text-left">
-            <p className="text-xl font-bold">5+ yrs</p>
-            <p className="text-xs text-muted-foreground">shipping products</p>
-          </div>
         </div>
+
+        <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4">
+          {heroStats.map((stat) => (
+            <div key={stat.label} className="text-center lg:text-left">
+              <dt className="text-2xl font-extrabold gradient-text">{stat.value}</dt>
+              <dd className="text-xs text-muted-foreground">{stat.label}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
 
       {/* Floating device showcase — real live-site previews */}
@@ -94,16 +98,16 @@ export default function HeroPanel({ active }) {
         <div
           role="button"
           tabIndex={0}
-          onClick={() => openInSlideshow(fantasyShowdown)}
-          onKeyDown={(e) => e.key === 'Enter' && openInSlideshow(fantasyShowdown)}
-          aria-label={`View ${fantasyShowdown?.name} in the project slideshow`}
+          onClick={() => openInSlideshow(mad)}
+          onKeyDown={(e) => e.key === 'Enter' && openInSlideshow(mad)}
+          aria-label={`View ${mad?.name} in the project slideshow`}
           className="absolute right-0 top-2 w-[420px] animate-float-slow cursor-pointer transition-transform hover:scale-[1.015]"
           style={{ transform: 'rotateY(-14deg) rotateX(6deg)' }}
         >
           <EmbedFrame
-            url={fantasyShowdown?.liveUrl}
-            accent={fantasyShowdown?.accent || '#3b82f6'}
-            fallbackScene={fantasyShowdown?.scene}
+            url={mad?.liveUrl}
+            accent={mad?.accent || '#3b82f6'}
+            fallbackScene={mad?.scene}
             viewportClassName="aspect-[16/10]"
             screenshotOnly
           />

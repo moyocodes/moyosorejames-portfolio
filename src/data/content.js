@@ -7,14 +7,14 @@
 export const profile = {
   name: 'James Moyosore',
   title: 'Full-Stack Software Developer',
-  tagline: 'AI-Integrated Engineering · Backend · DevOps · CMS',
+  tagline: 'Backend, DevOps & CMS · ERP & Business Systems · AI-Integrated Engineering',
   location: 'Lagos, Nigeria',
   email: 'moyosorejames@gmail.com',
   phone: '(+234) 8061953109',
   summary:
-    'Full-stack software developer with 5+ years of experience across frontend architecture, backend engineering, and DevOps. Currently focused on building and integrating AI-powered features into production systems — shipping products end to end, from API design and CMS-driven content workflows to CI/CD pipelines on AWS, Vercel, and Render.',
+    'Full-stack software developer with 5+ years of experience building and shipping production web systems across backend, frontend, DevOps and CMS. Lead Software Developer at Tizeti Network Limited, leading development of Tizeti OS — an in-house ERP spanning 18 departments across a multi-country operation — and owning full-stack delivery across Hotspot / Express Wi-Fi, WiFiCall, Free Fiber Africa and Tizeti Cloud.',
   summaryLong:
-    'Comfortable with React.js, Next.js, TypeScript, and Tailwind CSS on the frontend, and Node.js and Laravel/PHP on the backend. Hands-on experience integrating LLMs (Claude, OpenAI/ChatGPT) into application workflows — including prompt design and AI-assisted code generation — while keeping full ownership of architecture, code quality, and system design.',
+    'Works across React, Next.js, Vue.js and TypeScript on the front end and Node.js, PHP (including Laravel), Python (FastAPI) and MySQL on the back end, with CI/CD on AWS, Vercel, Render and DigitalOcean. Has led a team of 6 developers across 3 countries. Also integrates LLMs (Claude API with tool use, self-hosted Ollama models, OpenAI) into real products and ships own products such as FileFlowHQ and TourFinderApp.',
   links: {
     portfolio: 'https://moyosorejames.com',
     designPortfolio: 'https://www.canva.com/design/DAGgYoX5Hm0/bPtKpGVvsUrAqcGDQZK81A/view',
@@ -32,9 +32,15 @@ export const whatICanDo = [
     icon: 'Layers',
   },
   {
+    title: 'Build ERP & business systems',
+    description:
+      'Procurement and requisition workflows, inventory and asset management, HR/leave, field-operations scheduling, and multi-level approval chains up to executive level.',
+    icon: 'Briefcase',
+  },
+  {
     title: 'Integrate AI / LLM capabilities',
     description:
-      'Prompt-driven features, AI-assisted content and admin workflows, and using AI tools to speed up backend, frontend, and DevOps work.',
+      'Claude API with tool use, self-hosted Ollama models, hybrid LLM routing, and AI-assisted workflows to speed up backend, frontend, and DevOps work.',
     icon: 'Sparkles',
   },
   {
@@ -71,6 +77,7 @@ export const skills = [
       { name: 'JavaScript', icon: ['si', 'SiJavascript'] },
       { name: 'Tailwind CSS', icon: ['si', 'SiTailwindcss'] },
       { name: 'Bootstrap', icon: ['si', 'SiBootstrap'] },
+      { name: 'Framer Motion', icon: ['si', 'SiFramer'] },
     ],
   },
   {
@@ -78,19 +85,25 @@ export const skills = [
     icon: 'Server',
     items: [
       { name: 'Node.js', icon: ['si', 'SiNodedotjs'] },
+      { name: 'Express', icon: ['si', 'SiExpress'] },
       { name: 'Laravel (PHP)', icon: ['si', 'SiLaravel'] },
+      { name: 'Python (FastAPI)', icon: ['si', 'SiFastapi'] },
+      { name: 'NestJS', icon: ['si', 'SiNestjs'] },
       { name: 'REST APIs', icon: ['lucide', 'Webhook'] },
       { name: 'GraphQL', icon: ['si', 'SiGraphql'] },
+      { name: 'MySQL', icon: ['si', 'SiMysql'] },
       { name: 'Firebase', icon: ['si', 'SiFirebase'] },
+      { name: 'Supabase', icon: ['si', 'SiSupabase'] },
     ],
   },
   {
     category: 'AI / LLM Integration',
     icon: 'Sparkles',
     items: [
-      { name: 'Claude', icon: ['si', 'SiClaude'] },
+      { name: 'Claude API & Tool Use', icon: ['si', 'SiClaude'] },
+      { name: 'Ollama (self-hosted)', icon: ['si', 'SiOllama'] },
       { name: 'OpenAI API', icon: ['lucide', 'Bot'] },
-      { name: 'Prompt Design', icon: ['lucide', 'MessageSquareText'] },
+      { name: 'Hybrid LLM Routing', icon: ['lucide', 'GitFork'] },
       { name: 'AI-Assisted Scaffolding', icon: ['lucide', 'Wand2'] },
       { name: 'GitHub Copilot', icon: ['si', 'SiGithubcopilot'] },
       { name: 'v0', icon: ['si', 'SiV0'] },
@@ -103,28 +116,47 @@ export const skills = [
       { name: 'AWS', icon: ['lucide', 'Cloud'] },
       { name: 'Vercel', icon: ['si', 'SiVercel'] },
       { name: 'Render', icon: ['si', 'SiRender'] },
+      { name: 'DigitalOcean', icon: ['si', 'SiDigitalocean'] },
+      { name: 'Nginx & SSL', icon: ['si', 'SiNginx'] },
+      { name: 'Cloudflare', icon: ['si', 'SiCloudflare'] },
       { name: 'CI/CD', icon: ['lucide', 'GitPullRequest'] },
       { name: 'Git', icon: ['si', 'SiGit'] },
       { name: 'Performance & Caching', icon: ['lucide', 'Gauge'] },
     ],
   },
   {
-    category: 'State Management',
-    icon: 'GitBranch',
+    category: 'ERP & Business Systems',
+    icon: 'Briefcase',
     items: [
-      { name: 'React Query', icon: ['si', 'SiReactquery'] },
-      { name: 'Redux', icon: ['si', 'SiRedux'] },
-      { name: 'Context API', icon: ['lucide', 'Boxes'] },
+      { name: 'Procurement & Requisitions', icon: ['lucide', 'ClipboardList'] },
+      { name: 'Inventory & Assets', icon: ['lucide', 'Boxes'] },
+      { name: 'HR / Leave Systems', icon: ['lucide', 'Users'] },
+      { name: 'Field-Ops Scheduling', icon: ['lucide', 'CalendarClock'] },
+      { name: 'Approval Chains', icon: ['lucide', 'GitMerge'] },
+      { name: 'Invoicing', icon: ['lucide', 'Receipt'] },
     ],
   },
   {
     category: 'CMS & Workflows',
     icon: 'FileText',
     items: [
+      { name: 'WordPress', icon: ['si', 'SiWordpress'] },
       { name: 'Content Modeling', icon: ['lucide', 'FileStack'] },
       { name: 'Admin Panels', icon: ['lucide', 'LayoutDashboard'] },
       { name: 'CMS Integration', icon: ['lucide', 'FileText'] },
-      { name: 'Editorial Workflows', icon: ['lucide', 'PenLine'] },
+    ],
+  },
+  {
+    category: 'State, Mobile & Testing',
+    icon: 'GitBranch',
+    items: [
+      { name: 'React Query', icon: ['si', 'SiReactquery'] },
+      { name: 'Redux', icon: ['si', 'SiRedux'] },
+      { name: 'Context API', icon: ['lucide', 'Boxes'] },
+      { name: 'Capacitor (iOS/Android)', icon: ['si', 'SiCapacitor'] },
+      { name: 'Flutter', icon: ['si', 'SiFlutter'] },
+      { name: 'Jest', icon: ['si', 'SiJest'] },
+      { name: 'Vitest', icon: ['si', 'SiVitest'] },
     ],
   },
 ]
@@ -137,12 +169,13 @@ export const experience = [
     period: '02/2025 – Present',
     current: true,
     points: [
-      'Own full-stack delivery across Hotspot, WiFiCall, and Free Fiber Africa, building both React/TypeScript/Vue frontends and Node.js/Laravel backend services for the same products.',
-      'Design and deploy backend APIs and services alongside modular, reusable frontend components, keeping frontend and backend contracts consistent.',
-      'Manage production deployments and CI/CD pipelines on AWS, Vercel, and Render, using AI-assisted workflows to speed up config, debugging, and release checks.',
-      'Set and enforce UI/UX and system-design standards across products, including CMS-style admin and content-management interfaces.',
-      'Mentor junior and mid-level developers; lead code reviews and architecture/ER-model discussions.',
-      'Reduced load times by 30% through caching, reusable components, and backend query optimization.',
+      'Lead development of Tizeti OS, the in-house ERP spanning 18 departments across a multi-country operation; top contributor to the platform.',
+      'Digitised procurement, requisition and leave approval workflows with multi-level approval chains up to executive level (CIO / COO).',
+      'Built field-operations tooling (engineer scheduling, installation SLA tracking, automated PDF reports) and the fiber operations suite: customer management, wireless-to-fiber migration, splitter assignment and network mapping.',
+      'Own full-stack delivery across Hotspot / Express Wi-Fi, WiFiCall and Free Fiber Africa, and built the Tizeti Cloud customer portal with live Paystack billing.',
+      'Manage CI/CD and source control on AWS / Vercel / Render, with AI-assisted workflows for config, debugging and release checks.',
+      'Mentor junior and mid-level developers; lead code reviews and architecture / ER-model discussions.',
+      'Reduced load times by 30% through caching, reusable components and query optimisation.',
     ],
   },
   {
@@ -151,10 +184,12 @@ export const experience = [
     location: 'Lagos, Nigeria',
     period: '12/2023 – 02/2025',
     points: [
-      'Led a team of six developers in digitalizing departmental workflows across three countries, working across React, Vue, PHP, and Tailwind CSS.',
-      'Built secure authentication systems and payment gateways spanning frontend and backend.',
-      'Ran code reviews and streamlined debugging workflows, cutting issue rates by 50%.',
-      'Led product demos, technical documentation, and design/architecture discussions.',
+      'Led a team of 6 developers digitalising departmental workflows on Tizeti OS across 3 countries (React, Vue, PHP, Tailwind CSS, Material UI).',
+      'Built role-based access and KYC compliance workflows, secure authentication systems and payment gateways.',
+      'Code reviews cut issue rates by 50%; ran the team’s Git workflow on AWS CodeCommit.',
+      'Started the procurement module and built the leave-request flow with executive approvals.',
+      'Took over freefiber.africa: signup flow, country-specific KYC and referral programme.',
+      'Led product demos, technical documentation, and design / architecture discussions.',
     ],
   },
   {
@@ -163,10 +198,11 @@ export const experience = [
     location: 'Remote',
     period: '03/2022 – 12/2023',
     points: [
-      'Built responsive web applications with React.js, Bootstrap, JavaScript, TypeScript, and Tailwind CSS.',
-      'Designed and implemented end-to-end secure payment gateways and user-facing dashboards.',
-      'Partnered with designers and backend engineers on UI/UX consistency and API integration.',
-      'Debugged and optimized applications, reducing issue rates by 30%.',
+      'Built responsive web applications with React.js, Bootstrap, JavaScript, TypeScript and Tailwind CSS.',
+      'Designed and implemented end-to-end secure payment gateways and user-facing dashboards; integrated Paystack with server-side verification.',
+      'Maintained wifi.com.ng on WordPress and built its React signup and regional pricing flows.',
+      'Partnered with designers and backend engineers on UI / UX consistency and API integration.',
+      'Debugged and optimised applications, reducing issue rates by 30%.',
     ],
   },
   {
@@ -175,9 +211,10 @@ export const experience = [
     location: 'Remote',
     period: '03/2021 – 02/2022',
     points: [
-      'Developed responsive applications using React.js, Redux, PHP, and TypeScript.',
+      'Developed responsive applications using React.js, Redux, PHP and TypeScript.',
       'Implemented secure payment gateways and integrated REST APIs.',
-      'Optimized debugging processes, reducing issue rates by 30%.',
+      'Optimised debugging processes, reducing issue rates by 30%.',
+      'Designed responsive email templates for bulk messaging.',
     ],
   },
   {
@@ -186,7 +223,7 @@ export const experience = [
     location: 'Ibadan, Nigeria (Remote)',
     period: '03/2019 – 09/2020',
     points: [
-      'Developed and maintained responsive web applications using HTML, CSS, and JavaScript.',
+      'Developed and maintained responsive web applications using HTML, CSS and JavaScript.',
       'Built product showcase pages and digital branding assets.',
     ],
   },
@@ -198,28 +235,11 @@ export const experience = [
 //   screens → the switchable views a visitor can flip through in the mockup
 export const projects = [
   {
-    name: 'Fantasy Showdown',
-    subtitle: 'Real-Money Fantasy Football Platform',
-    blurb: 'A wallet-backed fantasy platform on top of official FPL, with automated payouts.',
-    description:
-      'Full-stack platform layered on top of official FPL, with wallet funding, BVN-verified withdrawals, subscription pots, and head-to-head/group challenge matchmaking with automated point-based payouts.',
-    skills: ['React.js', 'Laravel (PHP)', 'REST APIs', 'Paystack/Flutterwave', 'AI-Assisted Backend', 'CI/CD'],
-    liveUrl: 'https://fshowdown.com',
-    scene: 'dashboard',
-    accent: '#16a34a',
-    featured: true,
-    screens: [
-      { key: 'dash', label: 'Dashboard', variant: 'dashboard' },
-      { key: 'wallet', label: 'Wallet', variant: 'booking' },
-      { key: 'mobile', label: 'Feed', variant: 'content' },
-    ],
-  },
-  {
     name: 'Mindfully Articulated',
     subtitle: 'CMS-Driven Content Platform',
     blurb: 'A content platform with a custom admin panel for structured publishing.',
     description:
-      'Node.js-powered content platform with a custom admin panel for structured content management and publishing.',
+      'Design-led website for MAD, a product, marketing and design firm. A Node.js content platform with a custom admin panel, live-edit CMS panel, session authentication and image uploads to DigitalOcean Spaces; deploys via Bitbucket Pipelines to DigitalOcean App Platform.',
     skills: ['React.js', 'Node.js', 'CMS Architecture', 'Admin Panel', 'Content Modeling'],
     liveUrl: 'https://www.mindfullyarticulated.com',
     scene: 'content',
@@ -235,8 +255,8 @@ export const projects = [
     subtitle: 'Free Online File Converter',
     blurb: 'A free web utility that converts images, PDFs, and CSV/JSON right in the browser.',
     description:
-      'A fast, free online file converter for images, PDF documents, and data files (CSV/JSON). No installation — everything runs in the browser with a clean, responsive UI.',
-    skills: ['React.js', 'Tailwind CSS', 'File Conversion', 'Client-Side Processing', 'Responsive Design'],
+      'Cross-platform file conversion suite, solo-built for web, iOS and Android, with 11 tools (image/PDF conversion and compression, merge/split PDF, PDF to Word, document scanner, QR/barcode scanner, CSV/JSON). Most processing is client-side for privacy and near-zero server cost; Vercel serverless functions for Adobe PDF Services and Mailjet.',
+    skills: ['React.js', 'Capacitor', 'Vercel Serverless', 'Client-Side Processing', 'Adobe PDF Services'],
     liveUrl: 'https://fileflowhq.com',
     scene: 'dashboard',
     accent: '#0d9488',
@@ -249,9 +269,9 @@ export const projects = [
   {
     name: 'Volasec',
     subtitle: 'Conversion-Focused Consulting Platform',
-    blurb: 'A single-page consulting site engineered to build authority and drive bookings.',
+    blurb: 'A multi-page consulting site engineered to build authority and drive enquiries.',
     description:
-      'High-performance consulting website designed to establish authority and drive bookings. Single-page architecture with structured messaging.',
+      'Conversion-focused multi-page website for a security and compliance consultancy (SOC 2, ISO 27001, cloud security architecture, risk assessments), with structured service messaging, responsive layout and SEO metadata.',
     skills: ['React.js', 'Tailwind CSS', 'UI/UX Strategy', 'Conversion Architecture', 'Brand System'],
     liveUrl: 'https://volasec.com',
     scene: 'landing',
@@ -277,27 +297,12 @@ export const projects = [
     ],
   },
   {
-    name: 'Free Fiber Africa',
-    subtitle: 'Customer Portal & Landing Page',
-    blurb: 'A multilingual portal for fiber subscriptions, payments, and coverage maps.',
-    description:
-      'Multilingual platform for subscriptions, payments, Google Maps fiber coverage, wallet renewals, account switching, and subscription management.',
-    skills: ['React.js', 'Tailwind CSS', 'Authentication', 'API Integration', 'i18n'],
-    liveUrl: '', // TODO
-    scene: 'dashboard',
-    accent: '#2563eb',
-    screens: [
-      { key: 'portal', label: 'Portal', variant: 'dashboard' },
-      { key: 'plans', label: 'Plans', variant: 'shop' },
-    ],
-  },
-  {
     name: 'Abánítúnráse',
     subtitle: 'E-Commerce & Booking Platform',
     blurb: 'A styling-house store with product sales and appointment scheduling.',
     description:
-      'E-commerce and booking platform for a styling house offering bridal styling, occasion looks, and Kájáyelo travel wardrobe curation, with online product sales and appointment scheduling.',
-    skills: ['React.js', 'Tailwind CSS', 'E-Commerce', 'Booking System', 'Responsive Design'],
+      'E-commerce and booking platform for a styling house (bridal styling, occasion looks, Kájáyelo travel wardrobe curation): Paystack with server-side verification, Cloudinary signed uploads, Resend email, WhatsApp Cloud API notifications, a custom admin dashboard, online product sales and appointment scheduling.',
+    skills: ['React.js', 'Tailwind CSS', 'Paystack', 'Cloudinary', 'WhatsApp Cloud API', 'Booking System'],
     liveUrl: 'https://www.abanitunrase.com',
     scene: 'shop',
     accent: '#db2777',
@@ -311,15 +316,30 @@ export const projects = [
     subtitle: 'AI Travel Guide',
     blurb: 'A conversational travel guide for any destination worldwide, backed by real place data.',
     description:
-      'A chatbot that answers real tourism questions — food, landmarks, transport, safety, accommodation — for anywhere in the world, in plain language with named venues and sources. Uses hybrid AI routing: a self-hosted model handles everyday questions and a frontier model is reserved for the hard ones, so cost-per-conversation stays low enough to scale. Every conversation is logged as training data, so the model gets smarter and cheaper to run over time.',
-    skills: ['React.js', 'FastAPI (Python)', 'LLM Integration', 'Hybrid AI Routing', 'Open Mapping Data', 'CI/CD'],
-    liveUrl: 'https://tourfinderapp.com',
+      'Conversational AI travel guide (food, landmarks, transport, safety, places to stay). Hybrid LLM routing on a Python / FastAPI backend: a self-hosted fine-tuned Ollama model for simple questions, Claude for safety-critical, time-sensitive and place-lookup queries. Claude tool-use loop for place search (OpenStreetMap, optionally Google Places) with web-search fallback, IP-based location, persistent sessions and free-plan usage metering. A rebuild of \u201cMobot\u201d, the Bowen University final-year project.',
+    skills: ['React.js', 'FastAPI (Python)', 'Claude Tool Use', 'Ollama', 'Hybrid LLM Routing', 'OpenStreetMap'],
+    liveUrl: 'https://tourfinderapp-eight.vercel.app',
     scene: 'content',
     accent: '#2563eb',
     featured: true,
     screens: [
       { key: 'chat', label: 'Chat', variant: 'content' },
       { key: 'places', label: 'Places', variant: 'dashboard' },
+    ],
+  },
+  {
+    name: 'Free Fiber Africa',
+    subtitle: 'Customer Portal & Landing Page',
+    blurb: 'A multilingual portal for fiber subscriptions, payments, and coverage maps.',
+    description:
+      'Multilingual platform for subscriptions, payments, Google Maps fiber coverage, wallet renewals, account switching, and subscription management.',
+    skills: ['React.js', 'Tailwind CSS', 'Authentication', 'API Integration', 'i18n'],
+    liveUrl: '', // TODO
+    scene: 'dashboard',
+    accent: '#2563eb',
+    screens: [
+      { key: 'portal', label: 'Portal', variant: 'dashboard' },
+      { key: 'plans', label: 'Plans', variant: 'shop' },
     ],
   },
   {
@@ -412,20 +432,6 @@ export const aiWorkflow = {
         'Diagnosed via the network tab that the API was fast but rendering was slow. Asked Claude to investigate; it found a hardcoded records-per-page limit (1000) but fixed only one of two occurrences. Live testing showed the fix had not worked — pushed back, it found the second hardcoded instance. Fixed and verified in under 30 minutes.',
     },
     {
-      competency: 'Large-codebase navigation, debugging & refactoring',
-      title: 'Fantasy Showdown — SSL on the live server',
-      icon: 'ShieldCheck',
-      body:
-        'Domain pointed to DNS with no SSL cert. Had Claude review the previous developer’s README, ran locally to confirm a baseline, then worked through step-by-step SSH/Nginx commands for DigitalOcean. Declined when it asked for live database access; corrected a wrong file path it had assumed. Verified via the live URL and a screenshot. Fixed in under 2 minutes once given the right path.',
-    },
-    {
-      competency: 'Technical writing, documentation & walkthroughs',
-      title: 'Fantasy Showdown — analytics implementation plan',
-      icon: 'FileText',
-      body:
-        'Fed Claude the existing AnalyticsController plus the desired analytics list. It returned a structured breakdown: buildable-now vs. needs-new-schema. Caught it falsely reporting "build complete" when only phase 1 was done and the migrations were skipped. Pushed back, it finished the rest. Verified via endpoint checks and migration queries. Now fully live in production.',
-    },
-    {
       competency: 'Remote, async collaboration',
       title: 'Architecture handoff — monolith vs. decoupled',
       icon: 'Users',
@@ -441,6 +447,40 @@ export const aiWorkflow = {
     },
   ],
 }
+
+export const heroStats = [
+  { value: '18', label: 'departments on Tizeti OS' },
+  { value: '6', label: 'developers led' },
+  { value: '3', label: 'countries' },
+  { value: '30%', label: 'faster load times' },
+]
+
+// Private/internal systems — no public link, so shown as a write-up.
+export const flagshipWork = [
+  {
+    name: 'Tizeti OS',
+    blurb: 'In-house ERP spanning 18 departments across a multi-country operation: procurement, requisitions, inventory, HR/leave, field scheduling and KYC, with approval chains up to CIO / COO.',
+  },
+  {
+    name: 'Installation & scheduling system',
+    blurb: 'Built the sales, scheduler and field-engineer (FSE) flows — from customer sign-up and payment through installation, failed installs and refunds.',
+  },
+  {
+    name: 'Tizeti Cloud',
+    blurb: 'Customer portal with marketing site, plans, registration with live Paystack billing, and a customer dashboard.',
+  },
+  {
+    name: 'Hotspot / Express Wi-Fi',
+    blurb: 'Vue.js / PHP platform: redesigned the retailer / RDE interface and fixed a slow country view caused by a hardcoded pagination limit.',
+  },
+]
+
+export const certifications = [
+  'Meta Full Stack Developer Specialization — Coursera, 2026',
+  'Meta Introduction to Front-End Development — Coursera, 2026',
+  'Cisco Certified Network Associate (CCNA) — 2020',
+  'Institute of Personal Development and Customer Relationship Management (IPCDRM), Qatar — 2025',
+]
 
 export const education = {
   degree: 'B.Sc. Computer Science & Information Technology',

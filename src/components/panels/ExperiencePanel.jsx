@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { ArrowRight, Briefcase, GraduationCap } from 'lucide-react'
+import { ArrowRight, Award, Briefcase, GraduationCap } from 'lucide-react'
 import { PanelHeading } from '@/components/deck/Panel'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import Drawer from '@/components/Drawer'
-import { experience, education } from '@/data/content'
+import { experience, education, flagshipWork, certifications } from '@/data/content'
 
 export default function ExperiencePanel() {
   const [open, setOpen] = useState(false)
@@ -44,6 +44,11 @@ export default function ExperiencePanel() {
         ))}
       </div>
 
+      <p className="mx-auto mt-5 max-w-4xl text-center text-sm text-muted-foreground">
+        <span className="font-semibold text-foreground">Flagship systems at Tizeti (private):</span>{' '}
+        {flagshipWork.map((w) => w.name).join(' · ')}
+      </p>
+
       <div className="mt-6 flex justify-center">
         <Button onClick={() => openAt(0)} size="lg">
           <Briefcase className="h-4 w-4" /> View full experience
@@ -52,6 +57,18 @@ export default function ExperiencePanel() {
 
       {/* Side drawer with the full timeline + education */}
       <Drawer open={open} onClose={() => setOpen(false)} title="Experience & Education">
+        <div className="mb-6 rounded-xl border border-border bg-muted/40 p-5">
+          <h3 className="font-semibold">Flagship work at Tizeti</h3>
+          <p className="mb-3 text-xs text-muted-foreground">Internal and private systems — no public link.</p>
+          <ul className="space-y-2">
+            {flagshipWork.map((w) => (
+              <li key={w.name} className="text-sm text-muted-foreground">
+                <span className="font-medium text-foreground">{w.name}</span> — {w.blurb}
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <div className="relative border-l border-border pl-7">
           {experience.map((job, i) => (
             <div
@@ -98,6 +115,20 @@ export default function ExperiencePanel() {
               {education.school} · {education.period}
             </p>
             <p className="mt-1 text-xs text-muted-foreground">{education.extra}</p>
+          </div>
+        </div>
+
+        <div className="mt-4 flex items-start gap-4 rounded-xl border border-border bg-muted/40 p-5">
+          <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <Award className="h-5 w-5" />
+          </div>
+          <div>
+            <h3 className="font-semibold">Certifications</h3>
+            <ul className="mt-1 space-y-1">
+              {certifications.map((c) => (
+                <li key={c} className="text-sm text-muted-foreground">{c}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </Drawer>
