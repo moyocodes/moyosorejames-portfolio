@@ -1,4 +1,6 @@
 import { useHashRoute } from '@/hooks/useHashRoute'
+import { PreviewProvider } from '@/components/mock/PreviewContext'
+import Cursor from '@/components/Cursor'
 import Deck from '@/components/deck/Deck'
 import DeckNavbar from '@/components/DeckNavbar'
 import HeroPanel from '@/components/panels/HeroPanel'
@@ -67,6 +69,9 @@ export default function App() {
   // Default: the immersive full-screen deck.
   const initialId = route.startsWith('panel/') ? route.slice('panel/'.length) : 'hero'
   return (
-    <Deck panels={panels} initialId={initialId} navbar={<DeckNavbar />} />
+    <PreviewProvider>
+      <Cursor />
+      <Deck panels={panels} initialId={initialId} navbar={<DeckNavbar />} />
+    </PreviewProvider>
   )
 }

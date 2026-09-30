@@ -147,6 +147,31 @@ export const skills = [
     ],
   },
   {
+    category: 'Integrations',
+    icon: 'Plug',
+    items: [
+      { name: 'Paystack', icon: ['lucide', 'CreditCard'] },
+      { name: 'Flutterwave', icon: ['lucide', 'Wallet'] },
+      { name: 'Google Maps / MapLibre / Leaflet', icon: ['lucide', 'MapPin'] },
+      { name: 'Cloudinary', icon: ['lucide', 'Image'] },
+      { name: 'Resend / Mailgun / Mailjet', icon: ['lucide', 'Mail'] },
+      { name: 'WhatsApp Cloud API', icon: ['lucide', 'MessageSquareText'] },
+      { name: 'Adobe PDF Services', icon: ['lucide', 'FileText'] },
+    ],
+  },
+  {
+    category: 'SEO & Design',
+    icon: 'Sparkles',
+    items: [
+      { name: 'On-page SEO', icon: ['lucide', 'Search'] },
+      { name: 'Open Graph / Twitter cards', icon: ['lucide', 'Share2'] },
+      { name: 'Structured data (JSON-LD)', icon: ['lucide', 'FileStack'] },
+      { name: 'Prerendering SPA routes', icon: ['lucide', 'Gauge'] },
+      { name: 'UI / UX & brand design', icon: ['lucide', 'PenLine'] },
+      { name: 'Prototyping (v0, Google Stitch)', icon: ['lucide', 'Wand2'] },
+    ],
+  },
+  {
     category: 'State, Mobile & Testing',
     icon: 'GitBranch',
     items: [
@@ -174,6 +199,10 @@ export const experience = [
       'Built field-operations tooling (engineer scheduling, installation SLA tracking, automated PDF reports) and the fiber operations suite: customer management, wireless-to-fiber migration, splitter assignment and network mapping.',
       'Own full-stack delivery across Hotspot / Express Wi-Fi, WiFiCall and Free Fiber Africa, and built the Tizeti Cloud customer portal with live Paystack billing.',
       'Manage CI/CD and source control on AWS / Vercel / Render, with AI-assisted workflows for config, debugging and release checks.',
+      'Built a customer feedback / QA testing dashboard, a retention-agents module, mail-blast campaigns and a marketing data-analysis flow.',
+      'Added speed-test and coverage-search features to Free Fiber Africa; redesigned the Hotspot retailer / RDE interface and fixed auth, pagination and search bugs.',
+      'Work with NestJS to create REST endpoints, integrate external APIs and support backend email / notification workflows.',
+      'Produce system design diagrams, flowcharts and ER models for architecture planning.',
       'Mentor junior and mid-level developers; lead code reviews and architecture / ER-model discussions.',
       'Reduced load times by 30% through caching, reusable components and query optimisation.',
     ],
@@ -189,6 +218,7 @@ export const experience = [
       'Code reviews cut issue rates by 50%; ran the team’s Git workflow on AWS CodeCommit.',
       'Started the procurement module and built the leave-request flow with executive approvals.',
       'Took over freefiber.africa: signup flow, country-specific KYC and referral programme.',
+      'Built customer relocation, support-visit and installation-verification modules.',
       'Led product demos, technical documentation, and design / architecture discussions.',
     ],
   },
@@ -203,6 +233,8 @@ export const experience = [
       'Maintained wifi.com.ng on WordPress and built its React signup and regional pricing flows.',
       'Partnered with designers and backend engineers on UI / UX consistency and API integration.',
       'Debugged and optimised applications, reducing issue rates by 30%.',
+      'Built FSE / sales flows in Tizeti OS; worked on the new-system rollout, map clustering and Google Translate support.',
+      'Designed responsive email templates for bulk messaging; worked in an agile team with daily stand-ups and sprint planning.',
     ],
   },
   {
@@ -325,21 +357,6 @@ export const projects = [
     screens: [
       { key: 'chat', label: 'Chat', variant: 'content' },
       { key: 'places', label: 'Places', variant: 'dashboard' },
-    ],
-  },
-  {
-    name: 'Free Fiber Africa',
-    subtitle: 'Customer Portal & Landing Page',
-    blurb: 'A multilingual portal for fiber subscriptions, payments, and coverage maps.',
-    description:
-      'Multilingual platform for subscriptions, payments, Google Maps fiber coverage, wallet renewals, account switching, and subscription management.',
-    skills: ['React.js', 'Tailwind CSS', 'Authentication', 'API Integration', 'i18n'],
-    liveUrl: '', // TODO
-    scene: 'dashboard',
-    accent: '#2563eb',
-    screens: [
-      { key: 'portal', label: 'Portal', variant: 'dashboard' },
-      { key: 'plans', label: 'Plans', variant: 'shop' },
     ],
   },
   {

@@ -3,8 +3,7 @@ import InteractiveMock from '@/components/mock/InteractiveMock'
 import { cn } from '@/lib/utils'
 
 /**
- * PreviewSwitcher — shows the real live site (EmbedFrame: iframe → screenshot
- * → mockup fallback) when a URL exists, otherwise the clickable code mockup.
+ * PreviewSwitcher — shows the real live site (EmbedFrame: screenshot → mockup fallback) when a URL exists, otherwise the clickable code mockup.
  */
 export default function PreviewSwitcher({ url, accent, screens, fallbackScene, fill = false }) {
   const hasRealUrl = url && /^https?:\/\//i.test(url)
@@ -18,7 +17,7 @@ export default function PreviewSwitcher({ url, accent, screens, fallbackScene, f
             fill ? 'min-h-0 flex-1 items-stretch' : 'items-center'
           )}
         >
-          <EmbedFrame url={url} accent={accent} fallbackScene={fallbackScene} fill={fill} />
+          <EmbedFrame url={url} accent={accent} fallbackScene={fallbackScene} fill={fill} clickToVisit />
         </div>
       ) : (
         <InteractiveMock

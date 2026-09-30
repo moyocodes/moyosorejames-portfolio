@@ -1,64 +1,44 @@
-import { useEffect, useRef, useState } from 'react'
-import { ExternalLink, Loader2, MousePointerClick } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { ArrowUpRight, ExternalLink } from 'lucide-react'
 import { BrowserMock } from '@/components/mock/DeviceMock'
 import { UIScene } from '@/components/mock/UIScene'
-import { cn } from '@/lib/utils'
+import { usePreviews, previewSrc } from '@/components/mock/PreviewContext'
 
 /**
- * EmbedFrame — shows the REAL live site inside the browser mockup, with a
- * three-tier fallback so it always looks right:
+ * EmbedFrame — a site preview inside the browser mockup.
  *
- *   1. <iframe src={url}> — the live, interactive site.
- *   2. If the iframe doesn't load in time (many sites block framing via
- *      X-Frame-Options / frame-ancestors, which we can't detect cross-origin),
- *      fall back to an auto screenshot via WordPress mShots (free, no key).
- *   3. If the screenshot also fails to load, fall back to the code mockup.
+ *   1. A screenshot bundled in /public/previews (preloaded in the background
+ *      by PreviewProvider, so it is already cached by the time you get here).
+ *   2. If there is none, an auto screenshot via WordPress mShots.
+ *   3. If that fails, the code mockup.
  *
- * When there's no real URL yet, we skip straight to the code mockup. Pass
- * screenshotOnly to skip the live iframe entirely (e.g. small previews where
- * a full interactive page would be illegible and loading N live sites at
- * once is wasteful) — goes straight to the mShots screenshot tier.
+ * No live iframe: embedding real sites was slow (full page load per slide,
+ * often blocked by frame headers). Pass `clickToVisit` to make the whole
+ * card open the live site, with an animated arrow hint. Pass `screenshotOnly`
+ * for small decorative previews whose parent handles the click.
  */
 export default function EmbedFrame({
   url,
-  accent = '#3b82f6',
+  accent = '#d9441f',
   fallbackScene = 'dashboard',
   fill = false,
   viewportClassName,
-  screenshotOnly = false,
+  clickToVisit = false,
 }) {
-  // 'iframe' → 'shot' → 'mock'
-  const [mode, setMode] = useState('iframe')
-  const [iframeLoaded, setIframeLoaded] = useState(false)
-  // The embedded page swallows touch/scroll gestures that start inside it
-  // (iframes are separate documents — their touch events never bubble to
-  // the outer deck), which reads as the whole page "hanging" on mobile when
-  // someone tries to scroll over a project preview. Default to a purely
-  // visual, non-interactive preview; a tap opts in to the real embedded page.
-  const [interactive, setInteractive] = useState(false)
-  const timeoutRef = useRef(null)
-
+  const { isReady } = usePreviews()
   const hasRealUrl = url && /^https?:\/\//i.test(url)
   const host = hasRealUrl ? url.replace(/^https?:\/\//, '').replace(/\/$/, '') : 'preview'
-  const shotSrc = hasRealUrl
+  const local = hasRealUrl ? previewSrc(url) : null
+  const remote = hasRealUrl
     ? `https://s.wp.com/mshots/v1/${encodeURIComponent(url)}?w=1200&h=750`
     : null
 
-  // Reset when the URL changes.
-  useEffect(() => {
-    setMode(hasRealUrl ? (screenshotOnly ? 'shot' : 'iframe') : 'mock')
-    setIframeLoaded(false)
-    setInteractive(false)
-  }, [url, hasRealUrl, screenshotOnly])
+  // 'local' → 'remote' → 'mock'
+  const [tier, setTier] = useState(hasRealUrl ? 'local' : 'mock')
+  useEffect(() => setTier(hasRealUrl ? 'local' : 'mock'), [url, hasRealUrl])
 
-  // If the iframe hasn't loaded shortly, assume framing is blocked → screenshot.
-  useEffect(() => {
-    if (mode !== 'iframe' || !hasRealUrl) return
-    timeoutRef.current = setTimeout(() => {
-      if (!iframeLoaded) setMode('shot')
-    }, 3500)
-    return () => clearTimeout(timeoutRef.current)
-  }, [mode, hasRealUrl, iframeLoaded])
+  const src = tier === 'local' ? local : tier === 'remote' ? remote : null
+  const next = () => setTier((t) => (t === 'local' ? 'remote' : 'mock'))
 
   return (
     <BrowserMock
@@ -69,65 +49,44 @@ export default function EmbedFrame({
       }
       glow={hasRealUrl ? `radial-gradient(circle, ${accent}55, transparent 70%)` : undefined}
     >
-      <div className="relative h-full w-full bg-background">
-        {/* Tier 1: live iframe */}
-        {mode === 'iframe' && (
-          <>
-            {!iframeLoaded && (
-              <div className="absolute inset-0 z-10 flex items-center justify-center bg-background">
-                <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
-              </div>
-            )}
-            <div className="absolute inset-0 overflow-hidden">
-              <iframe
-                src={url}
-                title={host}
-                loading="lazy"
-                onLoad={() => setIframeLoaded(true)}
-                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                referrerPolicy="no-referrer"
-                className={cn(
-                  'absolute left-0 top-0 origin-top-left border-0',
-                  !interactive && 'pointer-events-none'
-                )}
-                style={{ width: '142.857%', height: '142.857%', transform: 'scale(0.7)' }}
-              />
-            </div>
-
-            {iframeLoaded && !interactive && (
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setInteractive(true)
-                }}
-                className="absolute inset-0 z-10 flex items-end justify-center bg-transparent pb-4"
-                aria-label="Enable interacting with the embedded site"
-              >
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-background/90 px-3 py-1.5 text-xs font-medium text-foreground shadow ring-1 ring-border backdrop-blur">
-                  <MousePointerClick className="h-3.5 w-3.5" /> Tap to interact
-                </span>
-              </button>
-            )}
-          </>
-        )}
-
-        {/* Tier 2: auto screenshot */}
-        {mode === 'shot' && shotSrc && (
+      <div className="group relative h-full w-full bg-background">
+        {src ? (
           <img
-            src={shotSrc}
+            src={src}
             alt={`${host} preview`}
-            loading="lazy"
-            onError={() => setMode('mock')}
-            className="h-full w-full object-cover object-top"
+            decoding="async"
+            onError={next}
+            className={
+              'h-full w-full object-cover object-top transition-opacity duration-300 ' +
+              (tier === 'local' && !isReady(url) ? 'opacity-90' : 'opacity-100')
+            }
           />
+        ) : (
+          <UIScene variant={fallbackScene} accent={accent} />
         )}
 
-        {/* Tier 3: code mockup fallback */}
-        {mode === 'mock' && <UIScene variant={fallbackScene} accent={accent} />}
+        {/* Whole card visits the live site, with an animated nudge */}
+        {hasRealUrl && clickToVisit && (
+          <a
+            href={url}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Visit ${host}`}
+            className="absolute inset-0 z-10 flex items-end justify-center bg-gradient-to-t from-black/35 via-transparent to-transparent pb-5 opacity-90 transition-opacity hover:opacity-100"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full bg-background/95 py-2 pl-4 pr-2 text-xs font-semibold text-foreground shadow-lg ring-1 ring-border backdrop-blur">
+              Click to visit site
+              <span
+                className="flex h-7 w-7 items-center justify-center rounded-full text-white"
+                style={{ background: accent }}
+              >
+                <ArrowUpRight className="h-4 w-4 animate-nudge" />
+              </span>
+            </span>
+          </a>
+        )}
 
-        {/* Persistent open-live affordance */}
-        {hasRealUrl && (
+        {hasRealUrl && !clickToVisit && (
           <a
             href={url}
             target="_blank"

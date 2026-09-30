@@ -29,7 +29,7 @@ export default function DeckNavbar() {
     <header className="fixed inset-x-0 top-0 z-50">
       <nav className="glass-strong container mt-3 flex h-14 items-center justify-between rounded-full border border-border px-4 shadow-lg">
         <button onClick={() => go('hero')} className="text-base font-bold tracking-tight">
-          <span className="gradient-text">JM</span>
+          <span className="font-display text-base font-extrabold tracking-tight">J<span className="text-primary">M</span></span>
         </button>
 
         <div className="hidden items-center gap-0.5 md:flex">

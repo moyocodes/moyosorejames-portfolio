@@ -45,12 +45,10 @@ export function PanelHeading({ eyebrow, title, description, align = 'center' }) 
       )}
     >
       {eyebrow && (
-        <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-primary">
-          {eyebrow}
-        </p>
+        <p className={cn('eyebrow mb-4', align === 'center' && 'justify-center')}>{eyebrow}</p>
       )}
       {title && (
-        <h2 className="text-balance text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+        <h2 className="text-balance font-display text-3xl font-extrabold leading-[1.05] tracking-[-0.03em] sm:text-4xl md:text-5xl">
           {title}
         </h2>
       )}

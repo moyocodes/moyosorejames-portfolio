@@ -1,10 +1,19 @@
 import { ArrowRight, FileDown, Github, Linkedin, Mail, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
+import Ticker from '@/components/Ticker'
 import EmbedFrame from '@/components/mock/EmbedFrame'
 import { useDeck } from '@/components/deck/Deck'
 import { requestProject } from '@/hooks/useRequestedProject'
 import { heroStats, profile, projects } from '@/data/content'
+
+const tickerItems = [
+  'Full-Stack Development',
+  'ERP & Business Systems',
+  'AI-Integrated Engineering',
+  'Backend & DevOps',
+  'CMS & Content Platforms',
+  'React · Node · Laravel · FastAPI',
+]
 
 const mad = projects.find((p) => p.name === 'Mindfully Articulated')
 const abanitunrase = projects.find((p) => p.name === 'Abánítúnráse')
@@ -24,46 +33,47 @@ export default function HeroPanel({ active }) {
   }
 
   return (
-    <div className="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
+    <div className="grid w-full grid-cols-1 items-center gap-8 pb-10 lg:grid-cols-[1.05fr_1fr]">
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-[45] bg-background">
+        <Ticker items={tickerItems} />
+      </div>
       {/* Copy */}
-      <div className="text-center lg:text-left">
-        <Badge
-          variant="outline"
-          className="mb-6 gap-2 border-primary/30 bg-background/50 py-1.5 pl-1.5 pr-3 backdrop-blur"
-        >
+      <div className="min-w-0 text-center lg:text-left">
+        <p className="eyebrow mb-4 justify-center lg:justify-start">
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
           </span>
-          Available for freelance & full-time
-        </Badge>
+          Full-stack developer / Lagos / Open to work
+        </p>
 
-        <h1 className="text-balance text-4xl font-extrabold leading-[0.95] tracking-tight sm:text-5xl md:text-6xl xl:text-7xl">
-          I build <span className="gradient-text">AI-integrated</span>
-          <br className="hidden sm:block" /> products, end to end.
+        <h1 className="text-balance font-display text-[clamp(2.1rem,4.6vw,4.3rem)] font-extrabold leading-[1] tracking-[-0.04em]">
+          I build systems
+          <br />
+          <span className="font-serif text-[1.08em] font-normal italic text-primary">end to end.</span>
         </h1>
 
-        <p className="mx-auto mt-6 max-w-xl text-base text-muted-foreground sm:text-lg lg:mx-0">
+        <p className="mx-auto mt-5 max-w-md text-[0.9rem] leading-[1.7] text-foreground/60 lg:mx-0">
           I'm <span className="font-semibold text-foreground">{profile.name}</span> — a full-stack
           developer in {profile.location} shipping frontend, backend, and DevOps for production
           systems, with LLMs woven into the workflow.
         </p>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-          <Button size="lg" onClick={() => go('projects')}>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5 lg:justify-start">
+          <Button onClick={() => go('projects')}>
             Explore my work <ArrowRight className="h-4 w-4" />
           </Button>
-          <Button size="lg" variant="outline" onClick={() => go('templates')}>
+          <Button variant="outline" onClick={() => go('templates')}>
             <Sparkles className="h-4 w-4" /> Templates for sale
           </Button>
-          <Button size="lg" variant="outline" asChild>
-            <a href={profile.links.cv} download>
+          <Button variant="outline" asChild>
+            <a href={profile.links.cv} download className="inline-flex items-center gap-2">
               <FileDown className="h-4 w-4" /> Download CV
             </a>
           </Button>
         </div>
 
-        <div className="mt-8 flex items-center justify-center gap-4 lg:justify-start">
+        <div className="mt-4 flex items-center justify-center gap-4 lg:justify-start">
           <div className="flex items-center gap-1">
             <Button variant="ghost" size="icon" asChild>
               <a href={profile.links.github} target="_blank" rel="noreferrer" aria-label="GitHub">
@@ -83,21 +93,20 @@ export default function HeroPanel({ active }) {
           </div>
         </div>
 
-        <dl className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-4 border-t border-border pt-5 sm:grid-cols-4">
           {heroStats.map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-2xl border border-border bg-card/70 px-4 py-3 text-center backdrop-blur transition-colors hover:border-primary/40 lg:text-left"
-            >
-              <dt className="gradient-text text-3xl font-extrabold leading-none">{stat.value}</dt>
-              <dd className="mt-1.5 text-xs leading-tight text-muted-foreground">{stat.label}</dd>
+            <div key={stat.label} className="text-center lg:text-left">
+              <dt className="font-display text-2xl font-extrabold leading-none">{stat.value}</dt>
+              <dd className="mt-2 font-mono text-[0.65rem] uppercase leading-tight tracking-[0.06em] text-muted-foreground">
+                {stat.label}
+              </dd>
             </div>
           ))}
         </dl>
       </div>
 
       {/* Floating device showcase — real live-site previews */}
-      <div className="relative hidden h-[440px] lg:block" style={{ perspective: '1200px' }}>
+      <div className="relative hidden h-[400px] lg:block" style={{ perspective: '1200px' }}>
         <div
           role="button"
           tabIndex={0}
@@ -109,7 +118,7 @@ export default function HeroPanel({ active }) {
         >
           <EmbedFrame
             url={mad?.liveUrl}
-            accent={mad?.accent || '#10b981'}
+            accent={mad?.accent || '#d9441f'}
             fallbackScene={mad?.scene}
             viewportClassName="aspect-[16/10]"
             screenshotOnly
