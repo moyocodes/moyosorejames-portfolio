@@ -83,11 +83,14 @@ export default function HeroPanel({ active }) {
           </div>
         </div>
 
-        <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4">
+        <dl className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {heroStats.map((stat) => (
-            <div key={stat.label} className="text-center lg:text-left">
-              <dt className="text-2xl font-extrabold gradient-text">{stat.value}</dt>
-              <dd className="text-xs text-muted-foreground">{stat.label}</dd>
+            <div
+              key={stat.label}
+              className="rounded-2xl border border-border bg-card/70 px-4 py-3 text-center backdrop-blur transition-colors hover:border-primary/40 lg:text-left"
+            >
+              <dt className="gradient-text text-3xl font-extrabold leading-none">{stat.value}</dt>
+              <dd className="mt-1.5 text-xs leading-tight text-muted-foreground">{stat.label}</dd>
             </div>
           ))}
         </dl>
@@ -106,7 +109,7 @@ export default function HeroPanel({ active }) {
         >
           <EmbedFrame
             url={mad?.liveUrl}
-            accent={mad?.accent || '#3b82f6'}
+            accent={mad?.accent || '#10b981'}
             fallbackScene={mad?.scene}
             viewportClassName="aspect-[16/10]"
             screenshotOnly

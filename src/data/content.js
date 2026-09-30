@@ -241,7 +241,7 @@ export const projects = [
     description:
       'Design-led website for MAD, a product, marketing and design firm. A Node.js content platform with a custom admin panel, live-edit CMS panel, session authentication and image uploads to DigitalOcean Spaces; deploys via Bitbucket Pipelines to DigitalOcean App Platform.',
     skills: ['React.js', 'Node.js', 'CMS Architecture', 'Admin Panel', 'Content Modeling'],
-    liveUrl: 'https://www.mindfullyarticulated.com',
+    liveUrl: 'https://mindfullyarticulated.com',
     scene: 'content',
     accent: '#7c3aed',
     featured: true,
@@ -303,7 +303,7 @@ export const projects = [
     description:
       'E-commerce and booking platform for a styling house (bridal styling, occasion looks, Kájáyelo travel wardrobe curation): Paystack with server-side verification, Cloudinary signed uploads, Resend email, WhatsApp Cloud API notifications, a custom admin dashboard, online product sales and appointment scheduling.',
     skills: ['React.js', 'Tailwind CSS', 'Paystack', 'Cloudinary', 'WhatsApp Cloud API', 'Booking System'],
-    liveUrl: 'https://www.abanitunrase.com',
+    liveUrl: 'https://abanitunrase.com',
     scene: 'shop',
     accent: '#db2777',
     screens: [
