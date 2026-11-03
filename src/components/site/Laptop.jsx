@@ -99,7 +99,7 @@ const Laptop = forwardRef(function Laptop({ children }, ref) {
             style={{ background: 'linear-gradient(160deg, #eaeaec, #c8c9cd 60%, #b4b5ba)', backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
             aria-hidden="true"
           >
-            <span className="font-display text-5xl font-light tracking-tight text-[#a4a5aa]">jm</span>
+            <span className="font-display text-5xl font-light tracking-tight text-[#a4a5aa]">MJ</span>
           </div>
         </div>
       </div>
