@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 export function useTheme() {
   const [theme, setTheme] = useState(() => {
     if (typeof window === 'undefined') return 'light'
-    const stored = localStorage.getItem('theme')
+    const stored = localStorage.getItem('site-theme')
     return stored || 'dark'
   })
 
@@ -14,7 +14,7 @@ export function useTheme() {
     } else {
       root.classList.remove('dark')
     }
-    localStorage.setItem('theme', theme)
+    localStorage.setItem('site-theme', theme)
   }, [theme])
 
   const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))

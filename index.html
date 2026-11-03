@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#171312" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>James Moyosore — Technical Founder & Lead Software Developer</title>
     <meta
@@ -50,7 +51,7 @@
       // Set theme before paint to avoid flash of incorrect theme
       (function () {
         try {
-          var stored = localStorage.getItem('theme');
+          var stored = localStorage.getItem('site-theme');
           if (stored !== 'light') {
             document.documentElement.classList.add('dark');
           }
