@@ -69,7 +69,7 @@ export const fileflow = {
     {
       name: 'FileFlowHQ Studio',
       chip: 'Rust + WebAssembly',
-      body: 'Paid in-browser editors for PDFs, photos, video, documents, slides and spreadsheets, with Paystack checkout for exports.',
+      body: 'In-browser editors for PDFs, photos, video, documents, slides and spreadsheets. Free for now.',
       src: '/previews/studio.fileflowhq.com.jpg',
       url: 'https://studio.fileflowhq.com',
       grad: ['#d9e4f2', '#7f9bd6'],
@@ -190,7 +190,7 @@ export const projects = [
     role: 'Founder and only engineer.',
     highlights: [
       '17 tools, all free: convert images and HEIC, shrink to a target size, merge, split and compress PDFs, swap PDF and Word, hear a PDF read aloud, scan documents and QR codes, tidy CSV and JSON. Use them on the web, as a PWA or from the Chrome extension.',
-      'The money comes from Studio: paid PDF, photo, video, document, slide and spreadsheet editors that run in the browser on Rust and WebAssembly. Paystack handles export checkout.',
+      'Studio adds PDF, photo, video, document, slide and spreadsheet editors that run in the browser on Rust and WebAssembly. It’s free for now.',
       'Server costs stay near zero. The backend is a few Vercel functions (Paystack, Resend, Upstash Redis) and my own cookie-free analytics.',
       'Send a photo to the WhatsApp bot and a PDF comes back. It runs on the Meta Cloud API with signature-verified webhooks.',
       'The core is open source as @fileflowhq/tools (MIT). Its CLI drops ready-made React components into your project.',
