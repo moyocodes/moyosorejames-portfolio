@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, Check, ChevronRight, FileImage, RotateCcw } from 'lucide-react'
 import { buttonVariants } from '@/components/ui/button'
 import { fileflow } from '@/data/content'
-import { usePinnedScroll } from '@/hooks/usePinnedScroll'
 import { cn } from '@/lib/utils'
 
 export default function FileFlow() {
@@ -72,6 +71,7 @@ const clamp = (v) => Math.min(1, Math.max(0, v))
 /** The analytics stay shut until you scroll to them, open as you pass, and close again as you leave. */
 function AnalyticsReveal() {
   const card = useRef(null)
+  const slot = useRef(null)
   const { analytics } = fileflow
 
   const show = useCallback((open) => {
@@ -83,35 +83,42 @@ function AnalyticsReveal() {
     el.style.transform = `scale(${0.96 + 0.04 * open})`
   }, [])
 
-  const distance = useCallback(() => window.innerHeight * 1.1, [])
-  const onProgress = useCallback((p) => show(smooth(clamp(p / 0.3)) * (1 - smooth(clamp((p - 0.7) / 0.3)))), [show])
-  const { section, pinned } = usePinnedScroll(distance, onProgress)
-
-  // Without pinning (phones, reduced motion), it opens while it's on screen and shuts when it leaves.
+  // Driven by where the card's middle sits on screen, so the page never stops or goes blank.
   useEffect(() => {
-    if (pinned || !card.current) return
-    const observer = new IntersectionObserver(([e]) => show(e.isIntersecting ? 1 : 0), { threshold: 0.35 })
-    observer.observe(card.current.parentElement)
-    return () => observer.disconnect()
-  }, [pinned, show])
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return show(1)
+    let raf
+    const update = () => {
+      raf = null
+      const r = slot.current.getBoundingClientRect()
+      const c = (r.top + r.height / 2) / window.innerHeight
+      show(smooth(clamp((1.05 - c) / 0.3)) * smooth(clamp((c + 0.05) / 0.3)))
+    }
+    const onScroll = () => (raf ||= requestAnimationFrame(update))
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [show])
 
   return (
-    <div ref={section} className="mt-8" data-analytics>
-      <div className={pinned ? 'sticky top-0 flex h-screen flex-col justify-center pt-16' : ''}>
-        <div className="mx-auto w-full" style={pinned ? { maxWidth: 'min(1040px, calc((100vh - 13rem) * 0.95))' } : undefined}>
-          <div
-            ref={card}
-            className={cn('relative overflow-hidden rounded-3xl p-[4%]', !pinned && 'transition-[clip-path,opacity,transform] duration-700 ease-out')}
-            style={{ background: `linear-gradient(135deg, ${analytics.grad[0]}, ${analytics.grad[1]})`, clipPath: 'inset(50% 16.6% round 24px)', opacity: 0 }}
-          >
-            <div className="float-panel overflow-hidden">
-              <img src={analytics.src} alt="FileFlowHQ's private analytics dashboard" width="1600" height="622" loading="lazy" className="w-full" />
-              <img src="/previews/fileflow-audience.jpg" alt="Countries, traffic sources and devices in the same dashboard" width="1600" height="694" loading="lazy" className="w-full" />
-            </div>
-            <span className="float-chip absolute bottom-3 right-3">{analytics.chip}</span>
+    <div className="mx-auto mt-12 max-w-3xl" data-analytics>
+      <h3 className="text-[1.1rem] tracking-tight">{analytics.name}</h3>
+      <p className="mb-4 mt-0.5 max-w-2xl text-pretty text-sm text-muted-foreground">{analytics.body}</p>
+      <div ref={slot}>
+        <div
+          ref={card}
+          className="relative overflow-hidden rounded-3xl p-[4%]"
+          style={{ background: `linear-gradient(135deg, ${analytics.grad[0]}, ${analytics.grad[1]})`, clipPath: 'inset(50% 16.6% round 24px)', opacity: 0 }}
+        >
+          <div className="float-panel overflow-hidden">
+            <img src={analytics.src} alt="FileFlowHQ's private analytics dashboard" width="1600" height="622" loading="lazy" className="w-full" />
+            <img src="/previews/fileflow-audience.jpg" alt="Countries, traffic sources and devices in the same dashboard" width="1600" height="694" loading="lazy" className="w-full" />
           </div>
-          <h3 className="mt-3 text-[1.1rem] tracking-tight">{analytics.name}</h3>
-          <p className="mt-0.5 max-w-2xl text-pretty text-sm text-muted-foreground">{analytics.body}</p>
+          <span className="float-chip absolute bottom-3 right-3">{analytics.chip}</span>
         </div>
       </div>
     </div>
