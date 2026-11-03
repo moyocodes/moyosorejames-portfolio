@@ -23,7 +23,11 @@ export default function FileFlow() {
       <div className="mt-12">
         <video
           controls
+          muted
           playsInline
+          // Browsers only allow playback without a click when muted; the controls can turn sound on.
+          onPointerEnter={(e) => e.pointerType === 'mouse' && e.currentTarget.play().catch(() => {})}
+          onPointerLeave={(e) => e.pointerType === 'mouse' && e.currentTarget.pause()}
           preload="none"
           poster={fileflow.video.poster}
           width="1280"
