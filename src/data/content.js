@@ -11,7 +11,7 @@ export const profile = {
   email: 'moyosorejames@gmail.com',
   phone: '+234 8061953109',
   // The one line beside the laptop. Keep it specific.
-  line: 'I build products with LLMs inside, and servers that tell them no.',
+  line: 'I build AI products that still work when the model gets it wrong.',
   links: {
     portfolio: 'https://moyosorejames.com',
     designPortfolio: 'https://www.canva.com/design/DAGgYoX5Hm0/bPtKpGVvsUrAqcGDQZK81A/view',
