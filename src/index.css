@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,40 +6,46 @@
 
 @layer base {
   :root {
-    --background: 210 14% 94%;
-    --foreground: 213 30% 6%;
-    --card: 210 20% 98%;
-    --card-foreground: 213 30% 6%;
-    --primary: 12 75% 49%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 214 16% 90%;
-    --secondary-foreground: 213 30% 6%;
-    --muted: 214 16% 90%;
-    --muted-foreground: 214 10% 38%;
-    --accent: 214 16% 90%;
-    --accent-foreground: 213 30% 6%;
-    --border: 214 14% 83%;
-    --input: 214 14% 83%;
-    --ring: 12 75% 49%;
+    --background: 38 30% 95%;
+    --foreground: 18 16% 13%;
+    --card: 40 40% 99%;
+    --card-foreground: 18 16% 13%;
+    --primary: 18 16% 13%;
+    --primary-foreground: 38 30% 95%;
+    --secondary: 36 20% 90%;
+    --secondary-foreground: 18 16% 13%;
+    --muted: 36 20% 90%;
+    --muted-foreground: 20 8% 34%;
+    --accent: 36 20% 88%;
+    --accent-foreground: 18 16% 13%;
+    --border: 32 16% 84%;
+    --input: 30 10% 66%;
+    --ring: 20 80% 38%;
+    --pop: 20 80% 36%;
+    --highlight: 38 80% 78%;
+    --highlight-foreground: 18 16% 13%;
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 213 30% 6%;
-    --foreground: 210 20% 95%;
-    --card: 214 24% 9%;
-    --card-foreground: 210 20% 95%;
-    --primary: 15 100% 62%;
-    --primary-foreground: 213 30% 6%;
-    --secondary: 214 20% 13%;
-    --secondary-foreground: 210 20% 95%;
-    --muted: 214 20% 11%;
-    --muted-foreground: 214 10% 64%;
-    --accent: 214 20% 13%;
-    --accent-foreground: 210 20% 95%;
-    --border: 214 16% 17%;
-    --input: 214 16% 17%;
-    --ring: 15 100% 62%;
+    --background: 12 12% 8%;
+    --foreground: 38 30% 92%;
+    --card: 12 10% 11%;
+    --card-foreground: 38 30% 92%;
+    --primary: 38 30% 92%;
+    --primary-foreground: 12 12% 8%;
+    --secondary: 12 8% 15%;
+    --secondary-foreground: 38 30% 92%;
+    --muted: 12 8% 15%;
+    --muted-foreground: 34 10% 68%;
+    --accent: 12 8% 17%;
+    --accent-foreground: 38 30% 92%;
+    --border: 20 8% 20%;
+    --input: 20 6% 36%;
+    --ring: 26 85% 70%;
+    --pop: 26 85% 72%;
+    --highlight: 30 60% 34%;
+    --highlight-foreground: 38 30% 95%;
   }
 }
 
@@ -47,12 +53,28 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground antialiased;
-    overflow-x: hidden;
-  }
   html {
+    font-size: 15px;
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    line-height: 1.65;
+    overflow-x: clip;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+  }
+  :focus-visible {
+    outline: 3px solid hsl(var(--ring));
+    outline-offset: 2px;
   }
 }
 
@@ -60,106 +82,131 @@
   .text-balance {
     text-wrap: balance;
   }
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary via-teal-500 to-amber-500 bg-clip-text text-transparent;
-  }
-  .glass {
-    @apply bg-background/70 backdrop-blur-lg;
+  .text-pretty {
+    text-wrap: pretty;
   }
   .glass-strong {
-    @apply bg-background/85 backdrop-blur-xl;
+    @apply bg-background/90 backdrop-blur-xl;
+  }
+  /* Highlighter-pen emphasis, the site's signature accent */
+  .mark {
+    background: hsl(var(--highlight));
+    color: hsl(var(--highlight-foreground));
+    padding: 0 0.18em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
 
-  /* Animated gradient mesh backdrop */
-  .mesh {
+  .section {
+    @apply py-16;
+    border-top: 1px solid hsl(var(--border));
+  }
+  .panel {
+    @apply rounded-2xl border border-border bg-card;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+  }
+  .site {
+    @apply mx-auto w-full max-w-[1080px] px-5;
+  }
+  /* Mono section label: 03 —— LIKE THIS */
+  .label {
+    @apply flex items-center gap-3 font-mono uppercase text-muted-foreground;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+  }
+  .label-num {
+    color: hsl(var(--pop));
+  }
+  .label-line {
+    @apply inline-block h-px w-7 bg-input;
+  }
+  /* The floating light panel used on every gradient card */
+  .float-panel {
+    @apply rounded-2xl bg-[#fbfaf7] text-[#261f1c];
+    box-shadow: 0 24px 50px -22px rgb(38 20 10 / 0.5);
+  }
+  .float-chip {
+    @apply rounded-lg bg-[#fbfaf7] px-3 py-1.5 text-sm font-medium text-[#261f1c];
+    box-shadow: 0 10px 24px -10px rgb(38 20 10 / 0.5);
+  }
+  /* Colour that drifts behind the page */
+  .aura {
+    @apply pointer-events-none absolute inset-0;
     background:
-      radial-gradient(40% 40% at 15% 15%, hsl(var(--primary) / 0.14), transparent 70%),
-      radial-gradient(35% 35% at 85% 85%, hsl(var(--primary) / 0.10), transparent 70%);
+      radial-gradient(38% 55% at 8% 55%, hsl(170 40% 45% / 0.32), transparent 70%),
+      radial-gradient(34% 50% at 92% 8%, hsl(18 60% 55% / 0.34), transparent 70%),
+      radial-gradient(30% 40% at 80% 95%, hsl(40 30% 60% / 0.2), transparent 70%);
+  }
+  /* The laptop's desktop, and what's behind the page as the camera enters it */
+  .wallpaper {
+    background:
+      radial-gradient(70% 90% at 12% 90%, rgb(62 140 125 / 0.35), transparent 70%),
+      radial-gradient(60% 70% at 95% 5%, rgb(214 120 80 / 0.35), transparent 70%),
+      #171312;
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
   }
 
-  /* Subtle film grain, applied as an overlay layer */
-  .grain::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.05;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  .dotgrid {
-    background-image: radial-gradient(circle at 1px 1px, hsl(var(--foreground) / 0.12) 1px, transparent 0);
-    background-size: 36px 36px;
-  }
-
-  /* Scroll-reveal: starts hidden, .is-visible (set by IntersectionObserver) reveals */
   .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal.is-visible {
     opacity: 1;
     transform: none;
   }
-
-  .shimmer {
-    background: linear-gradient(
-      110deg,
-      transparent 30%,
-      hsl(var(--foreground) / 0.08) 50%,
-      transparent 70%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 3s linear infinite;
+  .swap-in {
+    animation: swap-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
-
-  .fade-in {
-    animation: fade-in 0.5s ease-out both;
+  .pop-in {
+    animation: pop-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 }
 
-@keyframes shimmer {
-  to {
-    background-position: -200% 0;
-  }
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes float {
+@keyframes float-skill {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-14px);
+    transform: translateY(-5px);
   }
 }
+.float-skill {
+  animation: float-skill 6s ease-in-out infinite;
+}
 
-@keyframes float-slow {
+@keyframes fill-bar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.fill-bar {
+  animation: fill-bar 1.25s ease-in-out both;
+}
+
+@keyframes nudge-down {
   0%,
   100% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px) rotate(-1deg);
+    transform: translateY(4px);
   }
 }
+.animate-nudge-down {
+  animation: nudge-down 1.4s ease-in-out infinite;
+}
 
-@keyframes fade-in {
+@keyframes swap-in {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -167,16 +214,34 @@
   }
 }
 
-@keyframes spin-slow {
+@keyframes pop-in {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: scale(0.96);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
+/* A pulse travels along the active path in the LLM router demo */
+@keyframes travel {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(400%);
+  }
+}
+.travel {
+  animation: travel 1.4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
@@ -188,51 +253,4 @@
     opacity: 1;
     transform: none;
   }
-}
-
-
-/* ---- TTMP-inspired details ---- */
-
-/* Cursor: a soft ring that trails the pointer and swells over interactive elements. */
-@media (hover: hover) and (pointer: fine) {
-  body.has-cursor,
-  body.has-cursor a,
-  body.has-cursor button {
-    cursor: none;
-  }
-}
-#cur {
-  border: 1.5px solid hsl(var(--primary));
-  transition: width 0.25s, height 0.25s, background 0.25s, border-color 0.25s;
-}
-#cur.hov {
-  width: 56px;
-  height: 56px;
-  background: hsl(var(--primary) / 0.12);
-}
-
-/* Marquee — outlined oversized type, scrolls slowly */
-@keyframes tkr {
-  to {
-    transform: translateX(-50%);
-  }
-}
-.ticker-track {
-  animation: tkr 46s linear infinite;
-}
-
-/* Bracketed mono label: [ 01 ] Section */
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: hsl(var(--primary));
-}
-.eyebrow::before {
-  content: '//';
-  opacity: 0.6;
 }

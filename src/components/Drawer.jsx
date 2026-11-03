@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 
 /**
  * Drawer — a slide-in panel from the right (or left). Used for full-detail
- * views (e.g. the experience timeline) without leaving the current deck panel.
+ * views (e.g. templates for sale) without leaving the page.
  */
 export default function Drawer({ open, onClose, title, side = 'right', children, width = 'max-w-xl' }) {
   useEffect(() => {
@@ -28,7 +28,8 @@ export default function Drawer({ open, onClose, title, side = 'right', children,
       {/* Panel */}
       <div
         className={cn(
-          'absolute top-0 flex h-full w-full flex-col border-border bg-card shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]',
+          'absolute top-0 flex h-full w-full flex-col border-border bg-card transition-[transform,visibility] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]',
+          open ? 'visible shadow-2xl' : 'invisible',
           width,
           side === 'right'
             ? cn('right-0 border-l', open ? 'translate-x-0' : 'translate-x-full')
@@ -38,7 +39,7 @@ export default function Drawer({ open, onClose, title, side = 'right', children,
         aria-modal="true"
       >
         <div className="flex items-center justify-between border-b border-border px-6 py-4">
-          <h3 className="text-lg font-bold">{title}</h3>
+          <h3 className="text-lg font-semibold">{title}</h3>
           <Button variant="ghost" size="icon" onClick={onClose} aria-label="Close">
             <X className="h-5 w-5" />
           </Button>

@@ -4,27 +4,29 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>James Moyosore — Full-Stack Software Developer</title>
+    <title>James Moyosore — Technical Founder & Lead Software Developer</title>
     <meta
       name="description"
-      content="James Moyosore — Full-Stack Software Developer (Lagos, Nigeria). Backend, DevOps, CMS and ERP systems, with AI-integrated engineering. Lead developer of Tizeti OS, an ERP across 18 departments."
+      content="James Moyosore builds products with LLMs inside. Technical founder of Nudgy, FileFlowHQ and linqsafe, and a lead software developer."
     />
     <meta name="author" content="James Moyosore" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="canonical" href="https://moyosorejames.com/" />
     <meta property="og:site_name" content="James Moyosore" />
-    <meta property="og:title" content="James Moyosore — Full-Stack Software Developer" />
+    <meta property="og:title" content="James Moyosore — Technical Founder & Lead Software Developer" />
     <meta
       property="og:description"
-      content="Full-stack developer building ERP systems and AI-integrated products end to end. React, Next.js, Node.js, Laravel, FastAPI, DevOps."
+      content="I build products with LLMs inside, and servers that tell them no: Nudgy, FileFlowHQ, linqsafe and TourFinderApp."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://moyosorejames.com/" />
     <meta property="og:image" content="https://moyosorejames.com/moy.jpeg" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="James Moyosore — Full-Stack Software Developer" />
+    <meta name="twitter:title" content="James Moyosore — Technical Founder & Lead Software Developer" />
     <meta
       name="twitter:description"
-      content="Full-stack developer building ERP systems and AI-integrated products end to end."
+      content="I build products with LLMs inside, and servers that tell them no."
     />
     <meta name="twitter:image" content="https://moyosorejames.com/moy.jpeg" />
     <script type="application/ld+json">
@@ -36,10 +38,8 @@
         "image": "https://moyosorejames.com/moy.jpeg",
         "email": "mailto:moyosorejames@gmail.com",
         "jobTitle": "Lead Software Developer",
-        "worksFor": { "@type": "Organization", "name": "Tizeti Network Limited" },
         "alumniOf": { "@type": "CollegeOrUniversity", "name": "Bowen University" },
-        "address": { "@type": "PostalAddress", "addressLocality": "Lagos", "addressCountry": "NG" },
-        "knowsAbout": ["React", "Next.js", "Node.js", "Laravel", "Python", "FastAPI", "DevOps", "ERP systems", "LLM integration"],
+        "knowsAbout": ["React", "Next.js", "Vue.js", "Node.js", "Laravel", "Python", "FastAPI", "Rust", "WebAssembly", "DevOps", "ERP systems", "LLM integration", "Claude API"],
         "sameAs": [
           "https://github.com/moyocodes",
           "https://www.linkedin.com/in/james-moyosore-1aa550196"
@@ -51,8 +51,7 @@
       (function () {
         try {
           var stored = localStorage.getItem('theme');
-          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          if (stored === 'dark' || (!stored && prefersDark)) {
+          if (stored !== 'light') {
             document.documentElement.classList.add('dark');
           }
         } catch (e) {}

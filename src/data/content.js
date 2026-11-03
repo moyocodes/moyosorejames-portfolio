@@ -1,379 +1,336 @@
 // ============================================================================
 //  PORTFOLIO CONTENT — James Moyosore
-//  Edit this file to update text, links, projects, skills, and experience.
-//  TODO markers indicate values you should replace with real URLs/assets.
+//  Facts come from the CV (public/JamesMoyosoreCV.pdf). Work history and details
+//  of employer systems stay out of the site: it links to the CV instead.
+//  Edit this file to update text, links, projects and skills.
 // ============================================================================
 
 export const profile = {
   name: 'James Moyosore',
-  title: 'Full-Stack Software Developer',
-  tagline: 'Backend, DevOps & CMS · ERP & Business Systems · AI-Integrated Engineering',
-  location: 'Lagos, Nigeria',
+  title: 'Technical founder and lead software developer',
   email: 'moyosorejames@gmail.com',
-  phone: '(+234) 8061953109',
-  summary:
-    'Full-stack software developer with 5+ years of experience building and shipping production web systems across backend, frontend, DevOps and CMS. Lead Software Developer at Tizeti Network Limited, leading development of Tizeti OS — an in-house ERP spanning 18 departments across a multi-country operation — and owning full-stack delivery across Hotspot / Express Wi-Fi, WiFiCall, Free Fiber Africa and Tizeti Cloud.',
-  summaryLong:
-    'Works across React, Next.js, Vue.js and TypeScript on the front end and Node.js, PHP (including Laravel), Python (FastAPI) and MySQL on the back end, with CI/CD on AWS, Vercel, Render and DigitalOcean. Has led a team of 6 developers across 3 countries. Also integrates LLMs (Claude API with tool use, self-hosted Ollama models, OpenAI) into real products and ships own products such as FileFlowHQ and TourFinderApp.',
+  phone: '+234 8061953109',
+  // The one line beside the laptop. Keep it specific.
+  line: 'I build products with LLMs inside, and servers that tell them no.',
   links: {
     portfolio: 'https://moyosorejames.com',
     designPortfolio: 'https://www.canva.com/design/DAGgYoX5Hm0/bPtKpGVvsUrAqcGDQZK81A/view',
     github: 'https://github.com/moyocodes',
     linkedin: 'https://www.linkedin.com/in/james-moyosore-1aa550196',
-    cv: '/James_Moyosore_CV.pdf',
+    cv: '/JamesMoyosoreCV.pdf',
   },
 }
 
-export const whatICanDo = [
+// What the laptop's screen asks when it wakes up. An action's href of 'cv' opens the CV.
+export const onboarding = [
   {
-    title: 'Ship full-stack products end to end',
-    description:
-      'API design, database/ER modeling, authentication, payment integrations, role-based access, and responsive UI.',
-    icon: 'Layers',
-  },
-  {
-    title: 'Build ERP & business systems',
-    description:
-      'Procurement and requisition workflows, inventory and asset management, HR/leave, field-operations scheduling, and multi-level approval chains up to executive level.',
-    icon: 'Briefcase',
-  },
-  {
-    title: 'Integrate AI / LLM capabilities',
-    description:
-      'Claude API with tool use, self-hosted Ollama models, hybrid LLM routing, and AI-assisted workflows to speed up backend, frontend, and DevOps work.',
-    icon: 'Sparkles',
-  },
-  {
-    title: 'Build CMS & content systems',
-    description:
-      'CMS-style admin and content-management systems, including structured content modeling and editorial workflows.',
-    icon: 'FileText',
-  },
-  {
-    title: 'Own DevOps end to end',
-    description:
-      'CI/CD pipelines, deployments across AWS, Vercel, and Render, environment/config management, and performance/caching optimization.',
-    icon: 'Server',
-  },
-  {
-    title: 'Lead teams',
-    description:
-      'Mentor developers, run code reviews, and drive architecture and system-design decisions across multi-country, multi-product teams.',
-    icon: 'Users',
-  },
-]
-
-// icon: [library, iconName] — library is 'si' (react-icons/si, real brand logo)
-// or 'lucide' (generic shape, used when no brand logo exists for the item).
-export const skills = [
-  {
-    category: 'Frontend',
-    icon: 'MonitorSmartphone',
-    items: [
-      { name: 'React.js', icon: ['si', 'SiReact'] },
-      { name: 'Next.js', icon: ['si', 'SiNextdotjs'] },
-      { name: 'Vue.js', icon: ['si', 'SiVuedotjs'] },
-      { name: 'TypeScript', icon: ['si', 'SiTypescript'] },
-      { name: 'JavaScript', icon: ['si', 'SiJavascript'] },
-      { name: 'Tailwind CSS', icon: ['si', 'SiTailwindcss'] },
-      { name: 'Bootstrap', icon: ['si', 'SiBootstrap'] },
-      { name: 'Framer Motion', icon: ['si', 'SiFramer'] },
+    key: 'hiring',
+    label: 'I’m hiring',
+    title: 'Good. Here’s the short version.',
+    body: 'Technical founder and lead software developer. 5+ years shipping production systems, and a team of 6 led across 3 countries.',
+    actions: [
+      { label: 'View CV', href: 'cv' },
+      { label: 'See what I’ve shipped', href: '#work' },
     ],
   },
   {
-    category: 'Backend',
-    icon: 'Server',
-    items: [
-      { name: 'Node.js', icon: ['si', 'SiNodedotjs'] },
-      { name: 'Express', icon: ['si', 'SiExpress'] },
-      { name: 'Laravel (PHP)', icon: ['si', 'SiLaravel'] },
-      { name: 'Python (FastAPI)', icon: ['si', 'SiFastapi'] },
-      { name: 'NestJS', icon: ['si', 'SiNestjs'] },
-      { name: 'REST APIs', icon: ['lucide', 'Webhook'] },
-      { name: 'GraphQL', icon: ['si', 'SiGraphql'] },
-      { name: 'MySQL', icon: ['si', 'SiMysql'] },
-      { name: 'Firebase', icon: ['si', 'SiFirebase'] },
-      { name: 'Supabase', icon: ['si', 'SiSupabase'] },
+    key: 'project',
+    label: 'I have a project',
+    title: 'Tell me what you’re building.',
+    body: 'Look through what I’ve built for other people, then send me yours.',
+    actions: [
+      { label: 'See the work', href: '#work' },
+      { label: 'Get in touch', href: '#contact' },
     ],
   },
   {
-    category: 'AI / LLM Integration',
-    icon: 'Sparkles',
-    items: [
-      { name: 'Claude API & Tool Use', icon: ['si', 'SiClaude'] },
-      { name: 'Ollama (self-hosted)', icon: ['si', 'SiOllama'] },
-      { name: 'OpenAI API', icon: ['lucide', 'Bot'] },
-      { name: 'Hybrid LLM Routing', icon: ['lucide', 'GitFork'] },
-      { name: 'AI-Assisted Scaffolding', icon: ['lucide', 'Wand2'] },
-      { name: 'GitHub Copilot', icon: ['si', 'SiGithubcopilot'] },
-      { name: 'v0', icon: ['si', 'SiV0'] },
-    ],
-  },
-  {
-    category: 'DevOps & Deployment',
-    icon: 'Cloud',
-    items: [
-      { name: 'AWS', icon: ['lucide', 'Cloud'] },
-      { name: 'Vercel', icon: ['si', 'SiVercel'] },
-      { name: 'Render', icon: ['si', 'SiRender'] },
-      { name: 'DigitalOcean', icon: ['si', 'SiDigitalocean'] },
-      { name: 'Nginx & SSL', icon: ['si', 'SiNginx'] },
-      { name: 'Cloudflare', icon: ['si', 'SiCloudflare'] },
-      { name: 'CI/CD', icon: ['lucide', 'GitPullRequest'] },
-      { name: 'Git', icon: ['si', 'SiGit'] },
-      { name: 'Performance & Caching', icon: ['lucide', 'Gauge'] },
-    ],
-  },
-  {
-    category: 'ERP & Business Systems',
-    icon: 'Briefcase',
-    items: [
-      { name: 'Procurement & Requisitions', icon: ['lucide', 'ClipboardList'] },
-      { name: 'Inventory & Assets', icon: ['lucide', 'Boxes'] },
-      { name: 'HR / Leave Systems', icon: ['lucide', 'Users'] },
-      { name: 'Field-Ops Scheduling', icon: ['lucide', 'CalendarClock'] },
-      { name: 'Approval Chains', icon: ['lucide', 'GitMerge'] },
-      { name: 'Invoicing', icon: ['lucide', 'Receipt'] },
-    ],
-  },
-  {
-    category: 'CMS & Workflows',
-    icon: 'FileText',
-    items: [
-      { name: 'WordPress', icon: ['si', 'SiWordpress'] },
-      { name: 'Content Modeling', icon: ['lucide', 'FileStack'] },
-      { name: 'Admin Panels', icon: ['lucide', 'LayoutDashboard'] },
-      { name: 'CMS Integration', icon: ['lucide', 'FileText'] },
-    ],
-  },
-  {
-    category: 'Integrations',
-    icon: 'Plug',
-    items: [
-      { name: 'Paystack', icon: ['lucide', 'CreditCard'] },
-      { name: 'Flutterwave', icon: ['lucide', 'Wallet'] },
-      { name: 'Google Maps / MapLibre / Leaflet', icon: ['lucide', 'MapPin'] },
-      { name: 'Cloudinary', icon: ['lucide', 'Image'] },
-      { name: 'Resend / Mailgun / Mailjet', icon: ['lucide', 'Mail'] },
-      { name: 'WhatsApp Cloud API', icon: ['lucide', 'MessageSquareText'] },
-      { name: 'Adobe PDF Services', icon: ['lucide', 'FileText'] },
-    ],
-  },
-  {
-    category: 'SEO & Design',
-    icon: 'Sparkles',
-    items: [
-      { name: 'On-page SEO', icon: ['lucide', 'Search'] },
-      { name: 'Open Graph / Twitter cards', icon: ['lucide', 'Share2'] },
-      { name: 'Structured data (JSON-LD)', icon: ['lucide', 'FileStack'] },
-      { name: 'Prerendering SPA routes', icon: ['lucide', 'Gauge'] },
-      { name: 'UI / UX & brand design', icon: ['lucide', 'PenLine'] },
-      { name: 'Prototyping (v0, Google Stitch)', icon: ['lucide', 'Wand2'] },
-    ],
-  },
-  {
-    category: 'State, Mobile & Testing',
-    icon: 'GitBranch',
-    items: [
-      { name: 'React Query', icon: ['si', 'SiReactquery'] },
-      { name: 'Redux', icon: ['si', 'SiRedux'] },
-      { name: 'Context API', icon: ['lucide', 'Boxes'] },
-      { name: 'Capacitor (iOS/Android)', icon: ['si', 'SiCapacitor'] },
-      { name: 'Flutter', icon: ['si', 'SiFlutter'] },
-      { name: 'Jest', icon: ['si', 'SiJest'] },
-      { name: 'Vitest', icon: ['si', 'SiVitest'] },
+    key: 'looking',
+    label: 'Just looking around',
+    title: 'Start with the fun part.',
+    body: 'There’s a demo where you play an AI agent and my server refuses you.',
+    actions: [
+      { label: 'Try the demos', href: '#ai' },
+      { label: 'See the work', href: '#work' },
     ],
   },
 ]
 
-export const experience = [
+export const fileflow = {
+  intro: 'That’s FileFlowHQ, the privacy-first suite I founded and build alone. Everything runs in your browser, so files never leave your device and server costs stay near zero. Try it: drag the file across.',
+  products: [
+    {
+      name: 'The free tools',
+      chip: '17 tools, free',
+      body: 'Convert images and HEIC, shrink to a target size, merge and split PDFs, swap PDF and Word, scan documents. On the web, as a PWA and in Chrome.',
+      src: '/previews/fileflowhq.com.jpg',
+      url: 'https://fileflowhq.com',
+      grad: ['#d3efe6', '#7fc2b0'],
+    },
+    {
+      name: 'FileFlowHQ Studio',
+      chip: 'Rust + WebAssembly',
+      body: 'Paid in-browser editors for PDFs, photos, video, documents, slides and spreadsheets, with Paystack checkout for exports.',
+      src: '/previews/studio.fileflowhq.com.jpg',
+      url: 'https://studio.fileflowhq.com',
+      grad: ['#d9e4f2', '#7f9bd6'],
+    },
+    {
+      name: 'The Chrome extension',
+      chip: 'In the Web Store',
+      body: 'The file tools, one click away in your browser.',
+      src: '/previews/chrome-extension.jpg',
+      url: 'https://chromewebstore.google.com/detail/gjfjbeejnohhebifklghhhmdgjgbcbmf',
+      grad: ['#f6d9cc', '#e39f85'],
+    },
+  ],
+  video: {
+    src: '/launch-720.mp4',
+    poster: '/previews/launch-poster.jpg',
+    title: 'The launch film',
+    body: '38 seconds on what it does and why your files never leave.',
+  },
+  analytics: {
+    name: 'The analytics I built for it',
+    chip: 'Cookie-free',
+    body: 'No third-party tracker. My own dashboard counts views, files and downloads without cookies or stored IPs, on a handful of serverless functions.',
+    src: '/previews/fileflow-analytics.jpg',
+    grad: ['#f5ead0', '#dba94f'],
+  },
+  links: [
+    { label: 'Open FileFlowHQ', url: 'https://fileflowhq.com' },
+    { label: 'Open Studio', url: 'https://studio.fileflowhq.com' },
+    { label: 'Add to Chrome', url: 'https://chromewebstore.google.com/detail/gjfjbeejnohhebifklghhhmdgjgbcbmf' },
+    { label: 'npm package', url: 'https://www.npmjs.com/package/@fileflowhq/tools' },
+  ],
+}
+
+// The pinned "How I work" section. `rows` fill the floating panel beside each step.
+export const workSteps = [
   {
-    role: 'Lead Software Developer',
-    company: 'Tizeti Network Limited',
-    location: 'Lagos, Nigeria',
-    period: '02/2025 – Present',
-    current: true,
-    points: [
-      'Lead development of Tizeti OS, the in-house ERP spanning 18 departments across a multi-country operation; top contributor to the platform.',
-      'Digitised procurement, requisition and leave approval workflows with multi-level approval chains up to executive level (CIO / COO).',
-      'Built field-operations tooling (engineer scheduling, installation SLA tracking, automated PDF reports) and the fiber operations suite: customer management, wireless-to-fiber migration, splitter assignment and network mapping.',
-      'Own full-stack delivery across Hotspot / Express Wi-Fi, WiFiCall and Free Fiber Africa, and built the Tizeti Cloud customer portal with live Paystack billing.',
-      'Manage CI/CD and source control on AWS / Vercel / Render, with AI-assisted workflows for config, debugging and release checks.',
-      'Built a customer feedback / QA testing dashboard, a retention-agents module, mail-blast campaigns and a marketing data-analysis flow.',
-      'Added speed-test and coverage-search features to Free Fiber Africa; redesigned the Hotspot retailer / RDE interface and fixed auth, pagination and search bugs.',
-      'Work with NestJS to create REST endpoints, integrate external APIs and support backend email / notification workflows.',
-      'Produce system design diagrams, flowcharts and ER models for architecture planning.',
-      'Mentor junior and mid-level developers; lead code reviews and architecture / ER-model discussions.',
-      'Reduced load times by 30% through caching, reusable components and query optimisation.',
-    ],
+    title: 'Map it first.',
+    body: 'I sit with stakeholders and draw the workflow out, with flowcharts, system diagrams and ER models, before anyone writes code.',
+    chip: 'Before any code',
+    grad: ['#d8ece4', '#9fb8d8'],
+    rows: ['Map the workflow together', 'Draw the system and ER model', 'Then write the first line'],
   },
   {
-    role: 'Lead Frontend Developer',
-    company: 'Tizeti Network Limited',
-    location: 'Lagos, Nigeria',
-    period: '12/2023 – 02/2025',
-    points: [
-      'Led a team of 6 developers digitalising departmental workflows on Tizeti OS across 3 countries (React, Vue, PHP, Tailwind CSS, Material UI).',
-      'Built role-based access and KYC compliance workflows, secure authentication systems and payment gateways.',
-      'Code reviews cut issue rates by 50%; ran the team’s Git workflow on AWS CodeCommit.',
-      'Started the procurement module and built the leave-request flow with executive approvals.',
-      'Took over freefiber.africa: signup flow, country-specific KYC and referral programme.',
-      'Built customer relocation, support-visit and installation-verification modules.',
-      'Led product demos, technical documentation, and design / architecture discussions.',
-    ],
+    title: 'Build all of it.',
+    body: 'One person, one feature, every layer. I design the API, handle auth and payments, and finish the screen people actually use.',
+    chip: 'End to end',
+    grad: ['#f6dcc9', '#d6bfe0'],
+    rows: ['API and database', 'Auth and role-based access', 'Paystack and Flutterwave', 'The UI people touch'],
   },
   {
-    role: 'Frontend Developer',
-    company: 'Tizeti Network Limited',
-    location: 'Remote',
-    period: '03/2022 – 12/2023',
-    points: [
-      'Built responsive web applications with React.js, Bootstrap, JavaScript, TypeScript and Tailwind CSS.',
-      'Designed and implemented end-to-end secure payment gateways and user-facing dashboards; integrated Paystack with server-side verification.',
-      'Maintained wifi.com.ng on WordPress and built its React signup and regional pricing flows.',
-      'Partnered with designers and backend engineers on UI / UX consistency and API integration.',
-      'Debugged and optimised applications, reducing issue rates by 30%.',
-      'Built FSE / sales flows in Tizeti OS; worked on the new-system rollout, map clustering and Google Translate support.',
-      'Designed responsive email templates for bulk messaging; worked in an agile team with daily stand-ups and sprint planning.',
-    ],
+    title: 'Put models to work.',
+    body: 'Claude tool use, self-hosted fine-tuned models and hybrid routing, inside real products. And the server always checks what they say.',
+    chip: 'LLMs in production',
+    grad: ['#d3dcf5', '#7f9bd6'],
+    rows: ['Self-hosted Ollama for the easy ones', 'Claude for anything risky', 'Server checks before anything saves'],
   },
   {
-    role: 'NYSC Frontend Developer',
-    company: 'Tizeti Network Limited',
-    location: 'Remote',
-    period: '03/2021 – 02/2022',
-    points: [
-      'Developed responsive applications using React.js, Redux, PHP and TypeScript.',
-      'Implemented secure payment gateways and integrated REST APIs.',
-      'Optimised debugging processes, reducing issue rates by 30%.',
-      'Designed responsive email templates for bulk messaging.',
-    ],
-  },
-  {
-    role: 'Intern',
-    company: 'Safe Complex Multi-Biz Limited',
-    location: 'Ibadan, Nigeria (Remote)',
-    period: '03/2019 – 09/2020',
-    points: [
-      'Developed and maintained responsive web applications using HTML, CSS and JavaScript.',
-      'Built product showcase pages and digital branding assets.',
-    ],
+    title: 'Ship it and keep it fast.',
+    body: 'CI/CD on AWS, Vercel, Render and DigitalOcean, then the slow work of making it quicker. Caching and query tuning cut load times by 30%.',
+    chip: '30% faster',
+    grad: ['#f3e6d3', '#dba94f'],
+    rows: ['CI/CD pipelines', 'Caching and query tuning', 'Load times down 30%'],
   },
 ]
 
-// For each project:
-//   liveUrl → the live/production site (TODO: fill in real URLs)
-//   blurb   → one-line "what this system is" summary shown in the deck
-//   screens → the switchable views a visitor can flip through in the mockup
 export const projects = [
   {
-    name: 'Mindfully Articulated',
-    subtitle: 'CMS-Driven Content Platform',
-    blurb: 'A content platform with a custom admin panel for structured publishing.',
-    description:
-      'Design-led website for MAD, a product, marketing and design firm. A Node.js content platform with a custom admin panel, live-edit CMS panel, session authentication and image uploads to DigitalOcean Spaces; deploys via Bitbucket Pipelines to DigitalOcean App Platform.',
-    skills: ['React.js', 'Node.js', 'CMS Architecture', 'Admin Panel', 'Content Modeling'],
-    liveUrl: 'https://mindfullyarticulated.com',
-    scene: 'content',
-    accent: '#7c3aed',
-    featured: true,
-    screens: [
-      { key: 'read', label: 'Article', variant: 'content' },
-      { key: 'admin', label: 'Admin', variant: 'dashboard' },
+    name: 'Nudgy',
+    meta: 'Built in 10 days',
+    grad: ['#dcebd9', '#8fb8a0'],
+    summary: 'Say everything on your mind, out loud or typed. Nudgy sorts it into reminders and pesters you until they’re done.',
+    role: 'Founder and only engineer. Ten days from empty repo to live, after being selected for the Meta Global AI Developer Hackathon (Cerebral Valley, remote, Oct–Nov 2026).',
+    highlights: [
+      'A whole cast of Meta models, with a switch and a backup: Muse Spark, open-weights Muse Spark Open on Baseten or Modal, and Muse Voice Transcribe. SAM 3.1 handles photo proof. Muse Wonder and Muse Image draw the badges.',
+      '“Plan my day” is an agent that takes one tool per step. Offer a past, sleep-hour or clashing time and the server refuses, so it has to try again. Undo reverses the whole run.',
+      'Nudgy can’t brag about a reminder it never made, because every confirmation is built from what was really saved.',
     ],
+    stack: ['React 19', 'Express', 'Postgres', 'Render', 'Meta Model API'],
+    url: 'https://getnudged.chat',
+    previews: [{ label: 'Nudgy', src: '/previews/getnudged.chat.jpg', host: 'getnudged.chat' }],
   },
   {
-    name: 'FileFlowHQ',
-    subtitle: 'Free Online File Converter',
-    blurb: 'A free web utility that converts images, PDFs, and CSV/JSON right in the browser.',
-    description:
-      'Cross-platform file conversion suite, solo-built for web, iOS and Android, with 11 tools (image/PDF conversion and compression, merge/split PDF, PDF to Word, document scanner, QR/barcode scanner, CSV/JSON). Most processing is client-side for privacy and near-zero server cost; Vercel serverless functions for Adobe PDF Services and Mailjet.',
-    skills: ['React.js', 'Capacitor', 'Vercel Serverless', 'Client-Side Processing', 'Adobe PDF Services'],
-    liveUrl: 'https://fileflowhq.com',
-    scene: 'dashboard',
-    accent: '#0d9488',
-    featured: true,
-    screens: [
-      { key: 'convert', label: 'Convert', variant: 'dashboard' },
-      { key: 'home', label: 'Home', variant: 'landing' },
+    name: 'linqsafe',
+    meta: 'Paid in naira',
+    grad: ['#f6d9cc', '#e39f85'],
+    summary: 'One link for your whole online life, with 8 templates, 5 themes and analytics built in.',
+    role: 'Founder and builder.',
+    highlights: [
+      'Pay in naira, through Paystack, for only the features you want. AI can write your bio too.',
+      'Behind the scenes, my admin console tracks growth, revenue, traffic, and fraud and risk.',
+      'GitHub Actions ships every release.',
     ],
-  },
-  {
-    name: 'Volasec',
-    subtitle: 'Conversion-Focused Consulting Platform',
-    blurb: 'A multi-page consulting site engineered to build authority and drive enquiries.',
-    description:
-      'Conversion-focused multi-page website for a security and compliance consultancy (SOC 2, ISO 27001, cloud security architecture, risk assessments), with structured service messaging, responsive layout and SEO metadata.',
-    skills: ['React.js', 'Tailwind CSS', 'UI/UX Strategy', 'Conversion Architecture', 'Brand System'],
-    liveUrl: 'https://volasec.com',
-    scene: 'landing',
-    accent: '#0ea5e9',
-    screens: [
-      { key: 'home', label: 'Landing', variant: 'landing' },
-      { key: 'book', label: 'Booking', variant: 'booking' },
-    ],
-  },
-  {
-    name: 'Chi Farms',
-    subtitle: 'Agro-Industrial Corporate Website',
-    blurb: 'A corporate site for a poultry & aquaculture group, built on modular UI.',
-    description:
-      'Landing page for a vertically integrated poultry & aquaculture company, emphasizing operational scale and modular UI.',
-    skills: ['React.js', 'Node.js', 'Tailwind CSS', 'Resend API', 'SEO', 'Modular Components'],
-    liveUrl: 'https://chi-farms.com',
-    scene: 'landing',
-    accent: '#ea580c',
-    screens: [
-      { key: 'home', label: 'Home', variant: 'landing' },
-      { key: 'story', label: 'Story', variant: 'content' },
-    ],
-  },
-  {
-    name: 'Abánítúnráse',
-    subtitle: 'E-Commerce & Booking Platform',
-    blurb: 'A styling-house store with product sales and appointment scheduling.',
-    description:
-      'E-commerce and booking platform for a styling house (bridal styling, occasion looks, Kájáyelo travel wardrobe curation): Paystack with server-side verification, Cloudinary signed uploads, Resend email, WhatsApp Cloud API notifications, a custom admin dashboard, online product sales and appointment scheduling.',
-    skills: ['React.js', 'Tailwind CSS', 'Paystack', 'Cloudinary', 'WhatsApp Cloud API', 'Booking System'],
-    liveUrl: 'https://abanitunrase.com',
-    scene: 'shop',
-    accent: '#db2777',
-    screens: [
-      { key: 'shop', label: 'Shop', variant: 'shop' },
-      { key: 'book', label: 'Booking', variant: 'booking' },
-    ],
+    stack: ['React', 'Vite', 'Tailwind', 'Node / Express', 'MySQL', 'GitHub Actions'],
+    url: 'https://linqsafe.com',
+    previews: [{ label: 'linqsafe', src: '/previews/linqsafe.com.jpg', host: 'linqsafe.com' }],
   },
   {
     name: 'TourFinderApp',
-    subtitle: 'AI Travel Guide',
-    blurb: 'A conversational travel guide for any destination worldwide, backed by real place data.',
-    description:
-      'Conversational AI travel guide (food, landmarks, transport, safety, places to stay). Hybrid LLM routing on a Python / FastAPI backend: a self-hosted fine-tuned Ollama model for simple questions, Claude for safety-critical, time-sensitive and place-lookup queries. Claude tool-use loop for place search (OpenStreetMap, optionally Google Places) with web-search fallback, IP-based location, persistent sessions and free-plan usage metering. A rebuild of \u201cMobot\u201d, the Bowen University final-year project.',
-    skills: ['React.js', 'FastAPI (Python)', 'Claude Tool Use', 'Ollama', 'Hybrid LLM Routing', 'OpenStreetMap'],
-    liveUrl: 'https://tourfinderapp-eight.vercel.app',
-    scene: 'content',
-    accent: '#2563eb',
-    featured: true,
-    screens: [
-      { key: 'chat', label: 'Chat', variant: 'content' },
-      { key: 'places', label: 'Places', variant: 'dashboard' },
+    meta: 'Two models, one chat',
+    grad: ['#d9e4f2', '#7f9bd6'],
+    summary: 'Ask it where to eat, what to see, how to get around, where to stay and what’s safe.',
+    role: 'Builder. It started life as “Mobot”, my final-year project at Bowen University, and I rebuilt it from there.',
+    highlights: [
+      'Two models, one chat. A self-hosted, fine-tuned Ollama model takes the simple questions. Claude takes anything safety-critical, time-sensitive or about finding a place.',
+      'To find places, Claude loops through tools: OpenStreetMap, optionally Google Places, with web search to fall back on.',
+      'It knows roughly where you are from your IP, remembers your sessions and meters free-plan usage.',
+    ],
+    stack: ['Python / FastAPI', 'Claude API', 'Ollama', 'OpenStreetMap'],
+    url: 'https://tourfinder.app',
+    previews: [{ label: 'TourFinderApp', src: '/previews/tourfinder.app.jpg', host: 'tourfinder.app' }],
+  },
+  {
+    name: 'FileFlowHQ',
+    meta: '17 free tools',
+    grad: ['#d3efe6', '#7fc2b0'],
+    summary: 'File tools that never see your files. All the work happens inside your own browser.',
+    role: 'Founder and only engineer.',
+    highlights: [
+      '17 tools, all free: convert images and HEIC, shrink to a target size, merge, split and compress PDFs, swap PDF and Word, hear a PDF read aloud, scan documents and QR codes, tidy CSV and JSON. Use them on the web, as a PWA or from the Chrome extension.',
+      'The money comes from Studio: paid PDF, photo, video, document, slide and spreadsheet editors that run in the browser on Rust and WebAssembly. Paystack handles export checkout.',
+      'Server costs stay near zero. The backend is a few Vercel functions (Paystack, Resend, Upstash Redis) and my own cookie-free analytics.',
+      'Send a photo to the WhatsApp bot and a PDF comes back. It runs on the Meta Cloud API with signature-verified webhooks.',
+      'The core is open source as @fileflowhq/tools (MIT). Its CLI drops ready-made React components into your project.',
+    ],
+    stack: ['Rust / WebAssembly', 'React', 'Vercel Serverless', 'Paystack', 'Resend', 'Upstash Redis', 'WhatsApp Cloud API'],
+    url: 'https://fileflowhq.com',
+    links: [
+      { label: 'Studio', url: 'https://studio.fileflowhq.com' },
+      { label: 'npm package', url: 'https://www.npmjs.com/package/@fileflowhq/tools' },
+    ],
+    previews: [
+      { label: 'Free tools', src: '/previews/fileflowhq.com.jpg', host: 'fileflowhq.com' },
+      { label: 'Studio', src: '/previews/studio.fileflowhq.com.jpg', host: 'studio.fileflowhq.com' },
     ],
   },
   {
-    name: 'Neuro-app',
-    subtitle: 'Proof-of-Completion Habit Tracker',
-    blurb: 'A habit and task app where completion requires proof, not just a checkbox.',
-    description:
-      'A personal habit and task app that goes beyond a simple checklist — tasks require proof of completion (photo, GPS, or checklist) rather than a self-reported checkbox. Includes AI-assisted goal suggestions and an optional manager/team mode for assigning and verifying tasks across a team. Scheduled push reminders run on a low-overhead serverless architecture.',
-    skills: ['React.js', 'Vite PWA', 'Tailwind CSS', 'Supabase', 'Framer Motion', 'Push Notifications'],
-    liveUrl: '', // TODO
-    scene: 'dashboard',
-    accent: '#f59e0b',
-    screens: [
-      { key: 'today', label: 'Today', variant: 'dashboard' },
-      { key: 'task', label: 'Proof', variant: 'content' },
+    name: 'MAD — Mindfully Articulated Design',
+    meta: 'Live-edit CMS',
+    grad: ['#f5ead0', '#dba94f'],
+    shortName: 'MAD',
+    summary: 'A custom CMS and content platform for a product, marketing and design firm.',
+    role: 'Built in Node.js. It also runs their agency site.',
+    highlights: [
+      'The team edits pages live, from a custom admin and CMS panel behind session login.',
+      'Images go straight to DigitalOcean Spaces.',
+      'Bitbucket Pipelines deploys it to DigitalOcean App Platform.',
     ],
+    stack: ['Node.js', 'Custom CMS', 'DigitalOcean', 'Bitbucket Pipelines'],
+    url: 'https://mad-peach.vercel.app',
+    previews: [{ label: 'MAD', src: '/previews/mad-peach.vercel.app.jpg', host: 'mad-peach.vercel.app' }],
   },
+  {
+    name: 'Volasec',
+    meta: 'SOC 2 and ISO 27001',
+    grad: ['#e9e6dd', '#a9a595'],
+    summary: 'A multi-page website that turns visitors into enquiries for a security and compliance consultancy.',
+    role: 'Their services include SOC 2, ISO 27001, cloud security architecture and risk assessments.',
+    highlights: ['Each service gets clear, structured messaging.', 'It works on any screen and carries proper SEO metadata.'],
+    stack: ['Responsive UI', 'SEO metadata', 'Conversion design'],
+    url: 'https://volasec.com',
+    previews: [{ label: 'Volasec', src: '/previews/volasec.com.jpg', host: 'volasec.com' }],
+  },
+  {
+    name: 'Abánítúnráse',
+    meta: 'Shop and bookings',
+    grad: ['#f6dbe3', '#d9a0c0'],
+    summary: 'Shop and book a styling house online, from bridal and occasion looks to Kájáyelo travel wardrobes.',
+    role: 'The full store and booking system, plus a custom dashboard to run it.',
+    highlights: [
+      'Every Paystack payment gets verified on the server.',
+      'Uploads to Cloudinary are signed, and Resend sends the email.',
+      'New activity also pings over the WhatsApp Cloud API.',
+    ],
+    stack: ['Paystack', 'Cloudinary', 'Resend', 'WhatsApp Cloud API'],
+    url: 'https://abanitunrase.com',
+    previews: [{ label: 'Abánítúnráse', src: '/previews/abanitunrase.com.jpg', host: 'abanitunrase.com' }],
+  },
+  {
+    name: 'Chi Farms',
+    meta: 'Poultry and aquaculture',
+    grad: ['#e4efd0', '#9dbb6d'],
+    summary: 'A corporate site for a vertically integrated poultry and aquaculture company, built to show the scale of its operation.',
+    role: 'Landing page, built from modular components.',
+    highlights: [
+      'Modular UI that puts the company’s operational scale up front.',
+      'Resend handles email, and the build carries proper SEO.',
+    ],
+    stack: ['React', 'Node.js', 'Tailwind CSS', 'Resend', 'SEO'],
+    url: 'https://chi-farms.com',
+    previews: [{ label: 'Chi Farms', src: '/previews/chi-farms.com.jpg', host: 'chi-farms.com' }],
+  },
+]
+
+// Sample inputs for the two demos in the AI section. They illustrate rules stated
+// in the CV; the demos don't call any model.
+export const routerSamples = [
+  {
+    question: 'What are the best local dishes to try?',
+    kind: 'Simple',
+    target: 'ollama',
+    why: 'An easy one, so it stays on my own fine-tuned model.',
+  },
+  {
+    question: 'Is this area safe to walk through at night?',
+    kind: 'Safety',
+    target: 'claude',
+    why: 'A wrong answer could hurt someone, so Claude takes it.',
+  },
+  {
+    question: 'Is the museum open right now?',
+    kind: 'Time-sensitive',
+    target: 'claude',
+    why: 'The answer depends on the moment, so Claude takes it.',
+  },
+  {
+    question: 'Find me a pharmacy near here.',
+    kind: 'Place lookup',
+    target: 'claude',
+    tool: true,
+    why: 'Claude goes looking, with OpenStreetMap tools first and web search as the fallback.',
+  },
+]
+
+export const agentAttempts = [
+  { time: 'Yesterday, 4:00 pm', ok: false, rule: 'in the past', reason: 'That moment has gone.' },
+  { time: 'Tonight, 3:00 am', ok: false, rule: 'sleep hours', reason: 'Nobody should get nudged then.' },
+  { time: 'Today, 2:00 pm', ok: false, rule: 'clash', reason: '“Team call” already has that slot.' },
+  { time: 'Tomorrow, 10:00 am', ok: true },
+]
+
+export const skills = [
+  { category: 'Frontend', items: ['React', 'Next.js', 'Vue.js', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'Material UI', 'Framer Motion', 'Rust / WebAssembly'] },
+  { category: 'Backend', items: ['Node.js', 'Express', 'Laravel', 'PHP', 'Python (FastAPI)', 'REST', 'GraphQL', 'MySQL', 'Postgres', 'Firebase', 'Supabase'] },
+  { category: 'AI and LLMs', items: ['Claude API and tool use', 'Self-hosted, fine-tuned Ollama', 'Hybrid routing', 'OpenAI API', 'Meta Model API', 'Dialogflow'] },
+  { category: 'DevOps', items: ['AWS', 'Vercel', 'Render', 'DigitalOcean', 'Cloudflare', 'Nginx', 'Docker', 'CI/CD', 'Bitbucket Pipelines', 'GitHub Actions'] },
+  { category: 'Mobile and testing', items: ['Capacitor', 'Flutter', 'Jest', 'Vitest', 'React Testing Library'] },
+  { category: 'Integrations', items: ['Paystack', 'Flutterwave', 'WhatsApp Cloud API', 'Cloudinary', 'Resend', 'Mailgun', 'Google Maps', 'MapLibre GL', 'OpenStreetMap'] },
+  { category: 'Business systems', items: ['Custom ERP', 'Procurement', 'Inventory and assets', 'HR and leave', 'Approval chains', 'Invoicing'] },
+  { category: 'Content and SEO', items: ['Custom CMS and admin panels', 'WordPress', 'On-page SEO', 'JSON-LD', 'Prerendering', 'Google Analytics'] },
+  { category: 'Design', items: ['UI / UX', 'Brand design', 'Google Stitch', 'v0', 'Canva'] },
+]
+
+export const education = {
+  degree: 'B.Sc. Computer Science & Information Technology',
+  honours: 'Second Class Upper Honours',
+  school: 'Bowen University, Iwo',
+  period: '2016 – 2020',
+  extras: [
+    'Social Director of the Computer Science Department (2019 – 2020)',
+    'Built Mobot, a tourist guide chatbot for Ibadan, in Flutter and Dialogflow for my final-year project',
+  ],
+}
+
+export const certifications = [
+  { name: 'Google AI Professional Certificate (8 courses)', by: 'Google | Coursera, October 2026' },
+  { name: 'Meta Full Stack Developer: Front-End & Back-End from Scratch Specialization', by: 'Meta | Coursera, 2026' },
+  { name: 'Introduction to Front-End Development', by: 'Meta | Coursera, 2026' },
+  { name: 'Institute of Personal Development and Customer Relationship Management (IPCDRM)', by: 'Qatar, 2025' },
+  { name: 'National Youth Service Corps (NYSC)', by: 'Service completed March 2022' },
+  { name: 'Cisco Certified Network Associate', by: 'Online training certificate of completion, August 2020' },
 ]
 
 // ============================================================================
@@ -382,136 +339,45 @@ export const projects = [
 export const templates = [
   {
     name: 'Lumen — Photography Landing',
-    tagline: 'Elegant, conversion-focused landing page for photographers & studios.',
+    tagline: 'A landing page that helps photographers and studios win bookings.',
     price: '$29',
     priceNote: 'one-time',
     store: 'Gumroad',
     buyUrl: 'https://moyosore45.gumroad.com/l/lumenphotographylanding',
     previewUrl: 'https://moyosore45.gumroad.com/l/lumenphotographylanding',
-    scene: 'gallery',
-    accent: '#d97706',
     featured: true,
     features: [
-      'Fully responsive gallery layout',
-      'Booking-ready contact section',
-      'Fast, SEO-optimized build',
-      'Easy color & content customization',
-    ],
-    tags: ['React', 'Tailwind CSS', 'Landing Page'],
-    screens: [
-      { key: 'hero', label: 'Home', variant: 'gallery' },
-      { key: 'grid', label: 'Portfolio', variant: 'shop' },
-      { key: 'book', label: 'Contact', variant: 'booking' },
+      'A gallery that fits any screen',
+      'A contact section ready for bookings',
+      'Quick to load and set up for SEO',
+      'Colours and content you can change easily',
     ],
   },
   {
     name: 'LUMEN — Photography Portfolio & Booking Site',
-    tagline: 'A complete photography portfolio and booking website for mobile/freelance photographers who take bookings over WhatsApp.',
+    tagline: 'A full portfolio and booking site for freelance photographers who take bookings on WhatsApp.',
     description:
-      'Includes two full builds of the same site: React 19 + Vite + Tailwind CSS v4 for devs who want a component codebase, and plain HTML + CSS + vanilla JS with zero dependencies and no build step — just open it.',
+      'You get the same site twice. One is React 19, Vite and Tailwind CSS v4, for developers who want components. The other is plain HTML, CSS and JavaScript with no dependencies or build step, so you can just open it.',
     price: 'View',
     priceNote: 'on Selar',
     store: 'Selar',
     buyUrl: 'https://selar.com/2fq8zr41q6',
     previewUrl: 'https://selar.com/2fq8zr41q6',
-    scene: 'gallery',
-    accent: '#4f46e5',
     features: [
-      'Cinematic scroll-driven hero with rotating photo collage',
-      'Horizontal film-strip gallery with scroll-scrubbing animation',
-      'Light & dark mode, with a smart toast inviting visitors to switch',
-      'Pricing/packages with WhatsApp-prefilled booking links',
-      'Booking policy + accordion FAQ',
-      'Editorial testimonials with star ratings',
-      'Sticky WhatsApp chat widget + floating rate-card widget',
-      'Fully responsive, custom cursor, smooth scroll-reveal animations',
-      'Rebrand in minutes: every business detail lives in one config file per version',
-      'Full source for both versions, placeholder content and free stock photography, plus a README',
+      'A scroll-driven hero with a rotating photo collage',
+      'A film-strip gallery that moves as you scroll',
+      'Light and dark modes, with a prompt inviting visitors to switch',
+      'Packages with WhatsApp booking links already filled in',
+      'A booking policy and fold-out FAQ',
+      'Testimonials with star ratings',
+      'A WhatsApp chat button and rate card that stay in reach',
+      'Works on any screen, with a custom cursor and smooth reveals',
+      'Rebrand in minutes, since each version keeps business details in one config file',
+      'Full source for both versions, sample content, free stock photos and a README',
     ],
-    requirements: 'React version: Node.js + npm. HTML version: none — works in any browser.',
-    tags: ['React 19', 'Vite', 'Tailwind CSS v4', 'HTML / CSS / JS'],
-    screens: [
-      { key: 'home', label: 'Landing', variant: 'landing' },
-      { key: 'dash', label: 'Sections', variant: 'dashboard' },
-    ],
+    requirements: 'The React version needs Node.js and npm. The HTML version just needs a browser.',
   },
 ]
 
-// Admin access to the blog editor (#/admin) is handled by Supabase Auth —
+// Admin access to the blog editor (/admin) is handled by Supabase Auth —
 // see src/pages/Admin.jsx and supabase/schema.sql.
-
-// ============================================================================
-//  AI WORKFLOW — how I actually work with AI coding agents on production code.
-//  Each entry: a real task, what the agent got wrong, and how I caught it.
-// ============================================================================
-export const aiWorkflow = {
-  intro:
-    'I use AI coding agents daily on production systems — but as a force multiplier, not an authority. The pattern is always the same: give it a documented spec, verify its output against reality, and push back when the "done" report does not match live testing.',
-  splitNote:
-    'Copilot for research and direction (competitor analysis, UI/UX — colours, layout, flow). Claude for build-out from documented specs. Recurring friction: agents default to a stack (e.g. TypeScript) without asking — so I verify the codebase itself rather than trusting the summary.',
-  cases: [
-    {
-      competency: 'Hands-on use of AI coding agents',
-      title: 'Tizeti Hotspot — slow Nigeria-tab load',
-      icon: 'Gauge',
-      body:
-        'Diagnosed via the network tab that the API was fast but rendering was slow. Asked Claude to investigate; it found a hardcoded records-per-page limit (1000) but fixed only one of two occurrences. Live testing showed the fix had not worked — pushed back, it found the second hardcoded instance. Fixed and verified in under 30 minutes.',
-    },
-    {
-      competency: 'Remote, async collaboration',
-      title: 'Architecture handoff — monolith vs. decoupled',
-      icon: 'Users',
-      body:
-        'Client wanted a decoupled architecture; a Laravel teammate leaned monolith for convenience. Built the frontend UX flow first, then had Claude generate a DB schema from it — including business-logic constraints (a "next" step can’t proceed without a save). Its first schema missed foreign-key relationships across the full flow; corrected it by giving explicit step order. Verified against real user scenarios, then handed the schema to the teammate, who built the backend from it with no back-and-forth calls.',
-    },
-    {
-      competency: 'Workflow & tooling literacy + critique',
-      title: 'Copilot vs. Claude — division of labour',
-      icon: 'GitCompare',
-      body:
-        'Copilot for research and direction; Claude for build-out from specs. Recurring frustration: Claude defaults to TypeScript without asking, though I work in plain JS/JSX — so I correct it explicitly each time and verify by grepping for leftover .tsx files rather than trusting its "done" report. The critique: tools should ask about stack preferences upfront instead of assuming.',
-    },
-  ],
-}
-
-export const heroStats = [
-  { value: '18', label: 'departments on Tizeti OS' },
-  { value: '6', label: 'developers led' },
-  { value: '3', label: 'countries' },
-  { value: '30%', label: 'faster load times' },
-]
-
-// Private/internal systems — no public link, so shown as a write-up.
-export const flagshipWork = [
-  {
-    name: 'Tizeti OS',
-    blurb: 'In-house ERP spanning 18 departments across a multi-country operation: procurement, requisitions, inventory, HR/leave, field scheduling and KYC, with approval chains up to CIO / COO.',
-  },
-  {
-    name: 'Installation & scheduling system',
-    blurb: 'Built the sales, scheduler and field-engineer (FSE) flows — from customer sign-up and payment through installation, failed installs and refunds.',
-  },
-  {
-    name: 'Tizeti Cloud',
-    blurb: 'Customer portal with marketing site, plans, registration with live Paystack billing, and a customer dashboard.',
-  },
-  {
-    name: 'Hotspot / Express Wi-Fi',
-    blurb: 'Vue.js / PHP platform: redesigned the retailer / RDE interface and fixed a slow country view caused by a hardcoded pagination limit.',
-  },
-]
-
-export const certifications = [
-  'Meta Full Stack Developer Specialization — Coursera, 2026',
-  'Meta Introduction to Front-End Development — Coursera, 2026',
-  'Cisco Certified Network Associate (CCNA) — 2020',
-  'Institute of Personal Development and Customer Relationship Management (IPCDRM), Qatar — 2025',
-]
-
-export const education = {
-  degree: 'B.Sc. Computer Science & Information Technology',
-  honours: 'Second Class Upper Honours',
-  school: 'Bowen University, Iwo',
-  period: '2016 – 2020',
-  extra: 'Social Director, Computer Science Department (2019–2020)',
-}

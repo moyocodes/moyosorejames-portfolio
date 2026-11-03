@@ -1,77 +1,58 @@
+import { useEffect } from 'react'
 import { useHashRoute } from '@/hooks/useHashRoute'
-import { PreviewProvider } from '@/components/mock/PreviewContext'
-import Cursor from '@/components/Cursor'
-import Deck from '@/components/deck/Deck'
-import DeckNavbar from '@/components/DeckNavbar'
-import HeroPanel from '@/components/panels/HeroPanel'
-import AboutPanel from '@/components/panels/AboutPanel'
-import SkillsPanel from '@/components/panels/SkillsPanel'
-import ExperiencePanel from '@/components/panels/ExperiencePanel'
-import AiWorkflowPanel from '@/components/panels/AiWorkflowPanel'
-import ProjectsPanel from '@/components/panels/ProjectsPanel'
+import Nav from '@/components/site/Nav'
+import CommandPalette from '@/components/site/CommandPalette'
+import Hero from '@/components/site/Hero'
+import Work from '@/components/site/Work'
+import FileFlow from '@/components/site/FileFlow'
+import HowIWork from '@/components/site/HowIWork'
+import LlmLab from '@/components/site/LlmLab'
+import CvSection from '@/components/site/CvSection'
+import Skills from '@/components/site/Skills'
+import Contact from '@/components/site/Contact'
 import TemplatesDrawer from '@/components/TemplatesDrawer'
-import ContactPanel from '@/components/panels/ContactPanel'
-import Panel from '@/components/deck/Panel'
 import Blog from '@/pages/Blog'
 import BlogPost from '@/pages/BlogPost'
 import Admin from '@/pages/Admin'
 
-// The full-screen deck: each entry is one panel (one viewport).
-const panels = [
-  { id: 'hero', label: 'Home', render: ({ isActive }) => wrap('hero', isActive, HeroPanel, { bg: true }) },
-  { id: 'about', label: 'About', render: ({ isActive }) => wrap('about', isActive, AboutPanel) },
-  { id: 'skills', label: 'Skills', render: ({ isActive }) => wrap('skills', isActive, SkillsPanel) },
-  { id: 'experience', label: 'Experience', render: ({ isActive }) => wrap('experience', isActive, ExperiencePanel) },
-  { id: 'ai-workflow', label: 'AI Workflow', render: ({ isActive }) => wrap('ai-workflow', isActive, AiWorkflowPanel) },
-  { id: 'projects', label: 'Work', chromeless: true, render: ({ isActive }) => rawFull('projects', isActive, ProjectsPanel) },
-  { id: 'contact', label: 'Contact', render: ({ isActive }) => wrap('contact', isActive, ContactPanel) },
-]
+function Home() {
+  // The page renders after load, so the browser can't jump to a #section by itself.
+  useEffect(() => {
+    if (window.location.hash) document.querySelector(window.location.hash)?.scrollIntoView()
+  }, [])
 
-function wrap(id, isActive, Component, opts = {}) {
   return (
-    <Panel id={id} active={isActive} {...opts}>
-      <Component active={isActive} />
-    </Panel>
-  )
-}
-
-// Full-bleed panels (carousels) that own their own full-height layout: keep the
-// immersive background + entrance fade, but drop Panel's centering/max-width.
-function rawFull(id, isActive, Component) {
-  return (
-    <section
-      id={id}
-      className="grain relative h-[100dvh] w-full overflow-hidden"
-    >
-      <div className="mesh pointer-events-none absolute inset-0 -z-10 opacity-70" />
-      <div className="dotgrid pointer-events-none absolute inset-0 -z-10 opacity-40" />
-      <div
-        className={
-          'relative z-10 h-full w-full transition-[transform,opacity] duration-700 ' +
-          (isActive ? 'opacity-100' : 'translate-y-6 opacity-0')
-        }
+    <>
+      <a
+        href="#main"
+        className="sr-only left-4 top-4 z-[70] rounded-lg bg-primary px-4 py-2 font-semibold text-primary-foreground focus:not-sr-only focus:fixed"
       >
-        <Component active={isActive} />
-      </div>
-    </section>
+        Skip to content
+      </a>
+      <Nav />
+      <CommandPalette />
+      <TemplatesDrawer />
+      <main id="main">
+        <Hero />
+                <Work />
+        <FileFlow />
+        <HowIWork />
+        <LlmLab />
+        <Skills />
+        <CvSection />
+        <Contact />
+      </main>
+    </>
   )
 }
 
 export default function App() {
   const { route } = useHashRoute()
 
-  // Blog + admin are standalone scrolling pages.
+  // Blog + admin are standalone pages.
   if (route === 'blog') return <Blog />
   if (route.startsWith('blog/')) return <BlogPost slug={route.slice('blog/'.length)} />
   if (route === 'admin') return <Admin />
 
-  // Default: the immersive full-screen deck.
-  const initialId = route.startsWith('panel/') ? route.slice('panel/'.length) : 'hero'
-  return (
-    <PreviewProvider>
-      <Cursor />
-      <TemplatesDrawer />
-      <Deck panels={panels} initialId={initialId} navbar={<DeckNavbar />} />
-    </PreviewProvider>
-  )
+  return <Home />
 }

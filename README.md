@@ -1,6 +1,6 @@
 # James Moyosore — Portfolio
 
-A full-screen "deck" portfolio site built with **React + Vite**, **Tailwind CSS**, and **shadcn/ui**-style components. Navigate panel-by-panel (Home, About, Skills, Experience, AI Workflow, Work, Templates, Contact) with light/dark theming, plus a standalone Supabase-backed **blog** and a password-protected **admin editor** for writing posts.
+A scrolling, interactive portfolio site built with **React + Vite**, **Tailwind CSS**, and **shadcn/ui**-style components, with light/dark theming, a ⌘K search, plus a standalone Supabase-backed **blog** and a password-protected **admin editor** for writing posts.
 
 ## Tech stack
 
@@ -21,7 +21,7 @@ npm run build    # production build → dist/
 npm run preview  # preview the production build locally
 ```
 
-Without a `.env`, the deck (Home/About/Skills/Experience/Work/etc.) still works — only the blog (`#blog`) and admin editor (`#admin`) need Supabase, and `src/lib/supabase.js` warns in the console if the env vars are missing.
+Without a `.env`, the home page still works — only the blog (`#blog`) and admin editor (`#admin`) need Supabase, and `src/lib/supabase.js` warns in the console if the env vars are missing.
 
 See **[supabase/README.md](./supabase/README.md)** for setting up the `posts` table, RLS policies, and an admin login.
 
@@ -29,50 +29,36 @@ See **[supabase/README.md](./supabase/README.md)** for setting up the `posts` ta
 
 ```
 src/
-├── App.jsx                      # routes between the deck, blog, and admin
+├── App.jsx                      # routes between the home page, blog, and admin
 ├── main.jsx                     # React entry
 ├── index.css                    # Tailwind + theme tokens (light/dark)
 ├── data/
-│   ├── content.js                # ← profile, skills, experience, projects, templates, AI workflow (edit this)
+│   ├── content.js                # ← everything on the home page, from the CV (edit this)
 │   └── posts.js                  # Supabase-backed blog CRUD (fetchPosts, createPost, updatePost, deletePost, ...)
-├── hooks/
-│   ├── useTheme.js                # light/dark theme logic
-│   ├── useHashRoute.js            # hash-based routing (deck panels, #blog, #admin)
-│   ├── useAutoRotate.js           # auto-advance between deck panels
-│   └── useRequestedProject.js
+├── hooks/                        # theme, routing, templates drawer, site events
 ├── lib/
+│   ├── site.js                    # lets search and hero links drive the sections
 │   ├── utils.js                   # cn() classname helper
 │   └── supabase.js                # Supabase client, built from env vars
-├── pages/
-│   ├── Blog.jsx                   # published-posts list (#blog)
-│   ├── BlogPost.jsx                # single post view (#blog/:slug)
-│   └── Admin.jsx                   # password-protected post editor (#admin)
+├── pages/                        # Blog, BlogPost, Admin
 └── components/
     ├── ui/                        # shadcn primitives: button, card, badge
-    ├── deck/Deck.jsx, Panel.jsx    # full-screen panel carousel engine
-    ├── panels/                     # HeroPanel, AboutPanel, SkillsPanel, ExperiencePanel,
-    │                                 AiWorkflowPanel, ProjectsPanel, TemplatesPanel, ContactPanel
-    ├── mock/                       # device/UI mockups used in panels
-    ├── DeckNavbar.jsx, Drawer.jsx, Markdown.jsx, PageShell.jsx, Reveal.jsx, ThemeToggle.jsx
+    ├── site/                      # Nav, CommandPalette, Hero, Laptop, Onboarding, Work, FileFlow, HowIWork, LlmLab,
+    │                                Skills, CvSection, Contact
+    ├── Drawer.jsx, TemplatesDrawer.jsx, Markdown.jsx, PageShell.jsx, Reveal.jsx, ThemeToggle.jsx
 ```
 
 ## Customizing content
 
-Everything about the deck panels is driven from **`src/data/content.js`**: `profile`, `whatICanDo`, `skills`, `experience`, `projects`, `templates`, `aiWorkflow`, and `education`. Search that file for `TODO` to find values you should replace:
+Everything on the home page is driven from **`src/data/content.js`**, which mirrors the CV in `public/JamesMoyosoreCV.pdf`. To swap the CV, replace the PDF and update `profile.links.cv`.
 
-- **Social links** — GitHub, LinkedIn, design portfolio URLs (`profile.links`)
-- **Project links** — each project's `liveUrl`
-- **Project previews** — set a project's `previewUrl` to a screenshot to replace the generated gradient graphic (see below)
+Blog content is **not** in `content.js` — it lives in Supabase and is written through the admin editor (see `supabase/README.md`).
 
-Blog content is **not** in `content.js` — it lives in Supabase and is written through the `#admin` editor (see `supabase/README.md`).
+### Project screenshots
 
-### Adding real project screenshots
-
-1. Take a screenshot of the live site (e.g. 1600×1000).
-2. Drop it in `public/` — e.g. `public/previews/fantasy-showdown.png`.
-3. In `content.js`, set that project's `previewUrl: '/previews/fantasy-showdown.png'`.
-
-Until you do, each card shows a clean generated gradient graphic, so the site looks complete right away.
+1. Take a 1440×900 screenshot of the live site.
+2. Save it as `public/previews/<host>.jpg`.
+3. Point that project's `previews` entry in `content.js` at it.
 
 ## Deployment
 
