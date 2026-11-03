@@ -88,6 +88,7 @@ const Laptop = forwardRef(function Laptop({ children }, ref) {
           <div className="absolute inset-0 rounded-[16px] bg-[#0b0b0c] p-[13px] shadow-[inset_0_0_0_1px_#3b3c40]" style={{ backfaceVisibility: 'hidden' }}>
             <span className="absolute left-1/2 top-[5px] h-[4px] w-[4px] -translate-x-1/2 rounded-full bg-[#26272b]" aria-hidden="true" />
             <div className="wallpaper relative h-full overflow-hidden rounded-[4px]">
+              <img src="/mj-logo.png" alt="" aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 w-[62%] -translate-x-1/2 -translate-y-1/2 opacity-[0.14] mix-blend-screen" />
               <div ref={content} className="absolute inset-0">{children}</div>
               {/* Glass reflection, and the black of a screen that's off */}
               <div className="pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(115deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 28%, transparent 42%)' }} aria-hidden="true" />
