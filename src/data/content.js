@@ -352,15 +352,15 @@ export const agentAttempts = [
 ]
 
 export const skills = [
-  { category: 'Frontend', items: ['React', 'Next.js', 'Vue.js', 'TypeScript', 'Redux', 'React Query', 'Tailwind CSS', 'Bootstrap', 'shadcn/ui', 'Material UI', 'Framer Motion', 'Rust / WebAssembly'] },
-  { category: 'Backend', items: ['Node.js', 'Express', 'Laravel', 'PHP', 'Python (FastAPI)', 'REST', 'GraphQL', 'MySQL', 'Postgres', 'Firebase', 'Supabase'] },
-  { category: 'AI and LLMs', items: ['Claude API and tool use', 'Self-hosted, fine-tuned Ollama', 'Hybrid routing', 'OpenAI API', 'Meta Model API', 'Dialogflow'] },
-  { category: 'DevOps', items: ['AWS (CodeCommit, S3)', 'Vercel', 'Render', 'DigitalOcean', 'Cloudflare', 'Nginx', 'Docker', 'CI/CD', 'Bitbucket Pipelines', 'GitHub Actions', 'FTP deployment', 'Datadog'] },
-  { category: 'Mobile and testing', items: ['Capacitor', 'Flutter', 'Jest', 'Vitest', 'React Testing Library'] },
-  { category: 'Integrations', items: ['Paystack', 'Flutterwave', 'WhatsApp Cloud API', 'Cloudflare R2', 'Resend', 'Mailgun', 'Google Maps', 'MapLibre GL', 'OpenStreetMap'] },
-  { category: 'Business systems', items: ['Custom ERP', 'Procurement', 'Inventory and assets', 'HR and leave', 'Approval chains', 'Invoicing'] },
-  { category: 'Content and SEO', items: ['Custom CMS and admin panels', 'WordPress', 'On-page SEO', 'JSON-LD', 'Prerendering', 'Google Analytics'] },
-  { category: 'Design', items: ['UI / UX', 'Brand design', 'Google Stitch', 'v0', 'Canva'] },
+  { category: 'Frontend', items: ['React.js', 'Next.js', 'TypeScript', 'JavaScript', 'Vue.js', 'Tailwind CSS', 'Bootstrap', 'Redux', 'React Query', 'React Context', 'Responsive design', 'Rust / WebAssembly'] },
+  { category: 'Backend', items: ['Node.js', 'Express.js', 'Python', 'FastAPI', 'Laravel', 'PHP', 'REST API development', 'CRUD endpoints', 'GraphQL'] },
+  { category: 'Databases and storage', items: ['MySQL', 'DigitalOcean Spaces / object storage', 'Cloudflare R2', 'Postgres', 'Database integrations'] },
+  { category: 'Cloud, deployment and DevOps', items: ['DigitalOcean', 'AWS CodeCommit', 'AWS S3 integration', 'Vercel', 'Nginx', 'Bitbucket Pipelines', 'CI/CD', 'FTP deployments', 'Git', 'Render', 'GitHub Actions', 'Datadog'] },
+  { category: 'Application engineering', items: ['Authentication', 'Authorization', 'Payment integrations', 'Admin dashboards', 'CMS development', 'Caching', 'Application modernization', 'Performance optimization', 'System design', 'SEO'] },
+  { category: 'Testing', items: ['Jest', 'Vitest', 'React Testing Library'] },
+  { category: 'Integrations', items: ['Paystack', 'Flutterwave', 'Resend', 'WhatsApp notifications', 'Google Maps', 'OpenStreetMap'] },
+  { category: 'AI integration', items: ['Claude', 'OpenAI API', 'Ollama', 'LLM routing', 'Tool use', 'Prompt design'] },
+  { category: 'Leadership', items: ['Technical mentoring', 'Code reviews', 'Team leadership', 'Debugging', 'Technical documentation', 'Project demonstrations'] },
 ]
 
 // Roles and dates only; the CVs carry the detail.
@@ -394,14 +394,16 @@ export const education = {
   ],
 }
 
+// `url` makes a certification clickable. Files live in public/certificates/.
 export const certifications = [
-  { name: 'Google AI Professional Certificate (8 courses)', by: 'Google | Coursera, October 2026' },
+  { name: 'Google AI Professional Certificate (8 courses)', by: 'Google | Coursera, 13 October 2026', url: '/certificates/google-ai-professional-certificate.pdf' },
   { name: 'Meta Full Stack Developer: Front-End & Back-End from Scratch Specialization', by: 'Meta | Coursera, 2026' },
-  { name: 'Introduction to Front-End Development', by: 'Meta | Coursera, 2026' },
-  { name: 'Institute of Personal Development and Customer Relationship Management (IPCDRM)', by: 'Qatar, 2025' },
+  { name: 'Introduction to Front-End Development', by: 'Meta | Coursera, 29 April 2026', url: '/certificates/meta-intro-front-end-development.jpg' },
+  { name: 'Institute of Personality Development & Customer Relationship Management (IPD-CRM)', by: 'Member, Nigeria, 24 September 2025', url: '/certificates/ipd-crm-membership.pdf' },
   { name: 'National Youth Service Corps (NYSC)', by: 'Service March 2021 – February 2022' },
-  { name: 'Cisco Certified Network Associate', by: 'Online training certificate of completion, August 2020' },
-  { name: 'PHP Course Certificate', by: 'SoloLearn, July 2019' },
+  { name: 'CCNA: Cisco Certified Network Associate (Exam 200-301)', by: 'New Horizons online training, scored 100%, August 2020', url: '/certificates/ccna-new-horizons.pdf' },
+  { name: 'PHP Course Certificate', by: 'SoloLearn, 1 July 2019 (CT-OECJROFP)', url: '/certificates/sololearn-php.pdf' },
+  { name: 'Google Digital Skills for Africa', by: 'Certificate of participation, Konverge Media, 2018', url: '/certificates/google-digital-skills-for-africa.pdf' },
 ]
 
 // ============================================================================

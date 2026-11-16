@@ -57,7 +57,13 @@ export default function CvSection() {
           <ul className="mt-3 grid gap-x-8 gap-y-3 sm:grid-cols-2">
             {certifications.map((c) => (
               <li key={c.name}>
-                <span className="block text-sm font-medium leading-snug">{c.name}</span>
+                {c.url ? (
+                  <a href={c.url} target="_blank" rel="noreferrer" className="group block text-sm font-medium leading-snug hover:underline">
+                    {c.name} <ArrowUpRight className="inline h-3.5 w-3.5 text-muted-foreground group-hover:text-foreground" />
+                  </a>
+                ) : (
+                  <span className="block text-sm font-medium leading-snug">{c.name}</span>
+                )}
                 <span className="text-sm text-muted-foreground">{c.by}</span>
               </li>
             ))}

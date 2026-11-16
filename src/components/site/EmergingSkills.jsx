@@ -1,22 +1,21 @@
 import { forwardRef, useImperativeHandle, useMemo, useRef } from 'react'
 import { Cloud } from 'lucide-react'
 import {
-  SiBitbucket, SiCapacitor, SiClaude, SiCloudflare, SiDialogflow, SiDigitalocean, SiDocker, SiExpress, SiFastapi,
-  SiFirebase, SiFlutter, SiFramer, SiGithubactions, SiGraphql, SiJest, SiLaravel, SiMeta, SiMui, SiMysql, SiNextdotjs, SiNginx,
-  SiNodedotjs, SiOllama, SiOpenstreetmap, SiPhp, SiPostgresql, SiReact, SiRender, SiRust, SiShadcnui, SiSupabase, SiTailwindcss,
-  SiTypescript, SiV0, SiVercel, SiVitest, SiVuedotjs, SiWebassembly, SiWhatsapp, SiWordpress,
+  SiBitbucket, SiBootstrap, SiClaude, SiCloudflare, SiDatadog, SiDigitalocean, SiExpress, SiFastapi, SiGit, SiGithubactions,
+  SiGooglemaps, SiGraphql, SiJest, SiLaravel, SiMysql, SiNextdotjs, SiNginx, SiNodedotjs, SiOllama, SiOpenstreetmap, SiPhp,
+  SiPostgresql, SiPython, SiReact, SiReactquery, SiRedux, SiRender, SiRust, SiTailwindcss, SiTestinglibrary, SiTypescript,
+  SiVercel, SiVitest, SiVuedotjs, SiWebassembly, SiWhatsapp,
 } from 'react-icons/si'
 
 const ITEMS = [
   ['React', SiReact], ['Claude', SiClaude], ['Node.js', SiNodedotjs], ['TypeScript', SiTypescript], ['Ollama', SiOllama],
-  ['Next.js', SiNextdotjs], ['Rust', SiRust], ['Postgres', SiPostgresql], ['Vue.js', SiVuedotjs], ['Meta Models', SiMeta],
-  ['Laravel', SiLaravel], ['FastAPI', SiFastapi], ['Docker', SiDocker], ['Tailwind', SiTailwindcss], ['AWS', Cloud],
-  ['WebAssembly', SiWebassembly], ['Vercel', SiVercel], ['MySQL', SiMysql], ['GraphQL', SiGraphql], ['Supabase', SiSupabase],
-  ['PHP', SiPhp], ['Express', SiExpress], ['Cloudflare', SiCloudflare], ['Flutter', SiFlutter], ['Firebase', SiFirebase],
+  ['Next.js', SiNextdotjs], ['Rust', SiRust], ['Postgres', SiPostgresql], ['Vue.js', SiVuedotjs], ['Python', SiPython],
+  ['Laravel', SiLaravel], ['FastAPI', SiFastapi], ['Redux', SiRedux], ['Tailwind', SiTailwindcss], ['AWS', Cloud],
+  ['WebAssembly', SiWebassembly], ['Vercel', SiVercel], ['MySQL', SiMysql], ['GraphQL', SiGraphql], ['React Query', SiReactquery],
+  ['PHP', SiPhp], ['Express', SiExpress], ['Cloudflare R2', SiCloudflare], ['Bootstrap', SiBootstrap], ['Datadog', SiDatadog],
   ['DigitalOcean', SiDigitalocean], ['Render', SiRender], ['Nginx', SiNginx], ['GitHub Actions', SiGithubactions], ['Bitbucket', SiBitbucket],
-  ['WhatsApp API', SiWhatsapp], ['OpenStreetMap', SiOpenstreetmap], ['shadcn/ui', SiShadcnui], ['Material UI', SiMui],
-  ['Framer Motion', SiFramer], ['Capacitor', SiCapacitor], ['Jest', SiJest], ['Vitest', SiVitest], ['WordPress', SiWordpress],
-  ['Dialogflow', SiDialogflow], ['v0', SiV0],
+  ['WhatsApp', SiWhatsapp], ['OpenStreetMap', SiOpenstreetmap], ['Google Maps', SiGooglemaps], ['Git', SiGit],
+  ['Jest', SiJest], ['Vitest', SiVitest], ['Testing Library', SiTestinglibrary],
 ]
 
 const clamp = (v) => Math.min(1, Math.max(0, v))
