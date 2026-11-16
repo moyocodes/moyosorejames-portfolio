@@ -1,7 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 import SectionHead from '@/components/site/SectionHead'
 import { buttonVariants } from '@/components/ui/button'
-import { certifications, education, profile } from '@/data/content'
+import { certifications, cvs, education, experience, experienceWins, profile } from '@/data/content'
 
 export default function CvSection() {
   return (
@@ -18,6 +18,32 @@ export default function CvSection() {
       </div>
 
       <div className="divide-y divide-border border-y border-border">
+        <div className="py-5">
+          <p className="label">CVs by role</p>
+          <ul className="mt-3 space-y-2">
+            {cvs.map((c) => (
+              <li key={c.file}>
+                <a href={c.file} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 text-sm font-medium hover:underline">
+                  {c.title} <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground group-hover:text-foreground" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="py-5">
+          <p className="label">Experience</p>
+          <ul className="mt-3 space-y-2">
+            {experience.map((e) => (
+              <li key={e.role + e.period} className="flex flex-wrap items-baseline justify-between gap-x-4 text-sm">
+                <span><span className="font-medium">{e.role}</span> <span className="text-muted-foreground">· {e.org}</span></span>
+                <span className="font-mono text-xs text-muted-foreground">{e.period}</span>
+              </li>
+            ))}
+          </ul>
+          <ul className="mt-3 space-y-1 text-sm text-muted-foreground">
+            {experienceWins.map((w) => <li key={w}>{w}</li>)}
+          </ul>
+        </div>
         <div className="py-5">
           <p className="label">Education</p>
           <h3 className="mt-2 font-semibold">{education.degree}</h3>

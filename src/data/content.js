@@ -1,7 +1,7 @@
 // ============================================================================
 //  PORTFOLIO CONTENT — James Moyosore
-//  Facts come from the CV (public/JamesMoyosoreCV.pdf). Work history and details
-//  of employer systems stay out of the site: it links to the CV instead.
+//  Facts come from the role CVs in public/ (see `cvs` below). Roles and dates are listed;
+//  details of employer systems stay out of the site, which links to the CVs instead.
 //  Edit this file to update text, links, projects and skills.
 // ============================================================================
 
@@ -17,9 +17,16 @@ export const profile = {
     designPortfolio: 'https://www.canva.com/design/DAGgYoX5Hm0/bPtKpGVvsUrAqcGDQZK81A/view',
     github: 'https://github.com/moyocodes',
     linkedin: 'https://www.linkedin.com/in/james-moyosore-1aa550196',
-    cv: '/JamesMoyosoreCV.pdf',
+    cv: '/James_Moyosore_Full_Stack_CV.pdf',
   },
 }
+
+// Role-specific CVs, listed in the CV section. Files live in public/.
+export const cvs = [
+  { title: 'Senior / Lead Full-Stack Software Engineer', file: '/James_Moyosore_Full_Stack_CV.pdf' },
+  { title: 'AI-Integrated Software Engineer', file: '/James_Moyosore_AI_Engineer_CV.pdf' },
+  { title: 'Solutions Engineer', file: '/James_Moyosore_Solutions_Engineer_CV.pdf' },
+]
 
 // What the laptop's screen asks when it wakes up. An action's href of 'cv' opens the CV.
 export const onboarding = [
@@ -27,7 +34,7 @@ export const onboarding = [
     key: 'hiring',
     label: 'I’m hiring',
     title: 'Good. Here’s the short version.',
-    body: 'Technical founder and lead software developer. 5+ years shipping production systems, and a team of 6 led across 3 countries.',
+    body: 'Technical founder and lead software developer. 5+ years shipping production systems, a team of 6 led across 3 countries, and clients in Canada and the UK.',
     actions: [
       { label: 'View CV', href: 'cv' },
       { label: 'See what I’ve shipped', href: '#work' },
@@ -129,10 +136,10 @@ export const workSteps = [
   },
   {
     title: 'Ship it and keep it fast.',
-    body: 'CI/CD on AWS, Vercel, Render and DigitalOcean, then the slow work of making it quicker. Caching and query tuning cut load times by 30%.',
+    body: 'CI/CD on AWS, Vercel, Render and DigitalOcean, then the slow work of making it quicker. Moving the ERP from Create React App to Vite, with React Query and caching, cut load times by 30%, measured in Datadog.',
     chip: '30% faster',
     grad: ['#f3e6d3', '#dba94f'],
-    rows: ['CI/CD pipelines', 'Caching and query tuning', 'Load times down 30%'],
+    rows: ['CI/CD pipelines', 'Create React App to Vite', 'React Query and caching', 'Load times down 30% in Datadog'],
   },
 ]
 
@@ -216,7 +223,7 @@ export const projects = [
     highlights: [
       'The team edits pages live, from a custom admin and CMS panel behind session login.',
       'Images go straight to DigitalOcean Spaces.',
-      'Bitbucket Pipelines deploys it to DigitalOcean App Platform.',
+      'Bitbucket Pipelines deploys it to a DigitalOcean Droplet running Nginx.',
     ],
     stack: ['Node.js', 'Custom CMS', 'DigitalOcean', 'Bitbucket Pipelines'],
     url: 'https://mad-peach.vercel.app',
@@ -226,10 +233,10 @@ export const projects = [
     name: 'Volasec',
     meta: 'SOC 2 and ISO 27001',
     grad: ['#e9e6dd', '#a9a595'],
-    summary: 'A multi-page website that turns visitors into enquiries for a security and compliance consultancy.',
-    role: 'Their services include SOC 2, ISO 27001, cloud security architecture and risk assessments.',
-    highlights: ['Each service gets clear, structured messaging.', 'It works on any screen and carries proper SEO metadata.'],
-    stack: ['Responsive UI', 'SEO metadata', 'Conversion design'],
+    summary: 'A multi-page website that turns visitors into enquiries for a Canadian security and compliance consultancy.',
+    role: 'I designed and built the UI and screens, generated the site imagery, set up email and handled SEO. Their services include SOC 2, ISO 27001, cloud security architecture and risk assessments.',
+    highlights: ['Each service gets clear, structured messaging.', 'It works on any screen and carries proper SEO metadata.', 'The imagery across the site was generated for it.'],
+    stack: ['Responsive UI', 'SEO metadata', 'Email setup', 'Conversion design'],
     url: 'https://volasec.com',
     previews: [{ label: 'Volasec', src: '/previews/volasec.com.jpg', host: 'volasec.com' }],
   },
@@ -238,13 +245,14 @@ export const projects = [
     meta: 'Shop and bookings',
     grad: ['#f6dbe3', '#d9a0c0'],
     summary: 'Shop and book a styling house online, from bridal and occasion looks to Kájáyelo travel wardrobes.',
-    role: 'The full store and booking system, plus a custom dashboard to run it.',
+    role: 'The full store and booking system, plus a CMS and admin panel to run it.',
     highlights: [
+      'The admin panel manages bookings and which dates are open, and customers can track their own bookings.',
       'Every Paystack payment gets verified on the server.',
-      'Uploads to Cloudinary are signed, and Resend sends the email.',
+      'Files are stored on Cloudflare R2, and Resend sends the email.',
       'New activity also pings over the WhatsApp Cloud API.',
     ],
-    stack: ['Paystack', 'Cloudinary', 'Resend', 'WhatsApp Cloud API'],
+    stack: ['Paystack', 'Cloudflare R2', 'Resend', 'WhatsApp Cloud API'],
     url: 'https://abanitunrase.com',
     previews: [{ label: 'Abánítúnráse', src: '/previews/abanitunrase.com.jpg', host: 'abanitunrase.com' }],
   },
@@ -253,14 +261,56 @@ export const projects = [
     meta: 'Poultry and aquaculture',
     grad: ['#e4efd0', '#9dbb6d'],
     summary: 'A corporate site for a vertically integrated poultry and aquaculture company, built to show the scale of its operation.',
-    role: 'Landing page, built from modular components.',
+    role: 'I redesigned and rebuilt the corporate website with updated content.',
     highlights: [
       'Modular UI that puts the company’s operational scale up front.',
-      'Resend handles email, and the build carries proper SEO.',
+      'Job seekers can apply straight from the website.',
+      'Resend handles email, the build carries proper SEO, and it deploys over FTP.',
     ],
-    stack: ['React', 'Node.js', 'Tailwind CSS', 'Resend', 'SEO'],
+    stack: ['React', 'Node.js', 'Tailwind CSS', 'Resend', 'SEO', 'FTP'],
     url: 'https://chi-farms.com',
     previews: [{ label: 'Chi Farms', src: '/previews/chi-farms.com.jpg', host: 'chi-farms.com' }],
+  },
+  {
+    name: 'Free Fiber Africa',
+    meta: 'Team of 6, 3 countries',
+    grad: ['#d6e6f5', '#5f8fc4'],
+    summary: 'The landing website and customer dashboard for a fibre internet service in Nigeria, Ghana and Côte d’Ivoire.',
+    role: 'I led a six-person development team, built across three countries, on the landing site and customer dashboard.',
+    highlights: [
+      'A fibre coverage map on Google Maps and OpenStreetMap, with coverage areas managed through the ERP.',
+      'Customers see their payment history, usage history and account details, and can switch between multiple accounts.',
+      'Payments through Paystack, Flutterwave and bank transfer across Nigeria, Ghana and Côte d’Ivoire.',
+      'Customer data and feedback stay in sync with the ERP, so staff see the same information.',
+    ],
+    stack: ['React', 'Google Maps', 'OpenStreetMap', 'Paystack', 'Flutterwave', 'ERP integration'],
+    url: 'https://freefiber.africa',
+    links: [{ label: 'Customer dashboard', url: 'https://dashboard.tizeti.com' }],
+    previews: [{ label: 'Free Fiber Africa', src: '/previews/freefiber.africa.jpg', host: 'freefiber.africa' }],
+  },
+  {
+    name: 'Fantasy Showdown',
+    meta: 'Real-money fantasy football',
+    grad: ['#d6ecd2', '#5f9e6e'],
+    summary: 'A real-money fantasy football platform, built on Fantasy Premier League data.',
+    role: 'I took over a partly designed, largely unintegrated app, built its core and became the project’s top contributor.',
+    highlights: [
+      'I built the game engine plus the user and owner admin areas.',
+      'Paystack takes payments, and withdrawals are verified by BVN.',
+      'I moved the frontend from Create React App to Vite and set up CI/CD with Bitbucket Pipelines to a DigitalOcean Droplet running Nginx.',
+    ],
+    stack: ['React', 'Laravel', 'Vite', 'Paystack', 'Flutterwave', 'Bitbucket Pipelines', 'DigitalOcean', 'Nginx'],
+  },
+  {
+    name: 'Virola Threads',
+    meta: 'Shopify + GraphQL',
+    grad: ['#dfe9e3', '#6f9a86'],
+    summary: 'An online store for a fashion label, with prices in your own currency.',
+    role: 'A Shopify e-commerce build on GraphQL.',
+    highlights: ['The storefront talks to Shopify through its GraphQL API.'],
+    stack: ['Shopify', 'GraphQL'],
+    url: 'https://virolathreads.vercel.app',
+    previews: [{ label: 'Virola Threads', src: '/previews/virolathreads.vercel.app.jpg', host: 'virolathreads.vercel.app' }],
   },
 ]
 
@@ -302,15 +352,35 @@ export const agentAttempts = [
 ]
 
 export const skills = [
-  { category: 'Frontend', items: ['React', 'Next.js', 'Vue.js', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'Material UI', 'Framer Motion', 'Rust / WebAssembly'] },
+  { category: 'Frontend', items: ['React', 'Next.js', 'Vue.js', 'TypeScript', 'Redux', 'React Query', 'Tailwind CSS', 'Bootstrap', 'shadcn/ui', 'Material UI', 'Framer Motion', 'Rust / WebAssembly'] },
   { category: 'Backend', items: ['Node.js', 'Express', 'Laravel', 'PHP', 'Python (FastAPI)', 'REST', 'GraphQL', 'MySQL', 'Postgres', 'Firebase', 'Supabase'] },
   { category: 'AI and LLMs', items: ['Claude API and tool use', 'Self-hosted, fine-tuned Ollama', 'Hybrid routing', 'OpenAI API', 'Meta Model API', 'Dialogflow'] },
-  { category: 'DevOps', items: ['AWS', 'Vercel', 'Render', 'DigitalOcean', 'Cloudflare', 'Nginx', 'Docker', 'CI/CD', 'Bitbucket Pipelines', 'GitHub Actions'] },
+  { category: 'DevOps', items: ['AWS (CodeCommit, S3)', 'Vercel', 'Render', 'DigitalOcean', 'Cloudflare', 'Nginx', 'Docker', 'CI/CD', 'Bitbucket Pipelines', 'GitHub Actions', 'FTP deployment', 'Datadog'] },
   { category: 'Mobile and testing', items: ['Capacitor', 'Flutter', 'Jest', 'Vitest', 'React Testing Library'] },
-  { category: 'Integrations', items: ['Paystack', 'Flutterwave', 'WhatsApp Cloud API', 'Cloudinary', 'Resend', 'Mailgun', 'Google Maps', 'MapLibre GL', 'OpenStreetMap'] },
+  { category: 'Integrations', items: ['Paystack', 'Flutterwave', 'WhatsApp Cloud API', 'Cloudflare R2', 'Resend', 'Mailgun', 'Google Maps', 'MapLibre GL', 'OpenStreetMap'] },
   { category: 'Business systems', items: ['Custom ERP', 'Procurement', 'Inventory and assets', 'HR and leave', 'Approval chains', 'Invoicing'] },
   { category: 'Content and SEO', items: ['Custom CMS and admin panels', 'WordPress', 'On-page SEO', 'JSON-LD', 'Prerendering', 'Google Analytics'] },
   { category: 'Design', items: ['UI / UX', 'Brand design', 'Google Stitch', 'v0', 'Canva'] },
+]
+
+// Roles and dates only; the CVs carry the detail.
+export const experience = [
+  { role: 'Lead Software Developer', org: 'Tizeti Network Limited, Lagos', period: 'Feb 2025 – Present' },
+  { role: 'Lead Frontend Developer', org: 'Tizeti Network Limited, Lagos', period: 'Dec 2023 – Feb 2025' },
+  { role: 'Frontend Developer', org: 'Tizeti Network Limited, Lagos', period: 'Mar 2022 – Dec 2023' },
+  { role: 'NYSC Frontend Developer', org: 'Tizeti Network Limited, Lagos', period: 'Mar 2021 – Feb 2022' },
+  { role: 'Intern', org: 'Safe Complex Multi-Biz', period: 'Mar 2019 – Sep 2020' },
+]
+export const experienceWins = [
+  'Code reviews and debugging cut customer-reported issue tickets by 50%.',
+  'Fixing ERP loopholes cut employee-reported issues by 30%.',
+  'Delivered projects for clients in Canada and the United Kingdom.',
+]
+
+export const availability = [
+  'Based in Lagos, Nigeria.',
+  'Available for remote work with international teams that can hire or contract from Nigeria.',
+  'Open to relocating to the UK, US, Canada or Europe with employer sponsorship.',
 ]
 
 export const education = {
@@ -319,7 +389,7 @@ export const education = {
   school: 'Bowen University, Iwo',
   period: '2016 – 2020',
   extras: [
-    'Social Director of the Computer Science Department (2019 – 2020)',
+    'Social Director, University Student Leadership',
     'Built Mobot, a tourist guide chatbot for Ibadan, in Flutter and Dialogflow for my final-year project',
   ],
 }
@@ -329,8 +399,9 @@ export const certifications = [
   { name: 'Meta Full Stack Developer: Front-End & Back-End from Scratch Specialization', by: 'Meta | Coursera, 2026' },
   { name: 'Introduction to Front-End Development', by: 'Meta | Coursera, 2026' },
   { name: 'Institute of Personal Development and Customer Relationship Management (IPCDRM)', by: 'Qatar, 2025' },
-  { name: 'National Youth Service Corps (NYSC)', by: 'Service completed March 2022' },
+  { name: 'National Youth Service Corps (NYSC)', by: 'Service March 2021 – February 2022' },
   { name: 'Cisco Certified Network Associate', by: 'Online training certificate of completion, August 2020' },
+  { name: 'PHP Course Certificate', by: 'SoloLearn, July 2019' },
 ]
 
 // ============================================================================

@@ -1,7 +1,7 @@
 import { forwardRef, useImperativeHandle, useMemo, useRef } from 'react'
 import { Cloud } from 'lucide-react'
 import {
-  SiBitbucket, SiCapacitor, SiClaude, SiCloudflare, SiCloudinary, SiDialogflow, SiDigitalocean, SiDocker, SiExpress, SiFastapi,
+  SiBitbucket, SiCapacitor, SiClaude, SiCloudflare, SiDialogflow, SiDigitalocean, SiDocker, SiExpress, SiFastapi,
   SiFirebase, SiFlutter, SiFramer, SiGithubactions, SiGraphql, SiJest, SiLaravel, SiMeta, SiMui, SiMysql, SiNextdotjs, SiNginx,
   SiNodedotjs, SiOllama, SiOpenstreetmap, SiPhp, SiPostgresql, SiReact, SiRender, SiRust, SiShadcnui, SiSupabase, SiTailwindcss,
   SiTypescript, SiV0, SiVercel, SiVitest, SiVuedotjs, SiWebassembly, SiWhatsapp, SiWordpress,
@@ -14,7 +14,7 @@ const ITEMS = [
   ['WebAssembly', SiWebassembly], ['Vercel', SiVercel], ['MySQL', SiMysql], ['GraphQL', SiGraphql], ['Supabase', SiSupabase],
   ['PHP', SiPhp], ['Express', SiExpress], ['Cloudflare', SiCloudflare], ['Flutter', SiFlutter], ['Firebase', SiFirebase],
   ['DigitalOcean', SiDigitalocean], ['Render', SiRender], ['Nginx', SiNginx], ['GitHub Actions', SiGithubactions], ['Bitbucket', SiBitbucket],
-  ['WhatsApp API', SiWhatsapp], ['Cloudinary', SiCloudinary], ['OpenStreetMap', SiOpenstreetmap], ['shadcn/ui', SiShadcnui], ['Material UI', SiMui],
+  ['WhatsApp API', SiWhatsapp], ['OpenStreetMap', SiOpenstreetmap], ['shadcn/ui', SiShadcnui], ['Material UI', SiMui],
   ['Framer Motion', SiFramer], ['Capacitor', SiCapacitor], ['Jest', SiJest], ['Vitest', SiVitest], ['WordPress', SiWordpress],
   ['Dialogflow', SiDialogflow], ['v0', SiV0],
 ]

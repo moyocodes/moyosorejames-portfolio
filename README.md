@@ -50,7 +50,7 @@ src/
 
 ## Customizing content
 
-Everything on the home page is driven from **`src/data/content.js`**, which mirrors the CV in `public/JamesMoyosoreCV.pdf`. To swap the CV, replace the PDF and update `profile.links.cv`.
+Everything on the home page is driven from **`src/data/content.js`**, which mirrors the role CVs in `public/` (listed in `cvs`). `profile.links.cv` is the default CV opened by "View CV" buttons.
 
 Blog content is **not** in `content.js` — it lives in Supabase and is written through the admin editor (see `supabase/README.md`).
 

@@ -49,7 +49,7 @@ export default function Work() {
     <section id="work" ref={section} className="relative scroll-mt-[-5.5rem] border-t border-border">
       <div className={cn('flex flex-col justify-center', pinned ? 'sticky top-0 h-screen overflow-hidden pt-16' : 'py-20')}>
         <div className="site mb-7">
-          <SectionHead number="01" label="The work" title="Eight projects," accent="all live." />
+          <SectionHead number="01" label="The work" title="Eleven projects," accent="all shipped." />
         </div>
 
         <div className={cn(!pinned && 'scrollbar-none snap-x snap-mandatory overflow-x-auto')}>
@@ -59,7 +59,11 @@ export default function Work() {
                 <button onClick={() => openProject(p.name)} className="group block w-full text-left">
                   <span className="relative block overflow-hidden rounded-3xl p-[6%]" style={{ background: `linear-gradient(135deg, ${p.grad[0]}, ${p.grad[1]})` }}>
                     <span className="float-panel block overflow-hidden transition-transform duration-300 group-hover:-translate-y-1.5 group-hover:scale-[1.01]">
-                      <img src={p.previews[0].src} alt={`Screenshot of ${p.previews[0].host}`} width="1440" height="900" loading="lazy" className="aspect-[16/10] w-full object-cover object-top" />
+                      {p.previews ? (
+                        <img src={p.previews[0].src} alt={`Screenshot of ${p.previews[0].host}`} width="1440" height="900" loading="lazy" className="aspect-[16/10] w-full object-cover object-top" />
+                      ) : (
+                        <NoPreview name={p.name} />
+                      )}
                     </span>
                     <span className="float-chip absolute bottom-3 right-3">{p.meta}</span>
                   </span>
@@ -89,16 +93,20 @@ export default function Work() {
 
 function ProjectDetail({ project }) {
   const [view, setView] = useState(0)
-  const preview = project.previews[view]
+  const preview = project.previews?.[view]
 
   return (
     <article>
+      {!preview ? (
+        <div className="overflow-hidden rounded-xl border border-border"><NoPreview name={project.name} /></div>
+      ) : (
       <div className="overflow-hidden rounded-xl border border-border">
         <div className="border-b border-border px-3 py-2 font-mono text-xs text-muted-foreground">{preview.host}</div>
         <img key={preview.src} src={preview.src} alt={`Screenshot of ${preview.host}`} width="1440" height="900" className="swap-in aspect-[16/10] w-full object-cover object-top" />
       </div>
+      )}
 
-      {project.previews.length > 1 && (
+      {project.previews?.length > 1 && (
         <div className="mt-3 flex gap-1.5" role="group" aria-label="Choose screenshot">
           {project.previews.map((v, i) => (
             <button
@@ -129,9 +137,11 @@ function ProjectDetail({ project }) {
         ))}
       </ul>
       <div className="mt-6 flex flex-wrap gap-2">
-        <a href={project.url} target="_blank" rel="noreferrer" className={buttonVariants()}>
-          Visit {project.shortName || project.name} <ArrowUpRight className="h-4 w-4" />
-        </a>
+        {project.url && (
+          <a href={project.url} target="_blank" rel="noreferrer" className={buttonVariants()}>
+            Visit {project.shortName || project.name} <ArrowUpRight className="h-4 w-4" />
+          </a>
+        )}
         {project.links?.map((l) => (
           <a key={l.url} href={l.url} target="_blank" rel="noreferrer" className={buttonVariants({ variant: 'outline' })}>
             {l.label} <ArrowUpRight className="h-4 w-4" />
@@ -139,5 +149,14 @@ function ProjectDetail({ project }) {
         ))}
       </div>
     </article>
+  )
+}
+
+// For projects with no public site to screenshot.
+function NoPreview({ name }) {
+  return (
+    <span className="flex aspect-[16/10] w-full items-center justify-center bg-white/70 font-display text-2xl font-semibold tracking-tight text-neutral-800">
+      {name}
+    </span>
   )
 }

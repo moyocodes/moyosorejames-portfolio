@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Check, Copy, FileDown, FileText, Github, Linkedin, Palette, Phone, Send, ShoppingBag } from 'lucide-react'
 import SectionHead from '@/components/site/SectionHead'
 import { Button, buttonVariants } from '@/components/ui/button'
-import { profile } from '@/data/content'
+import { availability, profile } from '@/data/content'
 import { openTemplates } from '@/hooks/useTemplatesDrawer'
 
 const fieldClass = 'w-full rounded-lg border border-input bg-background px-3 py-2'
@@ -52,6 +52,10 @@ export default function Contact() {
                   <Phone className="h-4 w-4 text-muted-foreground" /> {profile.phone}
                 </a>
               </li>
+            </ul>
+
+            <ul className="mt-4 space-y-1 text-sm text-muted-foreground">
+              {availability.map((a) => <li key={a}>{a}</li>)}
             </ul>
 
             <div className="mt-6 flex flex-wrap gap-2">
