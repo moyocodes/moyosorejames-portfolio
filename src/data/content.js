@@ -397,10 +397,8 @@ export const education = {
 // `url` makes a certification clickable. Files live in public/certificates/.
 export const certifications = [
   { name: 'Google AI Professional Certificate (8 courses)', by: 'Google | Coursera, 13 October 2026', url: '/certificates/google-ai-professional-certificate.pdf' },
-  { name: 'Meta Full Stack Developer: Front-End & Back-End from Scratch Specialization', by: 'Meta | Coursera, 2026' },
   { name: 'Introduction to Front-End Development', by: 'Meta | Coursera, 29 April 2026', url: '/certificates/meta-intro-front-end-development.jpg' },
   { name: 'Institute of Personality Development & Customer Relationship Management (IPD-CRM)', by: 'Member, Nigeria, 24 September 2025', url: '/certificates/ipd-crm-membership.pdf' },
-  { name: 'National Youth Service Corps (NYSC)', by: 'Service March 2021 – February 2022' },
   { name: 'CCNA: Cisco Certified Network Associate (Exam 200-301)', by: 'New Horizons online training, scored 100%, August 2020', url: '/certificates/ccna-new-horizons.pdf' },
   { name: 'PHP Course Certificate', by: 'SoloLearn, 1 July 2019 (CT-OECJROFP)', url: '/certificates/sololearn-php.pdf' },
   { name: 'Google Digital Skills for Africa', by: 'Certificate of participation, Konverge Media, 2018', url: '/certificates/google-digital-skills-for-africa.pdf' },
