@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react'
  *   'blog'        → blog index
  *   'blog/:slug'  → single post
  *   'admin'       → admin editor (Supabase Auth-gated)
+ *   'cv'          → CV viewer
  */
 export function useHashRoute() {
   const [route, setRoute] = useState(() => getRoute())

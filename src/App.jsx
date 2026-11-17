@@ -14,6 +14,7 @@ import TemplatesDrawer from '@/components/TemplatesDrawer'
 import Blog from '@/pages/Blog'
 import BlogPost from '@/pages/BlogPost'
 import Admin from '@/pages/Admin'
+import Cv from '@/pages/Cv'
 
 function Home() {
   // The page renders after load, so the browser can't jump to a #section by itself.
@@ -53,6 +54,7 @@ export default function App() {
   if (route === 'blog') return <Blog />
   if (route.startsWith('blog/')) return <BlogPost slug={route.slice('blog/'.length)} />
   if (route === 'admin') return <Admin />
+  if (route === 'cv') return <Cv />
 
   return <Home />
 }

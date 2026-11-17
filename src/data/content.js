@@ -23,6 +23,7 @@ export const profile = {
 
 // Role-specific CVs, listed in the CV section. Files live in public/.
 export const cvs = [
+  { title: 'Founding Forward Deployed Lead', file: '/James_Moyosore_Founding_Forward_Deployed_Lead_CV.pdf' },
   { title: 'Senior / Lead Full-Stack Software Engineer', file: '/James_Moyosore_Full_Stack_CV.pdf' },
   { title: 'AI-Integrated Software Engineer', file: '/James_Moyosore_AI_Engineer_CV.pdf' },
   { title: 'Solutions Engineer', file: '/James_Moyosore_Solutions_Engineer_CV.pdf' },
