@@ -11,7 +11,8 @@ import { useEffect, useState } from 'react'
  *   'blog'        → blog index
  *   'blog/:slug'  → single post
  *   'admin'       → admin editor (Supabase Auth-gated)
- *   'cv'          → CV viewer
+  *   'cv'          → CV viewer
+ *   'human'       → MOYO.md manifesto
  */
 export function useHashRoute() {
   const [route, setRoute] = useState(() => getRoute())

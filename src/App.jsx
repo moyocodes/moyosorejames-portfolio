@@ -15,6 +15,7 @@ import Blog from '@/pages/Blog'
 import BlogPost from '@/pages/BlogPost'
 import Admin from '@/pages/Admin'
 import Cv from '@/pages/Cv'
+import Human from '@/pages/Human'
 
 function Home() {
   // The page renders after load, so the browser can't jump to a #section by itself.
@@ -55,6 +56,7 @@ export default function App() {
   if (route.startsWith('blog/')) return <BlogPost slug={route.slice('blog/'.length)} />
   if (route === 'admin') return <Admin />
   if (route === 'cv') return <Cv />
+  if (route === 'human') return <Human />
 
   return <Home />
 }
