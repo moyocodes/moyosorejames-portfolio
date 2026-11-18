@@ -19,6 +19,21 @@ const scenes = [
     object: 'sun',
   },
   {
+    id: 'path',
+    label: '## how I got here',
+    bg: '#f7f4ee',
+    timeline: [
+      ['2016–20', 'B.Sc. Computer Science & IT, Bowen University', 'Second Class Upper. Social Director. Built Mobot, a tourist-guide chatbot for Ibadan, as my final-year project.'],
+      ['2019–20', 'Intern, Safe Complex Multi-Biz', 'First real web pages, in HTML, CSS and JavaScript.'],
+      ['2020', 'CCNA training, scored 100%', 'Networking fundamentals, the summer I graduated.'],
+      ['2021', 'NYSC Frontend Developer, Tizeti', 'React, Redux and PHP, wired to real APIs and payments.'],
+      ['2022', 'Frontend Developer, Tizeti', 'Dashboards and payment gateways. Fixed ERP loopholes behind 30% fewer staff-reported issues.'],
+      ['2023', 'Lead Frontend Developer, Tizeti', 'Led six developers across three countries on Free Fiber Africa.'],
+      ['2025', 'Lead Software Developer, Tizeti', 'Full stack across the ERP, Hotspot, WiFiCall and Free Fiber Africa.'],
+      ['2026', 'Founder, on the side', 'linqsafe, FileFlowHQ and TourFinder (Mobot, rebuilt). Nudgy in ten days for the Meta Global AI Developer Hackathon.'],
+    ],
+  },
+  {
     id: 'p1',
     label: '### 1. take over the half-built thing. finish it.',
     bg: '#6aa3c9',
@@ -189,9 +204,27 @@ function Scene({ s, onActive }) {
   const bodyIn = p > 0.6
 
   return (
-    <section ref={ref} id={s.id} className="relative" style={{ height: s.list ? '220vh' : '300vh', background: s.bg, color: fg }}>
+    <section ref={ref} id={s.id} className="relative" style={{ height: s.timeline ? '400vh' : s.list ? '220vh' : '300vh', background: s.bg, color: fg }}>
       <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden px-6">
-        {s.list ? (
+        {s.timeline ? (
+          <ol className="relative mt-14 w-full max-w-[880px] border-l-2 border-[#141414] pl-6 sm:pl-10">
+            {s.timeline.map(([year, title, note], i) => {
+              const on = p > 0.05 + i * (0.8 / s.timeline.length)
+              return (
+                <li
+                  key={year + title}
+                  className="relative py-[0.7vh] transition-all duration-500"
+                  style={{ opacity: on ? 1 : 0.12, transform: on ? 'none' : 'translateX(-16px)' }}
+                >
+                  <span className="absolute -left-[33px] top-[1.2vh] h-3.5 w-3.5 rounded-full border-2 border-[#141414] sm:-left-[49px]" style={{ background: on ? '#f4481b' : '#f7f4ee' }} />
+                  <p className="text-[12px] tracking-[0.12em] text-[#555]" style={mono}>{year}</p>
+                  <p className="text-[clamp(16px,2vw,24px)] font-bold leading-tight">{title}</p>
+                  <p className="hidden text-[12px] leading-snug text-[#333] sm:block" style={mono}>{note}</p>
+                </li>
+              )
+            })}
+          </ol>
+        ) : s.list ? (
           <div className="w-full max-w-[900px]">
             {s.list.map((t, i) => {
               const on = p > 0.12 + i * 0.2
