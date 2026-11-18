@@ -221,6 +221,30 @@ export default function Human() {
   const [active, setActive] = useState(null)
   const [indexOpen, setIndexOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [watching, setWatching] = useState(false)
+
+  // "watch": scroll the page by itself until the end or until stopped.
+  useEffect(() => {
+    if (!watching) return
+    let raf = 0
+    let last = performance.now()
+    const step = (t) => {
+      const dt = t - last
+      last = t
+      window.scrollBy(0, dt * 0.35)
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) return setWatching(false)
+      raf = requestAnimationFrame(step)
+    }
+    raf = requestAnimationFrame(step)
+    const stop = () => setWatching(false)
+    window.addEventListener('wheel', stop, { passive: true })
+    window.addEventListener('touchstart', stop, { passive: true })
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('wheel', stop)
+      window.removeEventListener('touchstart', stop)
+    }
+  }, [watching])
 
   useEffect(() => {
     const prev = document.title
@@ -258,6 +282,9 @@ export default function Human() {
         <span className="hidden truncate text-[12px] font-bold opacity-80 md:block md:pl-10">{active?.label}</span>
         <div className="ml-auto flex items-center gap-3">
           <a href="/" onClick={home} className="hidden text-[12px] font-bold sm:block">moyosorejames.com</a>
+          <button type="button" onClick={() => setWatching((v) => !v)} aria-pressed={watching} className="min-h-[44px] px-1 text-[12px] font-bold">
+            {watching ? 'stop' : 'watch'}
+          </button>
           <button
             type="button"
             onClick={() => setIndexOpen((v) => !v)}
