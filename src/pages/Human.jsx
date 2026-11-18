@@ -14,62 +14,70 @@ const scenes = [
     id: 'what',
     label: '## what this file is',
     bg: '#f4481b',
-    line: 'A reminder, in plain text, of what a *builder* still brings.',
-    body: '[Two or three plain sentences: why you’re writing this down, and what you think a builder still brings now that the tools write most of the code.]',
+    line: 'Five years of shipping, written down in *plain* text.',
+    body: 'I’m a Lead Software Developer at Tizeti in Lagos. I build web products end to end: React and TypeScript on the front, Node, Laravel and Python behind it, and lately LLMs inside it. This is how I work.',
     object: 'sun',
   },
   {
     id: 'p1',
-    label: '### 1. ship the thing, then talk about it',
+    label: '### 1. take over the half-built thing. finish it.',
     bg: '#6aa3c9',
-    line: 'A working app beats a *confident* take.',
-    body: '[Your take. Build in public, small apps, real users over slide decks.]',
+    line: 'Half-built is where the *real* work starts.',
+    body: 'Fantasy Showdown came to me partly designed and barely wired up. I built the game engine, the user and owner admin areas, Paystack payments and BVN-verified withdrawals, set up the pipeline, and ended up its top contributor.',
     object: 'ball',
   },
   {
     id: 'p2',
-    label: '### 2. safety is a feature, not a footnote',
+    label: '### 2. modernize, don’t mourn',
     bg: '#1f3fd6',
-    line: '[One line you’d want *quoted*.]',
-    body: '[What protecting people means in the products you build.]',
-    object: 'shield',
-  },
-  {
-    id: 'p3',
-    label: '### 3. solve the boring problem well',
-    bg: '#b5bf7c',
-    line: 'Files. Follow-ups. Invoices. *Somebody* has to.',
-    body: '[Why unglamorous problems are worth your time.]',
+    line: 'Old code isn’t an excuse. It’s a *starting point*.',
+    body: 'I moved Tizeti’s ERP frontend from Create React App to Vite, replaced deprecated dependencies, split it into two repositories and added React Query and caching. Datadog measured load times 30% faster afterwards.',
     object: 'stack',
   },
   {
+    id: 'p3',
+    label: '### 3. lead the people, not just the code',
+    bg: '#b5bf7c',
+    line: 'Six developers. Three countries. *One* product.',
+    body: 'I led the team that built the Free Fiber Africa website and customer dashboard. Code reviews and careful debugging helped cut customer-reported issue tickets by 50%.',
+    object: 'globe',
+  },
+  {
     id: 'p4',
-    label: '### 4. own the output. fully.',
+    label: '### 4. solve the boring problem well',
     bg: '#232222',
     dark: true,
-    line: 'You picked the tool. You wrote the prompt. You *shipped* it.',
-    body: '[What owning the output means to you.]',
+    line: 'Payments. Bookings. Maps. *Somebody* has to.',
+    body: 'Paystack, Flutterwave and bank transfer across Nigeria, Ghana and Côte d’Ivoire. A fibre coverage map on Google Maps and OpenStreetMap. Bookings, tracking, email and WhatsApp alerts for Abánítúnráse. Unglamorous, and exactly what customers touch.',
     object: 'mirror',
   },
   {
     id: 'p5',
-    label: '### 5. build for where you’re from',
+    label: '### 5. put AI where it earns its place',
     bg: '#c9a6f2',
-    line: '[The people and places your work is *for*.]',
-    body: '[A few sentences on who you build for and why.]',
-    object: 'globe',
+    line: 'Easy questions go *cheap*. Risky ones go *careful*.',
+    body: 'TourFinder routes simple travel questions to a self-hosted, fine-tuned Ollama model, and sends safety-critical, time-sensitive and place-lookup questions to Claude with tool use. On Linqsafe, the OpenAI API writes user bios.',
+    object: 'chat',
+  },
+  {
+    id: 'p6',
+    label: '### 6. own it all the way to production',
+    bg: '#c8962c',
+    line: 'Build it. Deploy it. *Keep* it running.',
+    body: 'Bitbucket Pipelines into DigitalOcean behind Nginx. A custom live-editing CMS for Mindfully Articulated Design. Shipping isn’t the end of the job; maintenance is most of it.',
+    object: 'shield',
   },
   {
     id: 'stop',
     label: '## things I am trying to stop doing',
     bg: '#f7a9c8',
-    list: ['waiting until it’s “ready”', '[YOUR HABIT]', '[YOUR HABIT]'],
+    list: ['rewriting what could be modernized', 'treating integrations as an afterthought', 'waiting until it’s “ready”'],
   },
   {
     id: 'more',
     label: '## things I am trying to do more',
     bg: '#6bb88a',
-    list: ['finish the rough version first', '[YOUR HABIT]', '[YOUR HABIT]'],
+    list: ['measure before and after', 'mentor through code review', 'build for West Africa first'],
   },
 ]
 
@@ -147,6 +155,12 @@ function SceneObject({ kind, progress }) {
     mirror: (
       <div className="flex h-52 w-40 items-center justify-center rounded-[50%] border-[10px] border-[#f7a9c8] bg-gradient-to-b from-[#3a3a3a] to-[#161616]">
         <div className="h-10 w-10 rounded-full bg-[#f4481b]" />
+      </div>
+    ),
+    chat: (
+      <div className="flex flex-col items-end gap-2">
+        <div className="rounded-2xl rounded-br-sm bg-[#f7f4ee] px-5 py-3 text-[13px] font-bold text-[#141414]">is it safe to go tonight?</div>
+        <div className="self-start rounded-2xl rounded-bl-sm bg-[#1f3fd6] px-5 py-3 text-[13px] font-bold text-[#f7f4ee]">checking live info…</div>
       </div>
     ),
     globe: (
@@ -327,9 +341,9 @@ export default function Human() {
         </h1>
         <div className="relative z-10 mx-auto mt-10 flex w-full max-w-[1100px] flex-1 flex-col items-center justify-end gap-10 md:flex-row md:items-end md:justify-between">
           <div className="text-[13px] leading-[1.9] opacity-90 md:mb-[16vh]" style={mono}>
-            <p>&gt; a working manifesto for building with machines.</p>
-            <p>&gt; not a pitch. not a portfolio. not a thread.</p>
-            <p>&gt; last edited [WHERE YOU WROTE IT].</p>
+            <p>&gt; a working manifesto from five years of shipping.</p>
+            <p>&gt; lead software developer, tizeti. lagos, nigeria.</p>
+            <p>&gt; written between deploys.</p>
           </div>
           <img
             src="/moy.jpeg"
@@ -354,10 +368,15 @@ export default function Human() {
           Now go <span className="font-normal italic" style={serif}>build</span> it.
         </p>
         <p className="max-w-[560px] text-[14px] leading-[1.8]" style={mono}>
-          [Your closing thought: one or two lines.]
+          Full-stack, AI-integrated, and happiest when the thing is live and people are using it. Open to senior, lead and solutions roles with product teams anywhere.
         </p>
         <p className="text-[14px]" style={mono}>— moyo.</p>
-        <a href="mailto:[YOUR EMAIL]" className="text-[14px] underline" style={mono}>[YOUR EMAIL]</a>
+        <div className="flex flex-wrap justify-center gap-5 text-[14px]" style={mono}>
+          <a href="mailto:moyosorejames@gmail.com" className="underline">email</a>
+          <a href="https://github.com/moyocodes" className="underline">github</a>
+          <a href="https://www.linkedin.com/in/james-moyosore-1aa550196" className="underline">linkedin</a>
+          <a href="/cv" onClick={(e) => (e.preventDefault(), navigate('/cv'))} className="underline">cv</a>
+        </div>
       </footer>
 
       {/* scroll pill */}
